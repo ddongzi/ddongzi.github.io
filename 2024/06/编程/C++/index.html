@@ -58,19 +58,24 @@ document.addEventListener('DOMContentLoaded', function () {
   </a>
 </div>
     <div id="menu" class="book-menu hide">
-  <h1>categories</h1>
+  <h1 id="categories"><a class="markdownIt-Anchor" href="#categories"></a> categories</h1>
 <ul>
 <li><a href="/categories/%E7%BC%96%E7%A8%8B">编程</a></li>
 <li><a href="/categories/%E6%95%B0%E5%AD%A6">数学</a></li>
-<li><a href="/categories/%E9%87%8D%E8%A6%81">重要</a></li>
 <li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB">未分类</a></li>
 <li><a href="/categories/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0">情绪日记</a></li>
 </ul>
-<h2 id="archives">archives</h2>
+<h2 id="archives"><a class="markdownIt-Anchor" href="#archives"></a> archives</h2>
 <ul>
 <li><a href="/archives/2024">2024</a></li>
 <li><a href="/archives/2023">2023</a></li>
+<li><a href="/archives/2022">2022</a></li>
 </ul>
+<h2 id="图床"><a class="markdownIt-Anchor" href="#图床"></a> 图床</h2>
+<ul>
+<li><a href="image">–</a></li>
+</ul>
+<h2 id="资源"><a class="markdownIt-Anchor" href="#资源"></a> 资源</h2>
 
 </div>
 
@@ -129,7 +134,7 @@ function sidebar_toggle() {
         <div class="book-content">
           <div class="book-post">
   <h1>  C++.md </h1>
-  <h1>STL数据结构</h1>
+  <h1 id="stl数据结构"><a class="markdownIt-Anchor" href="#stl数据结构"></a> STL数据结构</h1>
 <p>结构体指针：</p>
 <p>指针为NULL：不指向任何有效内存</p>
 <p>哈希表：</p>
@@ -138,7 +143,7 @@ function sidebar_toggle() {
 <li><code>std::map</code> 使用红黑树实现的，查找删除插入操作平均复杂度为<code>O(logN)</code></li>
 <li>在实际的生产环境中，通常会使用更为复杂的哈希表实现，例如采用开放寻址法、使用动态数组，以及考虑哈希表的负载因子等因素。</li>
 </ul>
-<h1>STL</h1>
+<h1 id="stl"><a class="markdownIt-Anchor" href="#stl"></a> STL</h1>
 <p>不是所有 STL 容器都返回引用。不同的容器函数在返回值上有不同的行为。以下是一些常见的 STL 容器函数返回类型的情况：</p>
 <ol>
 <li>
@@ -158,7 +163,7 @@ function sidebar_toggle() {
 <li>
 <p><strong>返回迭代器的情况：</strong></p>
 <ul>
-<li>对于 <code>std::set</code> 和 <code>std::unordered_set</code> 的 <code>insert()</code>、<code>erase()</code> 函数，它们返回的是迭代器，指向插入或删除的元素位置。<br>
+<li>对于 <code>std::set</code> 和 <code>std::unordered_set</code> 的 <code>insert()</code>、<code>erase()</code> 函数，它们返回的是迭代器，指向插入或删除的元素位置。<br />
 在使用容器函数时，建议查看相关文档以了解返回类型的具体情况。不同的容器和不同的函数可能有不同的行为。</li>
 </ul>
 </li>
@@ -178,8 +183,8 @@ function sidebar_toggle() {
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line"></span><br><span class="line">    set&lt;<span class="type">int</span>&gt; myset;</span><br><span class="line"></span><br><span class="line">    myset.<span class="built_in">insert</span>(<span class="number">42</span>);</span><br><span class="line"></span><br><span class="line">    myset.<span class="built_in">erase</span>(<span class="number">21</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">size_t</span> size = myset.<span class="built_in">count</span>(<span class="number">42</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> isEmpty = myset.<span class="built_in">empty</span>();</span><br><span class="line"></span><br><span class="line">    <span class="type">size_t</span> size = myset.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> &amp; val : myset) &#123;</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; val &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">map&lt;string, <span class="type">int</span>&gt; mp;  <span class="comment">// 定义一个将string映射成int的map</span></span><br><span class="line">map&lt;string, <span class="type">int</span>&gt; mp;</span><br><span class="line">mp[<span class="string">&quot;abc&quot;</span>] = <span class="number">3</span>;  <span class="comment">// 将&quot;abc&quot;映射到3</span></span><br><span class="line">mp[<span class="string">&quot;ab&quot;</span>]++;  <span class="comment">// 将&quot;ab&quot;所映射的整数++</span></span><br><span class="line">mp.<span class="built_in">insert</span>(<span class="built_in">make_pair</span>(<span class="string">&quot;cd&quot;</span>, <span class="number">2</span>));  <span class="comment">// 插入元素</span></span><br><span class="line">mp.<span class="built_in">insert</span>(&#123; <span class="string">&quot;ef&quot;</span>, <span class="number">5</span> &#125;);  <span class="comment">// 同上</span></span><br><span class="line">mp.<span class="built_in">size</span>();  <span class="comment">// 返回map中元素的个数</span></span><br><span class="line">mp.<span class="built_in">empty</span>();  <span class="comment">// 返回map是否为空，若为空返回true否则返回false</span></span><br><span class="line">mp.<span class="built_in">clear</span>();  <span class="comment">// 清空map</span></span><br><span class="line">mp.<span class="built_in">erase</span>(<span class="string">&quot;ef&quot;</span>);  <span class="comment">// 清除元素&#123;&quot;ef&quot;, 5&#125;</span></span><br><span class="line">mp[<span class="string">&quot;abc&quot;</span>];  <span class="comment">// 返回&quot;abc&quot;映射的值</span></span><br><span class="line">mp.<span class="built_in">begin</span>();  <span class="comment">// 返回map第一个元素的迭代器</span></span><br><span class="line">mp.<span class="built_in">end</span>();  <span class="comment">// 返回map最后一个元素后一个位置的迭代器</span></span><br><span class="line">mp.<span class="built_in">find</span>(<span class="string">&quot;ab&quot;</span>);  <span class="comment">// 返回第一个键值为&quot;ab&quot;的迭代器，若不存在则返回mp.end()</span></span><br><span class="line">mp.<span class="built_in">find</span>(&#123; <span class="string">&quot;abc&quot;</span>, <span class="number">3</span> &#125;);  <span class="comment">// 返回元素&#123;&quot;abc&quot;, 3&#125;的迭代器，若不存在则返回mp.end()</span></span><br><span class="line">mp.<span class="built_in">count</span>(<span class="string">&quot;abc&quot;</span>);  <span class="comment">// 返回第一个键值为&quot;abc&quot;的元素数量1，由于map元素不能重复因此count返回值只有0或1</span></span><br><span class="line">mp.<span class="built_in">count</span>(&#123; <span class="string">&quot;abc&quot;</span>, <span class="number">2</span> &#125;);  <span class="comment">// 返回第一个键值为&quot;abc&quot;的元素数量1，注意和find不一样，count只判断第一个键值</span></span><br><span class="line">mp.<span class="built_in">lower_bound</span>(<span class="string">&quot;abc&quot;</span>);  <span class="comment">// 返回第一个键值大于等于&quot;abc&quot;的元素的迭代器，&#123;&quot;abc&quot;, 3&#125;</span></span><br><span class="line">mp.<span class="built_in">upper_bound</span>(<span class="string">&quot;abc&quot;</span>);  <span class="comment">// 返回第一个键值大于&quot;abc&quot;的元素的迭代器，&#123;&quot;cd&quot;, 2&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用迭代器遍历</span></span><br><span class="line"><span class="keyword">for</span> (map&lt;string, <span class="type">int</span>&gt;::iterator it = mp.<span class="built_in">begin</span>(); it != mp.<span class="built_in">end</span>(); it++)</span><br><span class="line">    cout &lt;&lt; (*it).first &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; (*it).second &lt;&lt; endl;</span><br><span class="line"><span class="comment">// for_each遍历(C++11)</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> x : mp)</span><br><span class="line">    cout &lt;&lt; x.first &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; x.second &lt;&lt; endl;</span><br><span class="line"><span class="comment">// 扩展推断范围的for_each遍历(C++17)</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> &amp;[k, v] : mp)</span><br><span class="line">    cout &lt;&lt; k &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; v &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">作者：AsanoSaki</span><br><span class="line">链接：https:<span class="comment">//www.acwing.com/blog/content/10558/</span></span><br><span class="line">来源：AcWing</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
 <p>pair</p>
-<p>迭代器：<br>
-迭代器是一个类，容器返回的是迭代器对象。<br>
+<p>迭代器：<br />
+迭代器是一个类，容器返回的是迭代器对象。<br />
 但是迭代器类对很多操作符做了重载。</p>
 <ol>
 <li><strong>解引用操作 (<code>*</code>)：</strong> it 指向的是 值。</li>
@@ -197,15 +202,15 @@ function sidebar_toggle() {
 <li><strong>比较操作 (<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>)：</strong> 比较两个迭代器的相对位置。 是否指向的是同一个元素</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;<span class="type">int</span>&gt; myVector = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> it1 = myVector.<span class="built_in">begin</span>();</span><br><span class="line"><span class="keyword">auto</span> it2 = myVector.<span class="built_in">end</span>();</span><br><span class="line"><span class="keyword">if</span> (it1 != it2) &#123;</span><br><span class="line">    <span class="comment">// 迭代器不相等</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1>cs106B</h1>
-<h2 id="课程简介">课程简介</h2>
+<h1 id="cs106b"><a class="markdownIt-Anchor" href="#cs106b"></a> cs106B</h1>
+<h2 id="课程简介"><a class="markdownIt-Anchor" href="#课程简介"></a> 课程简介</h2>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1184/lectures.shtml">2018-winter-课程主页</a>，<strong><a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/">2022winter</a>，</strong></li>
 <li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Ua-31ucGAZ0&amp;list=PLoCMsyE1cvdWiqgyzwAz_uGLSHsuYZlMX">视频链接</a></li>
 <li>编辑环境：<a target="_blank" rel="noopener" href="https://web.stanford.edu/dept/cs_edu/resources/qt/">QTcreater</a>,  <a target="_blank" rel="noopener" href="https://web.stanford.edu/dept/cs_edu/resources/cslib_docs/">The Stanford C++ Library （2023.1版本）</a></li>
 <li>课程时间：30小时</li>
 <li>教科书：[[ProgAbs.pdf]]</li>
-<li>资源：<a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1214/">2021-winter</a><br>
+<li>资源：<a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1214/">2021-winter</a><br />
 <a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1186/assn/life.html">2018spring作业</a>,<a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1244/assignments/1-cpp/">2024-winter-作业</a>，<a target="_blank" rel="noopener" href="https://www.keithschwarz.com/cs106b/">各年CS106B的地址</a></li>
 <li>schedule:</li>
 </ul>
@@ -229,17 +234,17 @@ function sidebar_toggle() {
 </tr>
 </tbody>
 </table>
-<h2 id="环境：">环境：</h2>
+<h2 id="环境"><a class="markdownIt-Anchor" href="#环境"></a> 环境：</h2>
 <p><strong>使用blankProject配置</strong></p>
-<p>// TODO<br>
+<p>// TODO<br />
 Stanford CPP Lib:</p>
-<h4 id="Qt-Creator中的-pro">Qt <a target="_blank" rel="noopener" href="http://xn--Creator-m43kf211a.pro">Creator中的.pro</a></h4>
-<p>在QT中，有一个工具qmake可以生成一个makefile文件，它是由.pro文件生成而来的.<br>
+<h4 id="qt-creator中的pro"><a class="markdownIt-Anchor" href="#qt-creator中的pro"></a> Qt <a target="_blank" rel="noopener" href="http://xn--Creator-m43kf211a.pro">Creator中的.pro</a></h4>
+<p>在QT中，有一个工具qmake可以生成一个makefile文件，它是由.pro文件生成而来的.<br />
 <strong>TEMPLATE</strong></p>
 <ul>
 <li><code>app</code>: 用于构建应用程序。这是一个典型的 GUI 或控制台应用程序项目。</li>
 <li><code>lib</code>: 用于构建库。</li>
-<li><code>subdirs</code>: 用于构建包含子项目的项目。这个模板允许你组织多个项目并在一个 <code>.pro</code> 文件中构建它们。<br>
+<li><code>subdirs</code>: 用于构建包含子项目的项目。这个模板允许你组织多个项目并在一个 <code>.pro</code> 文件中构建它们。<br />
 <strong>CONFIG</strong></li>
 </ul>
 <table>
@@ -300,35 +305,35 @@ Stanford CPP Lib:</p>
 </tr>
 </tbody>
 </table>
-<h2 id="functions">functions</h2>
+<h2 id="functions"><a class="markdownIt-Anchor" href="#functions"></a> functions</h2>
 <ol>
 <li>函数声明</li>
 <li>参数默认值</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printline</span><span class="params">(<span class="type">int</span> width=<span class="number">10</span>,<span class="type">char</span> letter=<span class="string">&#x27;*&#x27;</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;width;i++)&#123;</span><br><span class="line">        cout&lt;&lt;letter;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="3">
-<li>参数传递<br>
-value semantics:  int，double类型传递，值复制传入函数，不影响实参。<br>
+<li>参数传递<br />
+value semantics:  int，double类型传递，值复制传入函数，不影响实参。<br />
 reference semantics:  &amp;修饰，参数将链接到实参地址。</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quadratic</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> c, <span class="type">double</span> &amp;root1,<span class="type">double</span>&amp; root2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> d=<span class="built_in">sqrt</span>(b*b<span class="number">-4</span>*a*c);</span><br><span class="line">    root1=(-b+d)/(<span class="number">2</span>*a);</span><br><span class="line">    root2=(-b-d)/(<span class="number">2</span>*a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> &amp;a,<span class="type">int</span> &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    t=a;</span><br><span class="line">    a=b;</span><br><span class="line">    b=t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> root1,root2;</span><br><span class="line">    <span class="built_in">quadratic</span>(<span class="number">1</span>,<span class="number">-3</span>,<span class="number">-4</span>,root1,root2);</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;The roots are&quot;</span>&lt;&lt;root1&lt;&lt;<span class="string">&quot; and &quot;</span>&lt;&lt;root2;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="4">
-<li>output parameters:<br>
+<li>output parameters:<br />
 <code>void quadratic(int a,int b,int c, double &amp;root1,double&amp; root2);</code></li>
-<li>Procedural decomp:<br>
+<li>Procedural decomp:<br />
 main函数包含概括流程，其他函</li>
 </ol>
-<h2 id="strings">strings</h2>
+<h2 id="strings"><a class="markdownIt-Anchor" href="#strings"></a> strings</h2>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line">string s=<span class="string">&quot;hello&quot;</span>;</span><br></pre></td></tr></table></figure>
 <ol>
 <li>characters</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="type">char</span> c1=s[<span class="number">3</span>];</span><br><span class="line"><span class="comment">//ascii码</span></span><br><span class="line">cout&lt;&lt;(<span class="type">int</span>)s[<span class="number">0</span>]&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
-<p>![[Pasted image 20240111173320.png]]</p>
-<h4 id="operators">operators</h4>
+<p>!()[<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/ddongzi/ddongzi.github.io/main/image/markdown/20240111173320.png">https://raw.githubusercontent.com/ddongzi/ddongzi.github.io/main/image/markdown/20240111173320.png</a>]</p>
+<h4 id="operators"><a class="markdownIt-Anchor" href="#operators"></a> operators</h4>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//concat</span></span><br><span class="line">string s1=<span class="string">&quot;mar&quot;</span>;</span><br><span class="line">s1+=<span class="string">&quot;ty&quot;</span>;</span><br><span class="line"><span class="comment">//compare</span></span><br><span class="line"><span class="keyword">if</span>(s1&gt;s2 &amp;&amp; s2!=<span class="string">&quot;joe&quot;</span>)&#123;&#125;</span><br><span class="line"><span class="comment">//strings are mutable , and can be changed.</span></span><br><span class="line">s<span class="number">1.</span><span class="built_in">append</span>(<span class="string">&quot;step&quot;</span>);</span><br><span class="line">s<span class="number">1.</span><span class="built_in">erase</span>(<span class="number">3</span>,<span class="number">2</span>);</span><br><span class="line">s1[<span class="number">6</span>]=<span class="string">&#x27;0&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>![[Pasted image 20240111173850.png]]<br>
-<code>string::npos</code><br>
+<p>![[Pasted image 20240111173850.png]]<br />
+<code>string::npos</code><br />
 3. exercise:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a作为复制传入，不影响实参，b作为引用传入，会影响</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mystery</span><span class="params">(string a, string &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    a.<span class="built_in">erase</span>(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">    b+=a[<span class="number">0</span>];</span><br><span class="line">    b.<span class="built_in">insert</span>(<span class="number">3</span>,<span class="string">&quot;FOO&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string a=<span class="string">&quot;marty&quot;</span>;</span><br><span class="line">    string b=<span class="string">&quot;step&quot;</span>;</span><br><span class="line">    <span class="built_in">mystery</span>(a,b);</span><br><span class="line">    cout&lt;&lt;a&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;b&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="4">
@@ -359,21 +364,21 @@ main函数包含概括流程，其他函</li>
 </ol>
 <ul>
 <li>&quot; \0000&quot; 是由四个空字符组成的字符串，它占据了四个字节的内存空间。看作一个包含三个空字符和一个字符串结束符的字符串。</li>
-<li>“” 是一个空字符串，表示字符串中没有任何字符，它只包含一个字符串结束符（‘\0’），占据一个字节的内存空间。<br>
-所以，虽然两者在逻辑上都代表空字符串，但是它们在内存中占据的空间不同。<br>
-在使用上，因为字符串库会处理字符串的细节，使得对空字符串的操作在逻辑上是等效的。<br>
+<li>“” 是一个空字符串，表示字符串中没有任何字符，它只包含一个字符串结束符（‘\0’），占据一个字节的内存空间。<br />
+所以，虽然两者在逻辑上都代表空字符串，但是它们在内存中占据的空间不同。<br />
+在使用上，因为字符串库会处理字符串的细节，使得对空字符串的操作在逻辑上是等效的。<br />
 判断空字符串:
 <ol>
 <li>s.empty()</li>
 <li>s=“”</li>
-<li>s.length()== 0<br>
-空字符表示为：<code>'\x0'</code> <code>'\0'</code><br>
+<li>s.length()== 0<br />
+空字符表示为：<code>'\x0'</code> <code>'\0'</code><br />
 字符串：<code>&quot;\x00&quot;</code> 表示一个含空字符的字符串（c语言），并不是空字符串。他的长度为1。 通过string构造即可转换空字符串。</li>
 </ol>
 </li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &quot;\0000&quot;后面的都无效，因为读到结尾了</span></span><br><span class="line"><span class="built_in">STUDENT_TEST</span>(<span class="string">&quot; confirm &#x27;\0000&#x27; string length&quot;</span>)&#123;</span><br><span class="line">    string s=<span class="string">&quot;\0000&quot;</span>;</span><br><span class="line">    <span class="built_in">EXPECT_EQUAL</span>(s.<span class="built_in">length</span>(),<span class="number">0</span>);   <span class="comment">//true</span></span><br><span class="line">    <span class="built_in">EXPECT_EQUAL</span>(s,<span class="string">&quot;&quot;</span>);   <span class="comment">//true</span></span><br><span class="line">    <span class="built_in">EXPECT</span>(s.<span class="built_in">empty</span>());   <span class="comment">//true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="IO-stream">IO stream</h2>
+<h2 id="io-stream"><a class="markdownIt-Anchor" href="#io-stream"></a> IO stream</h2>
 <ol>
 <li>文件读写</li>
 </ol>
@@ -416,7 +421,7 @@ main函数包含概括流程，其他函</li>
 <ol start="5">
 <li>filelib.h</li>
 </ol>
-<h2 id="Collections">Collections</h2>
+<h2 id="collections"><a class="markdownIt-Anchor" href="#collections"></a> Collections</h2>
 <ol>
 <li>STL vs stanford c++ lib(SPL)</li>
 <li>Vectors(Lists)</li>
@@ -426,7 +431,7 @@ main函数包含概括流程，其他函</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vector&lt;<span class="type">int</span>&gt; nums &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">Vector&lt;string&gt; names;</span><br><span class="line">names.<span class="built_in">add</span>(<span class="string">&quot;jj&quot;</span>);</span><br></pre></td></tr></table></figure>
 <ul>
-<li>为什么不用数组<br>
+<li>为什么不用数组<br />
 <code>int nums[5]  &#123;1,2,3&#125;</code></li>
 <li>vector members：</li>
 </ul>
@@ -439,14 +444,14 @@ main函数包含概括流程，其他函</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Grid&lt;<span class="type">int</span>&gt; <span class="title">matrix</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>;</span><br><span class="line">Grid&lt;<span class="type">int</span>&gt; matrix=&#123;</span><br><span class="line">	&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,</span><br><span class="line">	&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line">matrix[<span class="number">2</span>][<span class="number">1</span>]=<span class="number">22</span>;</span><br><span class="line"></span><br><span class="line">grid.<span class="built_in">numRows</span>();</span><br><span class="line">grid.<span class="built_in">numCols</span>();</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> value:grid)&#123;&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>作为参数传递<br>
-是完全复制（值传递）进行传递的，非常慢。所以通过&amp;引用传递。<br>
+<li>作为参数传递<br />
+是完全复制（值传递）进行传递的，非常慢。所以通过&amp;引用传递。<br />
 如果不修改该grid，声明为const。</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">compuerSum</span><span class="params">(<span class="type">const</span> Grid&lt;<span class="type">int</span>&gt;&amp; matrix)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">invert</span><span class="params">(Grid&lt;<span class="type">int</span>&gt;&amp; matrix)</span></span>;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>练习Grid。<br>
-![[Pasted image 20240113215959.png]]<br>
+<li>练习Grid。<br />
+![[Pasted image 20240113215959.png]]<br />
 Lecture5</li>
 </ul>
 <ol start="3">
@@ -507,14 +512,14 @@ Lecture5</li>
 <li>hashset： 哈希表 数组
 <ul>
 <li>无序</li>
-<li>需要hash函数<br>
+<li>需要hash函数<br />
 ![[Pasted image 20240115152733.png]]</li>
 </ul>
 </li>
 </ol>
 </li>
 </ul>
-<h4 id="map">map</h4>
+<h4 id="map"><a class="markdownIt-Anchor" href="#map"></a> map</h4>
 <ul>
 <li>两种实现
 <ol>
@@ -534,11 +539,11 @@ Lecture5</li>
 </li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Map</span></span><br><span class="line"><span class="function"><span class="title">for</span><span class="params">(string k:map)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Recurise">Recurise</h2>
+<h2 id="recurise"><a class="markdownIt-Anchor" href="#recurise"></a> Recurise</h2>
 <p>过程： <strong>可以理解为树深度优先遍历</strong>。决策树</p>
-<h4 id="fractal">fractal</h4>
+<h4 id="fractal"><a class="markdownIt-Anchor" href="#fractal"></a> fractal</h4>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">snowflake</span>(window,x,y,size,level);</span><br></pre></td></tr></table></figure>
-<h4 id="stanford-graphics-lib">stanford graphics lib</h4>
+<h4 id="stanford-graphics-lib"><a class="markdownIt-Anchor" href="#stanford-graphics-lib"></a> stanford graphics lib</h4>
 <p>![[Pasted image 20240117204102.png]]</p>
 <p>cantor set:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">cantorSet</span><span class="params">(GWindow &amp;window,<span class="type">int</span> x,<span class="type">int</span> y,<span class="type">int</span> length, <span class="type">int</span> level)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(level&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        window.<span class="built_in">drawLine</span>(x,y,x+length,y);</span><br><span class="line">        <span class="built_in">pause</span>(<span class="number">5</span>);</span><br><span class="line">        <span class="built_in">cantorSet</span>(window,x,y<span class="number">+20</span>,length/<span class="number">3</span>,level<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">cantorSet</span>(window,x<span class="number">+2</span>*length/<span class="number">3</span>,y<span class="number">+20</span>,length/<span class="number">3</span>,level<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -546,10 +551,10 @@ Lecture5</li>
 <p>evaluate :</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 7</span></span><br><span class="line"><span class="comment"> * (2+2)</span></span><br><span class="line"><span class="comment"> * (1+(2*4))</span></span><br><span class="line"><span class="comment"> * @brief evaluateHelper</span></span><br><span class="line"><span class="comment"> * @param expression</span></span><br><span class="line"><span class="comment"> * @param index</span></span><br><span class="line"><span class="comment"> * @return </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 7</span></span><br><span class="line"><span class="comment"> * (2+2)</span></span><br><span class="line"><span class="comment"> * (1+(2*4))</span></span><br><span class="line"><span class="comment"> * @brief evaluateHelper</span></span><br><span class="line"><span class="comment"> * @param expression</span></span><br><span class="line"><span class="comment"> * @param index</span></span><br><span class="line"><span class="comment"> * @return</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">evaluateHelper</span><span class="params">(string expression,<span class="type">int</span> &amp;index)</span></span>&#123;</span><br><span class="line">    <span class="type">char</span> c=expression[index];</span><br><span class="line">    <span class="keyword">if</span>(c==<span class="string">&#x27;(&#x27;</span>)&#123;</span><br><span class="line">        index++;</span><br><span class="line">        <span class="type">int</span> left=<span class="built_in">evaluateHelper</span>(expression,index);</span><br><span class="line">        <span class="type">char</span> ope=expression[index];</span><br><span class="line">        index++;</span><br><span class="line">        <span class="type">int</span> right=<span class="built_in">evaluateHelper</span>(expression,index);</span><br><span class="line">        <span class="keyword">if</span>(ope==<span class="string">&#x27;+&#x27;</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> left+right;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> left*right;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        index++;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">charToInteger</span>(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printAllBinaryHelper</span><span class="params">(<span class="type">int</span> digits,string output)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;printAllBinaryHelper(&quot;</span>&lt;&lt;digits&lt;&lt;<span class="string">&quot;,&quot;</span>&lt;&lt;output&lt;&lt;<span class="string">&quot;)&quot;</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">if</span>(digits==<span class="number">0</span>)&#123;</span><br><span class="line">        cout&lt;&lt;output&lt;&lt;endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printAllBinaryHelper</span>(digits<span class="number">-1</span>,<span class="string">&quot;0&quot;</span>+output);</span><br><span class="line">    <span class="built_in">printAllBinaryHelper</span>(digits<span class="number">-1</span>,<span class="string">&quot;1&quot;</span>+output);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Exhaustive-research-and-backtracking">Exhaustive research and backtracking</h2>
+<h2 id="exhaustive-research-and-backtracking"><a class="markdownIt-Anchor" href="#exhaustive-research-and-backtracking"></a> Exhaustive research and backtracking</h2>
 <p>穷举搜索常用递归实现。</p>
 <p>exercise : printAllBinary(n)用递归实现</p>
-<h2 id="backtracking：">backtracking：</h2>
+<h2 id="backtracking"><a class="markdownIt-Anchor" href="#backtracking"></a> backtracking：</h2>
 <ul>
 <li>一种暴力搜索方法，即所有路径。</li>
 <li>找到符合条件的路径。</li>
@@ -557,25 +562,25 @@ Lecture5</li>
 <p>伪代码:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">Explore</span><span class="params">(decisions)</span>:</span><br><span class="line">	- If there are decisions left to make:</span><br><span class="line">		- For each avaliable choice **C** <span class="keyword">for</span> my decision:</span><br><span class="line">			- **Chose** C.</span><br><span class="line">			- **Explore** the remaining decisions that could follow C.</span><br><span class="line">			- **Un-Chose** C.</span><br><span class="line">	- Otherwise, <span class="keyword">if</span> there are no decisions to make , stop.</span><br></pre></td></tr></table></figure>
 <ul>
-<li>Key tasks<br>
--Figure out appropriate smallest unit of work(decision).<br>
+<li>Key tasks<br />
+-Figure out appropriate smallest unit of work(decision).<br />
 -Figure out how to enumerate all possible choices /options for it.</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> calls=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">diceSumHelper</span><span class="params">(<span class="type">int</span> dice,<span class="type">int</span> desireSum,Vector&lt;<span class="type">int</span>&gt; &amp;chosen)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    calls++;</span><br><span class="line">    <span class="keyword">if</span>(dice==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(desireSum==<span class="number">0</span>)&#123;</span><br><span class="line">            cout&lt;&lt;chosen&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">6</span>;i++)&#123;</span><br><span class="line">            chosen.<span class="built_in">add</span>(i);</span><br><span class="line">            <span class="built_in">diceSumHelper</span>(dice<span class="number">-1</span>,desireSum-i,chosen);</span><br><span class="line">            chosen.<span class="built_in">remove</span>(chosen.<span class="built_in">size</span>()<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * dice个骰子，要凑成和为desiresum，</span></span><br><span class="line"><span class="comment"> * (3,7): &#123;1,1,5&#125;</span></span><br><span class="line"><span class="comment"> * @brief diceSum</span></span><br><span class="line"><span class="comment"> * @param dice 骰子数</span></span><br><span class="line"><span class="comment"> * @param desireSum 期望和</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">diceSum</span><span class="params">(<span class="type">int</span> dice,<span class="type">int</span> desireSum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Vector&lt;<span class="type">int</span>&gt; chosen;</span><br><span class="line">    <span class="built_in">diceSumHelper</span>(dice,desireSum,chosen);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">diceSum</span>(<span class="number">3</span>,<span class="number">7</span>);</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;recurise : &quot;</span>&lt;&lt;calls&lt;&lt;<span class="string">&quot; times.&quot;</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//recurise : 259 times.</span></span><br></pre></td></tr></table></figure>
-<p>![[Pasted image 20240123110501.png]]<br>
+<p>![[Pasted image 20240123110501.png]]<br />
 <strong>优化</strong>： 去除不必要的递归</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> calls=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">diceSumHelper</span><span class="params">(<span class="type">int</span> dice,<span class="type">int</span> desireSum,Vector&lt;<span class="type">int</span>&gt; &amp;chosen)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    calls++;</span><br><span class="line">    <span class="keyword">if</span>(dice==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(desireSum==<span class="number">0</span>)&#123;</span><br><span class="line">            cout&lt;&lt;chosen&lt;&lt;endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(desireSum&gt;=dice*<span class="number">1</span> &amp;&amp; desireSum &lt;= desireSum*<span class="number">6</span>)&#123;    <span class="comment">// 不去遍历一些不可能的决策子树</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">6</span>;i++)&#123;</span><br><span class="line">            chosen.<span class="built_in">add</span>(i);</span><br><span class="line">            <span class="built_in">diceSumHelper</span>(dice<span class="number">-1</span>,desireSum-i,chosen);</span><br><span class="line">            chosen.<span class="built_in">remove</span>(chosen.<span class="built_in">size</span>()<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//recurise : 127 times.</span></span><br></pre></td></tr></table></figure>
-<h4 id="Escape-Maze-Exercise">Escape Maze Exercise:</h4>
-<p>![[Pasted image 20240123114433.png]]<br>
+<h4 id="escape-maze-exercise"><a class="markdownIt-Anchor" href="#escape-maze-exercise"></a> Escape Maze Exercise:</h4>
+<p>![[Pasted image 20240123114433.png]]<br />
 Maze class:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#<span class="meta">#<span class="keyword">include</span> <span class="string">&quot;Maze.h&quot;</span></span></span><br><span class="line">m.<span class="built_in">inBounds</span>(row,col); </span><br><span class="line">m.<span class="built_in">isMarked</span>(row,col);  <span class="comment">//true if given cell is marked.</span></span><br><span class="line">m.<span class="built_in">isOpen</span>(row,col);  <span class="comment">//true if given cell is empty.</span></span><br><span class="line">m.<span class="built_in">isTainted</span>(row,col);</span><br><span class="line">m.<span class="built_in">iSWall</span>(row,col);</span><br><span class="line">m.<span class="built_in">mark</span>(row,col);</span><br><span class="line">m.<span class="built_in">numRows</span>(),</span><br><span class="line">m.<span class="built_in">taint</span>(row,col); <span class="comment">//sets given cell to be tainted.</span></span><br><span class="line">m.<span class="built_in">unmark</span>(row,col); <span class="comment">//sets given cell to be not marked if marked.</span></span><br><span class="line">m.<span class="built_in">untaint</span>(row,col); <span class="comment">//sets given cell to be not tainted if tainted.</span></span><br></pre></td></tr></table></figure>
-<h2 id="Lecure-10-backtracking3">Lecure 10: backtracking3</h2>
+<h2 id="lecure-10-backtracking3"><a class="markdownIt-Anchor" href="#lecure-10-backtracking3"></a> Lecure 10: backtracking3</h2>
 <p><strong>“Arm’s” length recursion:</strong></p>
 <ul>
-<li>“Arm’s” length recursion : A poor(糟糕的) style where unnecessary tests are performed before performing recursive calls.<br>
+<li>“Arm’s” length recursion : A poor(糟糕的) style where unnecessary tests are performed before performing recursive calls.<br />
 -Typically, the tests try to avoid making a call into what would otherwise(本来是) be a base case.</li>
-<li>Example : escapeMaze<br>
--Our code recursively tries to explore up,down,left,right.<br>
+<li>Example : escapeMaze<br />
+-Our code recursively tries to explore up,down,left,right.<br />
 -Some of those directions may lead to walls or off the board. Shouldn’t we <strong>test before making calls</strong> in these directions?</li>
 </ul>
 <p><strong>Escape Maze solution</strong></p>
@@ -587,17 +592,17 @@ Maze class:</p>
 <li>write a function <code>sublists</code> that finds every possible sub-list of given vector. A sub-list of a vector V contains &gt;=0 of V’s elements.</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// v: avaliable, chosen: 目前已选择</span></span><br><span class="line"><span class="comment">// &#123;jabe, bob, mat, sara&#125;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sublistHelper</span><span class="params">(Vector&lt;string&gt; &amp;v, Vector&lt;string&gt; &amp; chosen)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(v.<span class="built_in">isEmpty</span>())&#123;</span><br><span class="line">		<span class="comment">//base case</span></span><br><span class="line">		cout&lt;&lt;chosen&lt;&lt;endl;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">// recursive case</span></span><br><span class="line">		<span class="comment">// for each choice</span></span><br><span class="line">		string s=v[<span class="number">0</span>];</span><br><span class="line">		v.<span class="built_in">remove</span>(<span class="number">0</span>);</span><br><span class="line">		<span class="comment">// -chose/explor (without s)</span></span><br><span class="line">		<span class="built_in">sublistHelper</span>(v,chosen);</span><br><span class="line">		<span class="comment">//-chose/explore (with s)</span></span><br><span class="line">		chosen.<span class="built_in">add</span>(s);</span><br><span class="line">		<span class="built_in">sublistHelper</span>(v,chosen);</span><br><span class="line">		<span class="comment">//unchose</span></span><br><span class="line">		v.<span class="built_in">insert</span>(<span class="number">0</span>,s);</span><br><span class="line">		chosen.<span class="built_in">removeBack</span>();</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sublists</span><span class="params">(Vector&lt;string&gt; &amp;v)</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>The “8 Queens” problem</strong><br>
-<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98">wiki</a><br>
+<p><strong>The “8 Queens” problem</strong><br />
+<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98">wiki</a><br />
 ![[Pasted image 20240125120553.png]]</p>
 <ul>
-<li>Consider the problem of trying to place 8 queens on a chess board such that no queen can attack another queen.<br>
--What are the choices?<br>
--How do we “make” or “un-make” a choice?<br>
+<li>Consider the problem of trying to place 8 queens on a chess board such that no queen can attack another queen.<br />
+-What are the choices?<br />
+-How do we “make” or “un-make” a choice?<br />
 -How do we know when to stop?</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solveQueenHelper</span><span class="params">(Board&amp; board , <span class="type">int</span> col)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(col&gt;board.<span class="built_in">size</span>())&#123;</span><br><span class="line">		<span class="comment">//base case</span></span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="comment">//recursive case</span></span><br><span class="line">		<span class="comment">// for each choice</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> row=<span class="number">0</span>; row &lt;board.<span class="built_in">size</span>(); row+=)&#123;</span><br><span class="line">			<span class="keyword">if</span>(board.<span class="built_in">isSafe</span>(row,col))&#123;</span><br><span class="line">				<span class="comment">// chose</span></span><br><span class="line">				board.<span class="built_in">place</span>(row,col);</span><br><span class="line">				<span class="comment">// explore</span></span><br><span class="line">				<span class="built_in">solveQueenHelper</span>(board,col++);</span><br><span class="line">				<span class="comment">//unchose</span></span><br><span class="line">				board.<span class="built_in">remove</span>(row,col);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Lecture-12">Lecture 12</h2>
+<h2 id="lecture-12"><a class="markdownIt-Anchor" href="#lecture-12"></a> Lecture 12</h2>
 <blockquote>
 <p>Classes;Arrays;Implementing a Collection</p>
 </blockquote>
@@ -609,8 +614,8 @@ Maze class:</p>
 </ul>
 <p><strong>Interface vs code:</strong></p>
 <ul>
-<li>C++ separates classes into two kinds of code files:<br>
--.h : A “header” file containing the interface(declarations)<br>
+<li>C++ separates classes into two kinds of code files:<br />
+-.h : A “header” file containing the interface(declarations)<br />
 -.cpp : A “source” file containing definitions (method bodies)
 <ul>
 <li>class Foo =&gt; must write both Foo.h and Foo.cpp</li>
@@ -638,18 +643,18 @@ Maze class:</p>
 <li>with constructor: (better)</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BankAccount <span class="title">ba</span> <span class="params">(<span class="string">&quot;A&quot;</span>,<span class="number">1.2</span>)</span></span>;</span><br></pre></td></tr></table></figure>
-<p><strong>Arrays(11.3)</strong><br>
+<p><strong>Arrays(11.3)</strong><br />
 <code>type *name = new type[length];</code></p>
 <ul>
 <li>A <strong>dynamically allocated</strong> array.</li>
 <li>name is a pointer</li>
 <li>The memory allocated for the array must be manually released or else the program will have a memory leak</li>
-<li><code>type name[length];</code> we will not use this syntax.<br>
--A fixed array<br>
+<li><code>type name[length];</code> we will not use this syntax.<br />
+-A fixed array<br />
 -Stored in a different place in memory. The first syntax is heap. The second is stack.</li>
 </ul>
-<p><strong>Initialized?</strong><br>
-<code>type *name = new type[length]; // uninitilized</code><br>
+<p><strong>Initialized?</strong><br />
+<code>type *name = new type[length]; // uninitilized</code><br />
 <code>type *name = new type[length](); // initilized to 0</code></p>
 <p>两种对象创建方式：</p>
 <ol>
@@ -658,33 +663,33 @@ Maze class:</p>
 </ol>
 <p><strong>Exercise</strong>:</p>
 <ul>
-<li>Let’s implement a stack using an unfilled array.<br>
--We’ll call it <strong>ArrayStack</strong>. It will be very similar to the C++ stack.<br>
+<li>Let’s implement a stack using an unfilled array.<br />
+-We’ll call it <strong>ArrayStack</strong>. It will be very similar to the C++ stack.<br />
 -its behavior:
 <ul>
 <li>push(value)</li>
 <li>pop()</li>
 <li>peek()</li>
 <li>isEmpty()</li>
-<li>toString()<br>
+<li>toString()<br />
 -size:</li>
 <li>default array of 10.</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#<span class="meta">#<span class="keyword">ifndef</span> ARRAYSTACK_H</span></span><br><span class="line">#<span class="meta">#<span class="keyword">define</span> ARRAYSTACK_H</span></span><br><span class="line">#<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ArrayStack</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">ArrayStack</span>();</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">int</span> value)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">int</span>  <span class="title">pop</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">peek</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isEmpty</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">string <span class="title">toString</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> *elements;</span><br><span class="line">    <span class="type">int</span> size;</span><br><span class="line">    <span class="type">int</span> capacity;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#<span class="meta">#<span class="keyword">endif</span> <span class="comment">// ARRAYSTACK_H</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="Lecture-13">Lecture 13:</h2>
+<h2 id="lecture-13"><a class="markdownIt-Anchor" href="#lecture-13"></a> Lecture 13:</h2>
 <blockquote>
 <p>Pointers and Linked Lists</p>
 </blockquote>
 <p><strong>Linked data structures</strong></p>
 <ul>
-<li>Some collections store data using <strong>linked</strong> sequences of <strong>nodes</strong>.<br>
+<li>Some collections store data using <strong>linked</strong> sequences of <strong>nodes</strong>.<br />
 -examples : Set, Map, LinkedList</li>
 </ul>
 <p><strong>Structs</strong></p>
 <ul>
-<li>struct : a <strong>lightweight</strong> class; a template for related data.<br>
+<li>struct : a <strong>lightweight</strong> class; a template for related data.<br />
 -Members are <strong>public</strong> by default;</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Date</span>&#123;</span><br><span class="line">	<span class="type">int</span> month;</span><br><span class="line">	<span class="type">int</span> day;</span><br><span class="line">&#125;;</span><br><span class="line">Date today;</span><br><span class="line">today.month=<span class="number">10</span>;</span><br><span class="line">today.day=<span class="number">23</span>;</span><br><span class="line">Date xmas&#123;<span class="number">12</span>,<span class="number">23</span>&#125;;\</span><br><span class="line"><span class="comment">// 要求结构体中有构造函数</span></span><br><span class="line">Date *xp=<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">Date *xp=<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">// 不要求结构体中有构造函数</span></span><br><span class="line">Date *xp=<span class="keyword">new</span> Date&#123;<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br></pre></td></tr></table></figure>
@@ -694,24 +699,24 @@ Maze class:</p>
 <li>uninitialized pointer : points to a random address.</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p1=<span class="literal">nullptr</span>;</span><br><span class="line"><span class="type">int</span> *p2;</span><br><span class="line"><span class="comment">//testing for null</span></span><br><span class="line"><span class="keyword">if</span>(p1==<span class="literal">nullptr</span>)&#123;&#125; <span class="comment">//true</span></span><br><span class="line"><span class="keyword">if</span>(p1)&#123;&#125; <span class="comment">//false</span></span><br><span class="line"><span class="keyword">if</span>(!p1)&#123;&#125; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p><strong>Pointer to struct</strong><br>
+<p><strong>Pointer to struct</strong><br />
 <code>Type *p=new Type(param);</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1) non-pointer</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">foo</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Date d1;</span><br><span class="line">	d<span class="number">1.</span>month=<span class="number">1</span>;</span><br><span class="line">	d<span class="number">1.</span>day=<span class="number">13</span>;</span><br><span class="line">	...</span><br><span class="line">	<span class="comment">// d1 is thrown away.</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2) pointer</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">foo2</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Date *d2=<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">	d2-&gt;month=<span class="number">2</span>;</span><br><span class="line">	...</span><br><span class="line">	<span class="comment">// d2 is NOT thrown away. Live longer ,even if foo2 finished.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>A list node structure</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">ListNode</span>&#123;</span><br><span class="line">	<span class="type">int</span> data;</span><br><span class="line">	ListNode *next;</span><br><span class="line">&#125;</span><br><span class="line">ListNode *front = <span class="keyword">new</span> <span class="built_in">ListNode</span>();</span><br><span class="line">front-&gt;data=<span class="number">11</span>;</span><br><span class="line">front-&gt;next=<span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">3</span>,<span class="literal">nullptr</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>Traversing a list</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ListNode *cur=front;</span><br><span class="line"><span class="keyword">while</span>(cur!=<span class="literal">nullptr</span>)&#123;</span><br><span class="line">	cur=cur-&gt;next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Lecure-14">Lecure 14</h2>
+<h2 id="lecure-14"><a class="markdownIt-Anchor" href="#lecure-14"></a> Lecure 14</h2>
 <blockquote>
 <p>Linked list</p>
 </blockquote>
-<h2 id="Lecure-15">Lecure 15</h2>
+<h2 id="lecure-15"><a class="markdownIt-Anchor" href="#lecure-15"></a> Lecure 15</h2>
 <blockquote>
 <p>Array/Linked List Class; PQs and Binary Heaps</p>
 </blockquote>
 <p><strong>The keyword const:</strong></p>
 <ul>
-<li>a <strong>const reference paramter</strong> can’t be modified by the func.<br>
+<li>a <strong>const reference paramter</strong> can’t be modified by the func.<br />
 <code>void foo(const BankAccount&amp; ba)&#123;&#125;</code></li>
 <li>a <strong>const member func.</strong> can’t change the object’s state.  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .h and .cpp</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BankAccount</span>&#123; </span><br><span class="line">	<span class="function"><span class="type">double</span> <span class="title">getBalance</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -721,8 +726,8 @@ Maze class:</p>
 <ul>
 <li>Redefining the behavior of a common operator .</li>
 <li>Syntax:  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">returnType <span class="keyword">operator</span> <span class="title">op</span><span class="params">(paramters)</span></span>; <span class="comment">//.h</span></span><br><span class="line"><span class="function">returnType <span class="keyword">operator</span> <span class="title">op</span><span class="params">(paramters)</span></span>&#123;<span class="comment">//.cpp</span></span><br><span class="line">	statements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
--for example, a+b becomes operator +(Foo&amp; a, Foo &amp;b)<br>
--for example, list1+list2<br>
+-for example, a+b becomes operator +(Foo&amp; a, Foo &amp;b)<br />
+-for example, list1+list2<br />
 -<code>cout&lt;&lt;stack&lt;&lt;endl; </code>实际上就是重载了&lt;&lt;。</li>
 </ul>
 <p><strong>Make objects printable</strong></p>
@@ -736,12 +741,12 @@ Maze class:</p>
 <p><strong>Destuctor(12.3)</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//.h</span></span><br><span class="line">~<span class="built_in">ClassName</span>();</span><br><span class="line"><span class="comment">//.cpp</span></span><br><span class="line">ClassName::~<span class="built_in">ClassName</span>()&#123;...&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>destructor : Called when the objects is deleted by the program.<br>
+<li>destructor : Called when the objects is deleted by the program.<br />
 -Useful if your object needs to free any memory as it dies.
 <ul>
 <li>delete any pointers stored as private members.</li>
-<li>delete [] any arrays stored as private members.<br>
--when leave {} scope, called.<br>
+<li>delete [] any arrays stored as private members.<br />
+-when leave {} scope, called.<br />
 -在析构函数中，手动删除new 的内存，其他会被程序自动回收，</li>
 </ul>
 </li>
@@ -750,11 +755,11 @@ Maze class:</p>
 <p><strong>A LinkedIntList class</strong></p>
 <ul>
 <li>Similar public members to Vector.</li>
-<li>Implemented as a chain of linked nodes.<br>
--keeps a private pointer to its front node<br>
+<li>Implemented as a chain of linked nodes.<br />
+-keeps a private pointer to its front node<br />
 -nullptr is the end of the list;</li>
 </ul>
-<p>friend:   运算符重载写在成员函数，使得其可以访问成员变量（私有属性）。<br>
+<p>friend:   运算符重载写在成员函数，使得其可以访问成员变量（私有属性）。<br />
 <code>friend ostream&amp; operator &lt;&lt;(ostream&amp; out, LinkedIntList&amp; list);</code></p>
 <p>返回指针和返回指针引用：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回指针，即返回get 函数里result指针的 完全副本。 </span></span><br><span class="line">  <span class="function">ListNode* <span class="title">get</span><span class="params">(<span class="type">int</span> index)</span> <span class="type">const</span></span>;</span><br><span class="line"><span class="comment">//返回指针的引用，即返回get 函数里那个result指针。</span></span><br><span class="line">  <span class="function">ListNode*&amp; <span class="title">get</span><span class="params">(<span class="type">int</span> index)</span> <span class="type">const</span></span>;</span><br></pre></td></tr></table></figure>
@@ -762,35 +767,35 @@ Maze class:</p>
 <p><strong>Priority Queues and Heaps</strong></p>
 <ul>
 <li>
-<h2 id="Provides-fast-access-to-its-highest-priority-element-enqueue-add-an-element-at-a-given-priority-peek-returns-highest-priority-value-dequeue-remove-return-highest-priority-value">Provides fast access to its highest-priority element.<br>
--enqueue : add an element at a given priority<br>
--peek : returns highest-priority value<br>
+<h2 id="provides-fast-access-to-its-highest-priority-element-enqueue-add-an-element-at-a-given-priority-peek-returns-highest-priority-value-dequeue-removereturn-highest-priority-value"><a class="markdownIt-Anchor" href="#provides-fast-access-to-its-highest-priority-element-enqueue-add-an-element-at-a-given-priority-peek-returns-highest-priority-value-dequeue-removereturn-highest-priority-value"></a> Provides fast access to its highest-priority element.<br />
+-enqueue : add an element at a given priority<br />
+-peek : returns highest-priority value<br />
 -dequeue ; remove/return highest-priority value</h2>
 </li>
 </ul>
 <p>![[Pasted image 20240126130238.png]]</p>
 <p>![[Pasted image 20240126130321.png]]</p>
-<p><strong>PQ as array/vector</strong><br>
+<p><strong>PQ as array/vector</strong><br />
 ![[Pasted image 20240126130432.png]]</p>
-<p><strong>Heaps</strong><br>
+<p><strong>Heaps</strong><br />
 ![[Pasted image 20240126130543.png]]</p>
-<h2 id="HW1-完美数：2024">HW1-完美数：2024</h2>
-<h4 id="Perfect-numbers">Perfect numbers</h4>
-<p>A <em>perfect number</em> is an integer that is equal to the sum of its proper divisors.<br>
+<h2 id="hw1-完美数2024"><a class="markdownIt-Anchor" href="#hw1-完美数2024"></a> HW1-完美数：2024</h2>
+<h4 id="perfect-numbers"><a class="markdownIt-Anchor" href="#perfect-numbers"></a> Perfect numbers</h4>
+<p>A <em>perfect number</em> is an integer that is equal to the sum of its proper divisors.<br />
 The first perfect number is <code>6</code> because its proper divisors are <code>1</code>, <code>2</code>, and <code>3</code>, and <code>1 + 2 + 3 = 6</code>. The next perfect number is <code>28</code>, which equals the sum of its proper divisors: <code>1 + 2 + 4 + 7 + 14</code>.</p>
-<h4 id="An-exhaustive-algorithm">An exhaustive algorithm</h4>
+<h4 id="an-exhaustive-algorithm"><a class="markdownIt-Anchor" href="#an-exhaustive-algorithm"></a> An exhaustive algorithm</h4>
 <p>暴力搜索：遍历每个数，对每个数，找到所有的因子，检查和。</p>
-<h4 id="Observing-the-runtime">Observing the runtime</h4>
+<h4 id="observing-the-runtime"><a class="markdownIt-Anchor" href="#observing-the-runtime"></a> Observing the runtime</h4>
 <p>When you are prompted in the console to “Select the test groups you wish to run,” enter 0 for “None” and the program will instead proceed with the ordinary <code>main</code> function.</p>
 <blockquote>
 <p><strong>Q1</strong>. Roughly how long did it take your computer to do the search? How many perfect numbers were found and what were they?</p>
 </blockquote>
 <p>It would be more convenient to run several time trials in sequence and have the program itself measure the elapsed time. The SimpleTest framework can help with this task, so let’s take a detour there now.</p>
-<h4 id="What-is-SimpleTest">What is SimpleTest?</h4>
-<p><a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1244/resources/testing_guide.html">SimpleTest：</a><br>
+<h4 id="what-is-simpletest"><a class="markdownIt-Anchor" href="#what-is-simpletest"></a> What is SimpleTest?</h4>
+<p><a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1244/resources/testing_guide.html">SimpleTest：</a><br />
 <code>TIME_OPERATION</code>: 最好10-60s</p>
 <p>For now, focus on use of <code>STUDENT_TEST</code>, <code>EXPECT</code>, <code>EXPECT_EQUAL</code>, and <code>TIME_OPERATION</code>, as these are the features you will use in Assignment 1.</p>
-<h4 id="Practice-with-TIME-OPERATION">Practice with <code>TIME_OPERATION</code></h4>
+<h4 id="practice-with-time_operation"><a class="markdownIt-Anchor" href="#practice-with-time_operation"></a> Practice with <code>TIME_OPERATION</code></h4>
 <blockquote>
 <p><strong>Q2</strong>. Make a table of the timing results for <code>findPerfects</code> that you observed. (old-school table of text rows and columns is just fine)</p>
 </blockquote>
@@ -802,7 +807,7 @@ The first perfect number is <code>6</code> because its proper divisors are <c
 <blockquote>
 <p><strong>Q4</strong>. Extrapolate from the data you gathered and make a prediction: how long will it take <code>findPerfects</code> to reach the fifth perfect number?</p>
 </blockquote>
-<h4 id="Digging-deeper-into-testing">Digging deeper into testing</h4>
+<h4 id="digging-deeper-into-testing"><a class="markdownIt-Anchor" href="#digging-deeper-into-testing"></a> Digging deeper into testing</h4>
 <p>Here are some further explorations to do with SimpleTest:</p>
 <ul>
 <li>Introduce a bug into <code>divisorSum</code> by erroneously initializing <code>total</code> to 1 instead of zero. Rebuild and run the tests again.</li>
@@ -811,17 +816,17 @@ The first perfect number is <code>6</code> because its proper divisors are <c
 <blockquote>
 <p><strong>Q5</strong>. Do any of the tests still pass even with this broken function? Why or why not?</p>
 </blockquote>
-<h4 id="Streamlining-and-more-testing">Streamlining and more testing</h4>
-<p>However, there is a neat little optimization that can significantly streamline the process.The function <code>divisorSum</code> runs a loop from <code>1</code> to <code>N</code> to find divisors, but this is a tad wasteful, as we actually only need to examine divisors up to the square root of <code>N</code>.In other words, we can take advantage of the fact that each divisor that is less than the square root is paired up with a divisor that is greater than the square root.<br>
-You are to implement a new function <code>smarterSum</code>:<code>long smarterSum(long n)</code>that produces the same result as the original <code>divisorSum</code> but uses this optimization to tighten up the loop.<br>
+<h4 id="streamlining-and-more-testing"><a class="markdownIt-Anchor" href="#streamlining-and-more-testing"></a> Streamlining and more testing</h4>
+<p>However, there is a neat little optimization that can significantly streamline the process.The function <code>divisorSum</code> runs a loop from <code>1</code> to <code>N</code> to find divisors, but this is a tad wasteful, as we actually only need to examine divisors up to the square root of <code>N</code>.In other words, we can take advantage of the fact that each divisor that is less than the square root is paired up with a divisor that is greater than the square root.<br />
+You are to implement a new function <code>smarterSum</code>:<code>long smarterSum(long n)</code>that produces the same result as the original <code>divisorSum</code> but uses this optimization to tighten up the loop.<br />
 After adding new code to your program, <strong>your next step is to thoroughly test that code</strong> and confirm it is bug-free.Because you already have the vetted function <code>divisorSum</code> at your disposal, a clever testing strategy uses <code>EXPECT_EQUAL</code> to confirm that the result from <code>divisorSum(n)</code> is equal to the result from <code>smarterSum(n)</code>.</p>
 <blockquote>
 <p><strong>Q6</strong>. Explain your testing strategy for <code>smarterSum</code> and how you chose your specific test cases that lead you to be confident the function is working correctly.</p>
 </blockquote>
-<p>Now with confidence in <code>smarterSum</code>, implement the following two functions that build on it:<br>
-<code>bool isPerfectSmarter(long n)</code><br>
-<code>void findPerfectsSmarter(long stop)</code><br>
-The code for these two functions is <em>very similar</em> to the provided <code>isPerfect</code> and <code>findPerfects</code> functions, basically just substituting <code>smarterSum</code> for <code>divisorSum</code>. Again, you may copy-paste the existing implementations, and make small tweaks as necessary.<br>
+<p>Now with confidence in <code>smarterSum</code>, implement the following two functions that build on it:<br />
+<code>bool isPerfectSmarter(long n)</code><br />
+<code>void findPerfectsSmarter(long stop)</code><br />
+The code for these two functions is <em>very similar</em> to the provided <code>isPerfect</code> and <code>findPerfects</code> functions, basically just substituting <code>smarterSum</code> for <code>divisorSum</code>. Again, you may copy-paste the existing implementations, and make small tweaks as necessary.<br />
 Now let’s run time trials to see just how much improvement we’ve gained.</p>
 <blockquote>
 <p><strong>Q7</strong>. Record your timing results for <code>findPerfectsSmarter</code> into a table.</p>
@@ -830,20 +835,20 @@ Now let’s run time trials to see just how much improvement we’ve gained.</p>
 <blockquote>
 <p><strong>Q8</strong>. Make a prediction: how long will <code>findPerfectsSmarter</code> take to reach the fifth perfect number?</p>
 </blockquote>
-<h4 id="Mersenne-primes-and-Euclid">Mersenne primes and Euclid</h4>
+<h4 id="mersenne-primes-and-euclid"><a class="markdownIt-Anchor" href="#mersenne-primes-and-euclid"></a> Mersenne primes and Euclid</h4>
 <p>A <em>Mersenne number</em> is a number that is one less than a power of two, i.e., of the form <code>2k-1</code> for some integer <code>k</code>. A Mersenne number that is prime is called a <em>Mersenne prime</em>. The Mersenne number <code>25-1</code> is 31 and 31 is prime, making it a Mersenne prime.</p>
 <p>Mersenne primes are quite elusive; the most recent one found is only the 51st known and has almost 25 million digits! Verifying that the found number was indeed prime required almost two weeks of non-stop computing.</p>
 <p>Back in 400 BCE, Euclid discovered an intriguing <em>one-to-one relationship</em> between perfect numbers and the Mersenne primes. Specifically, if the Mersenne number <code>2k-1</code> is prime, then <code>2(k-1) * (2k-1)</code> is a perfect number. The number 31 is a Mersenne prime where k = 5, so Euclid’s relation applies and leads us to the number <code>24 * (25-1) = 496</code> which is a perfect number. Neat!</p>
-<h4 id="Turbo-charging-with-Euclid">Turbo-charging with Euclid</h4>
+<h4 id="turbo-charging-with-euclid"><a class="markdownIt-Anchor" href="#turbo-charging-with-euclid"></a> Turbo-charging with Euclid</h4>
 <p>The <em>final task</em>  of the warmup is to leverage the cleverness of Euclid to implement a blazingly-fast alternative algorithm to find perfect numbers that will beat the pants off of exhaustive search. Buckle up!</p>
-<p>Your job is to implement the function:<br>
-<code>long findNthPerfectEuclid(long n)</code><br>
+<p>Your job is to implement the function:<br />
+<code>long findNthPerfectEuclid(long n)</code><br />
 The exhaustive search algorithm painstakingly examines every number from 1 upwards, testing each to identify those that are perfect. Taking Euclid’s approach, we instead hop through the numbers by powers of two, checking each Mersenne number to see if it is prime, and if so, calculate its corresponding perfect number. The general strategy is outlined below:</p>
 <ol>
 <li>Start by setting <code>k = 1</code>.</li>
-<li>Calculate $m=2^k-1$  (Note: C++ has no exponentiation operator, instead use library function <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/numeric/math/pow" title="Documentation for pow"><code>pow</code></a>)</li>
+<li>Calculate <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m=2^k-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.932438em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>  (Note: C++ has no exponentiation operator, instead use library function <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/numeric/math/pow" title="Documentation for pow"><code>pow</code></a>)</li>
 <li>Determine whether <code>m</code> is prime or composite. (Hint: a prime number has a <code>divisorSum</code> and <code>smarterSum</code> equal to one. Code reuse is your friend!)</li>
-<li>If <code>m</code> is prime, then the value $(2^k-1)*2^{k-1}$ is a perfect number. If this is the <code>nth</code> perfect number you have found, stop here.</li>
+<li>If <code>m</code> is prime, then the value <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>∗</mo><msup><mn>2</mn><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(2^k-1)*2^{k-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8491079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span> is a perfect number. If this is the <code>nth</code> perfect number you have found, stop here.</li>
 <li>Increment <code>k</code> and repeat from step 2.</li>
 </ol>
 <p>The call <code>findNthPerfectEuclid(n)</code> should return the <code>n</code>th perfect number. What will be your testing strategy to verify that this function returns the correct result? You may find this <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_perfect_numbers">table of perfect numbers</a> to be helpful. One possibility is a test case that confirms each number is perfect according to your earlier function, e.g. <code>EXPECT(isPerfect(findNthPerfectEuclid(n)))</code>.</p>
@@ -852,15 +857,15 @@ The exhaustive search algorithm painstakingly examines every number from 1 upwar
 <p><strong>Q9</strong>. Explain how you chose your specific test cases and why they lead you to be confident <code>findNthPerfectEuclid</code> is working correctly.</p>
 </blockquote>
 <p>But if you try for the sixth, seventh, eighth, and beyond, you can run into a different problem of scale. The super-fast algorithm works in blink of an eye, but the numbers begin to have so many digits that they quickly <em>exceed the capability</em> of the <code>long</code> data type.</p>
-<h4 id="Warmup-conclusions">Warmup conclusions</h4>
-<p>You should have answers to questions Q1 to Q9 in <code>short_answer.txt</code>.<br>
+<h4 id="warmup-conclusions"><a class="markdownIt-Anchor" href="#warmup-conclusions"></a> Warmup conclusions</h4>
+<p>You should have answers to questions Q1 to Q9 in <code>short_answer.txt</code>.<br />
 Your code should also have thoughtful comments, including an overview header comment at the top of the file.</p>
-<h2 id="HW1-Soundex-Search-2024">HW1- Soundex Search : 2024</h2>
+<h2 id="hw1-soundex-search-2024"><a class="markdownIt-Anchor" href="#hw1-soundex-search-2024"></a> HW1- Soundex Search : 2024</h2>
 <p>Soundex算法是一种用于对英语姓氏进行发音编码的算法。它旨在将类似发音的姓氏映射到相同的编码，从而允许在搜索引擎或数据库中快速查找发音相似的姓氏。</p>
-<h4 id="Why-phonetic-name-matching-is-useful">Why phonetic name matching is useful</h4>
+<h4 id="why-phonetic-name-matching-is-useful"><a class="markdownIt-Anchor" href="#why-phonetic-name-matching-is-useful"></a> Why phonetic name matching is useful</h4>
 <p>Traditional string matching algorithms that use exact match or partial/overlap match perform poorly in this messy milieu of real world data. In contrast, the Soundex system groups names by phonetic structure to enable matching by pronunciation rather than literal character match. This makes tasks like tracking genealogy or searching for a spoken surname easier.</p>
 <p>The Soundex algorithm is a coded index based on the way a name sounds rather than the way it is spelled. Surnames that sound the same but are spelled differently, like “Vaska,” “Vasque,” and “Vussky,” have the same code and are classified together.</p>
-<h4 id="How-Soundex-codes-are-generated">How Soundex codes are generated</h4>
+<h4 id="how-soundex-codes-are-generated"><a class="markdownIt-Anchor" href="#how-soundex-codes-are-generated"></a> How Soundex codes are generated</h4>
 <p>The Soundex algorithm operates on an input surname and converts the name into its Soundex code. A Soundex code is a four-character string in the form of an initial letter followed by three digits, such as <code>Z452</code>. The initial letter is the first letter of the surname, and the three digits are drawn from the sounds within the surname using the following algorithm:</p>
 <ol>
 <li><em>Extract</em> only the letters from the surname, discarding all non-letters (no dashes, spaces, apostrophes, …).</li>
@@ -914,32 +919,32 @@ Your code should also have thoughtful comments, including an overview header com
 <p><strong>Q10</strong>. What is the Soundex code for “Angelou”? What is the code for your own surname?</p>
 </blockquote>
 <p>such as, Angelou(<code>A524</code>),Curie (<code>C600</code>) and “O’Conner” (<code>O256</code>).</p>
-<h4 id="Decomposing-the-problem">Decomposing the problem</h4>
+<h4 id="decomposing-the-problem"><a class="markdownIt-Anchor" href="#decomposing-the-problem"></a> Decomposing the problem</h4>
 <blockquote>
 <p><strong>Q11</strong>. Before writing any code, brainstorm your plan of attack and sketch how you might decompose the work into smaller tasks. Briefly describe your decomposition strategy.</p>
 </blockquote>
-<h4 id="Testing-testing-testing">Testing, testing, testing</h4>
+<h4 id="testing-testing-testing"><a class="markdownIt-Anchor" href="#testing-testing-testing"></a> Testing, testing, testing</h4>
 <p>Brainstorm what those missing cases are and then add them. Think about edge cases that could lurk in the extremes or cases that are uniquely distinguished from the provided tests, such as a <em>completely empty string</em> or a string composed of only non-letter characters.</p>
 <p>Your goal in writing tests is to enumerate a comprehensive set of tests that brings any bugs in the code to light so you can debug and fix them. Good tests are the key to writing robust software. A great developer is not only a great coder, but also a great tester.</p>
-<h4 id="Debugging-a-failing-test-case">Debugging a failing test case</h4>
+<h4 id="debugging-a-failing-test-case"><a class="markdownIt-Anchor" href="#debugging-a-failing-test-case"></a> Debugging a failing test case</h4>
 <p>Now run the tests while using the debugger. When you hit the breakpoint, single step through the call to <code>lettersOnly</code> while watching the debugger’s variables pane to see how the values are changing. This “step-and-watch” approach is the same as you used in the <a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1244/assignments/0-namehash/DebuggerTutorial.pdf" title="Debugger tutorial from Assignment 0">Assignment 0 debugging tutorial</a>.</p>
 <p>Using the debugger should help you find the bug —once you understand it, go ahead and fix it!</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">STUDENT_TEST</span>(<span class="string">&quot;Test exclude of punctuation, digits, and spaces&quot;</span>)&#123;</span><br><span class="line">    string s = <span class="string">&quot;O&#x27;Hara&quot;</span>;</span><br><span class="line">    string result = <span class="built_in">lettersOnly</span>(s);</span><br><span class="line">    <span class="built_in">EXPECT_EQUAL</span>(result, <span class="string">&quot;OHara&quot;</span>);</span><br><span class="line">    s = <span class="string">&quot;Planet9&quot;</span>;</span><br><span class="line">    result = <span class="built_in">lettersOnly</span>(s);</span><br><span class="line">    <span class="built_in">EXPECT_EQUAL</span>(result, <span class="string">&quot;Planet&quot;</span>);</span><br><span class="line">    s = <span class="string">&quot;tl dr&quot;</span>;</span><br><span class="line">    result = <span class="built_in">lettersOnly</span>(s);</span><br><span class="line">    <span class="built_in">EXPECT_EQUAL</span>(result, <span class="string">&quot;tldr&quot;</span>);</span><br><span class="line"></span><br><span class="line">    s=<span class="string">&quot;&quot;</span>;</span><br><span class="line">    result=<span class="built_in">lettersOnly</span>(s);</span><br><span class="line">    <span class="built_in">EXPECT</span>(result.<span class="built_in">empty</span>());</span><br><span class="line"></span><br><span class="line">    s=<span class="string">&quot; ,1&quot;</span>;</span><br><span class="line">    result=<span class="built_in">lettersOnly</span>(s);</span><br><span class="line">    <span class="built_in">EXPECT</span>(result.<span class="built_in">empty</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Implementing-the-Soundex-algorithm">Implementing the Soundex algorithm</h4>
+<h4 id="implementing-the-soundex-algorithm"><a class="markdownIt-Anchor" href="#implementing-the-soundex-algorithm"></a> Implementing the Soundex algorithm</h4>
 <p>Now for each subsequent step of the algorithm (encode, coalesce duplicates, and so on), follow the same process:</p>
 <ul>
 <li>Identify the next small task of the algorithm to implement.</li>
 <li>Define a new helper function to accomplish that task.</li>
 <li>Write student tests that confirm the expected behavior of the new function.</li>
 <li>Fill in the code for your helper function, debugging as you go. Continue writing code and debugging until you have passed all the tests from the previous step.</li>
-<li>Rinse and repeat.<br>
-Your eventual goal is to implement the function:<br>
-<code>string soundex(string s)</code><br>
+<li>Rinse and repeat.<br />
+Your eventual goal is to implement the function:<br />
+<code>string soundex(string s)</code><br />
 , but you should also add tests of your own to ensure you have covered the full possible range of inputs.</li>
 </ul>
-<h4 id="Developing-a-census-search-program">Developing a census search program</h4>
-<p>This console program allows a user to perform a Soundex search on a database of surnames. Implement the following function prototype:<br>
-<code>void soundexSearch(string filepath)</code><br>
+<h4 id="developing-a-census-search-program"><a class="markdownIt-Anchor" href="#developing-a-census-search-program"></a> Developing a census search program</h4>
+<p>This console program allows a user to perform a Soundex search on a database of surnames. Implement the following function prototype:<br />
+<code>void soundexSearch(string filepath)</code><br />
 The one argument to <code>soundexSearch</code> is the name of a text file containing a database of names.he program then repeatedly allows the user to enter a surname to look up in the database. For each surname that is entered, the program calculates the Soundex code of the entered name and then finds all names in the database that have a matching Soundex code.</p>
 <p>Here are the steps for the program:</p>
 <ol>
@@ -963,10 +968,10 @@ The one argument to <code>soundexSearch</code> is the name of a text file cont
 <li>Repeat steps 2-5 until the user indicates that they are done.</li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Read file res/surnames.txt, <span class="number">29409</span> names found.</span><br><span class="line">Type your surname: Zelenski</span><br><span class="line">Soundex code is Z452</span><br><span class="line">&#123;<span class="string">&quot;Zelenski&quot;</span>, <span class="string">&quot;Zelnik&quot;</span>, <span class="string">&quot;Zelnis&quot;</span>, <span class="string">&quot;Zielonka&quot;</span>&#125;</span><br><span class="line">Type your surname: hanrahan</span><br><span class="line">Soundex code is H565</span><br><span class="line">&#123;<span class="string">&quot;Hammerman&quot;</span>, <span class="string">&quot;Haner-McAllister&quot;</span>, <span class="string">&quot;Hanrahan&quot;</span>, <span class="string">&quot;Honarmand&quot;</span>&#125;</span><br><span class="line">Type your surname: </span><br><span class="line">Take <span class="number">14796</span> <span class="function">ms</span></span><br><span class="line"><span class="function">Back in <span class="title">main</span><span class="params">()</span>: FINISHED!</span></span><br></pre></td></tr></table></figure>
-<h2 id="Assignment2：Problem-One-Rising-Tides">Assignment2：Problem One: Rising Tides</h2>
-<p><a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1214/handouts/100%20Assignment%202.pdf">题目指导</a><br>
-Your task in this part of the assignment is to build a tool that models flooding due to sea level rise. （模拟海平面上升带来的洪水）<br>
-Your task is to implement a function,<br>
+<h2 id="assignment2problem-one-rising-tides"><a class="markdownIt-Anchor" href="#assignment2problem-one-rising-tides"></a> Assignment2：Problem One: Rising Tides</h2>
+<p><a target="_blank" rel="noopener" href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1214/handouts/100%20Assignment%202.pdf">题目指导</a><br />
+Your task in this part of the assignment is to build a tool that models flooding due to sea level rise. （模拟海平面上升带来的洪水）<br />
+Your task is to implement a function,<br />
 <code> Grid *floodedRegionsIn*(const Grid&amp; terrain, const Vector&amp; sources, double height);</code></p>
 <ul>
 <li>returns a Grid indicating, for each spot in the terrain, whether it’s under water (true) or above the water (false).</li>
@@ -976,35 +981,35 @@ Your task is to implement a function,<br>
 <p>Once you’re passing all the tests, click the “Rising Tides” option to see your code in action!</p>
 <p>Some notes on this problem:</p>
 <ul>
-<li>Curious about an edge case.?<br>
+<li>Curious about an edge case.?<br />
 ![[Pasted image 20240124141020.png]]</li>
 </ul>
-<h2 id="Assignment2：Part-Two-You-Got-Hufflepuff">Assignment2：Part Two: You Got Hufflepuff!</h2>
-<p>Many personality quizzes – including the one you’ll be building – are based on a what’s called the fivefactor model.:openness, conscientiousness, extraversion, agreeableness, and neuroticism.<br>
+<h2 id="assignment2part-two-you-got-hufflepuff"><a class="markdownIt-Anchor" href="#assignment2part-two-you-got-hufflepuff"></a> Assignment2：Part Two: You Got Hufflepuff!</h2>
+<p>Many personality quizzes – including the one you’ll be building – are based on a what’s called the fivefactor model.:openness, conscientiousness, extraversion, agreeableness, and neuroticism.<br />
 As you take the personality quiz and answer questions, the computer updates your scores in these five categories based on how you answer each question. Your score in each category begins at zero and is then adjusted in response to your answers. At the end of the quiz, the program reports the fictional character whose scores are most similar to yours.</p>
 <p>![[Pasted image 20240124141708.png]]</p>
-<h4 id="The-Assignment-at-a-Glance">The Assignment at a Glance</h4>
+<h4 id="the-assignment-at-a-glance"><a class="markdownIt-Anchor" href="#the-assignment-at-a-glance"></a> The Assignment at a Glance</h4>
 <p><strong>Your task</strong> is <strong>to implement the data processing framework</strong> that works behind the scenes to tabulate scores from the personality quiz and determines who the user is most similar to. We’ll use your code to select which questions to ask the user, to determine the user’s score from their quiz answers, to determine the similarity between the user and a fictional character, and to select the fictional character who is most similar to the user.</p>
-<h4 id="Milestone-One-Select-Random-Questions">Milestone One: Select Random Questions</h4>
+<h4 id="milestone-one-select-random-questions"><a class="markdownIt-Anchor" href="#milestone-one-select-random-questions"></a> Milestone One: Select Random Questions</h4>
 <p><code>Question randomQuestionFrom(Set&amp; unaskedQuestions);</code></p>
 <p>Your should implement the function to do the following:</p>
 <ul>
 <li>choose a random question from the Set,</li>
 <li>remove it from the Set,</li>
-<li>then return it.<br>
+<li>then return it.<br />
 The idea is that someone could call this function multiple times to pick personality quiz questions to ask the user.</li>
 </ul>
-<p>We recommend that you use the <code>randomElement()</code> function, which is provided in <code>&quot;set.h&quot;</code>.<br>
+<p>We recommend that you use the <code>randomElement()</code> function, which is provided in <code>&quot;set.h&quot;</code>.<br />
 If the input set provided to randomQuestionFrom is empty, then you should use the <code>error()</code> function you saw in Assignment 1 to report an error.</p>
 <p>Test.</p>
-<h4 id="Milestone-Two-Compute-Scores-From-Question-Answer-Pairs">Milestone Two: Compute Scores From Question/Answer Pairs</h4>
+<h4 id="milestone-two-compute-scores-from-questionanswer-pairs"><a class="markdownIt-Anchor" href="#milestone-two-compute-scores-from-questionanswer-pairs"></a> Milestone Two: Compute Scores From Question/Answer Pairs</h4>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//-E +N I let others finish what they are saying</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Question</span> &#123; </span><br><span class="line">	string questionText; </span><br><span class="line">	Map&lt;<span class="type">char</span>,<span class="type">int</span>&gt; factors; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>Now, on to what you need to do for this milestone. We’ve written a piece of code that administers a personality quiz, recording the user’s answers in a variable of type Map. Here, the keys represent individual personality quiz questions, and the values represent the result the user typed <a target="_blank" rel="noopener" href="http://in.As">in.As</a> a refresher, a response of 1 means “strongly disagree,” while a response of 5 means “strongly agree.”</p>
-<p>Your task is to write code that uses the data in that Map to determine the user’s OCEAN scores. Specifically, we’d like you to write a function :<br>
-<code>Map scoresFrom(const Map&amp; answers);</code><br>
+<p>Your task is to write code that uses the data in that Map to determine the user’s OCEAN scores. Specifically, we’d like you to write a function :<br />
+<code>Map scoresFrom(const Map&amp; answers);</code><br />
 You should compute scores using the approach described earlier: for each question, weight the factors of that question based on the user’s answer (5 means “strongly agree” and adds doubles the weight of each factor; 4 means “agree” and adds the weight of each factor; 3 means “neutral” and adds zero to the weight of each factor, etc.).</p>
-<p>As an example, suppose you were provided these questions and the indicated responses:<br>
-![[Pasted image 20240124144657.png]]<br>
+<p>As an example, suppose you were provided these questions and the indicated responses:<br />
+![[Pasted image 20240124144657.png]]<br />
 You should then <strong>( result )</strong> produce a Map where O maps to +5, E maps to -2, A maps to +1, and N maps to +4. To see where this comes from, let’s focus on the O component. The answer of 5 to “I am quick to understand things” adds 2 × (+1) = +2 to the O score, the answer of 4 to “I go my own way” adds 1 × (+1) = 1 to the O score, and the answer of 1 to “I become overwhelmed by events” adds (-2) × (-1) = +2 to the O score.</p>
 <p>To summarize, here’s what you need to do:</p>
 <blockquote>
@@ -1020,17 +1025,17 @@ You should then <strong>( result )</strong> produce a Map where O maps to +5, E 
 <li>In order to implement this function, you’ll need to iterate over the keys in the Map. To do so, use this syntax:</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (KeyType var: map) &#123;</span><br><span class="line"><span class="comment">/* ... do something with var, which represents a key in the map. ... / </span></span><br><span class="line"><span class="comment">&#125; </span></span><br></pre></td></tr></table></figure>
-<p>• Remember that the Map’s square bracket operator does automatic insertion if you look up a key that isn’t there. In the context of a Map, this means that if you look up a character that isn’t present in the map, it will automatically insert that key with the value 0.<br>
+<p>• Remember that the Map’s square bracket operator does automatic insertion if you look up a key that isn’t there. In the context of a Map, this means that if you look up a character that isn’t present in the map, it will automatically insert that key with the value 0.<br />
 • Although in the context of a personality quiz the keys in a Map will be some subset of O, C, E, A, and N, your function should work even if we have other keys in the factors maps. (For example, we might repurpose this code to work with a different set of factors than OCEAN.)</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; expected = &#123;</span><br><span class="line">	&#123; <span class="string">&#x27;C&#x27;</span>, <span class="number">-2</span> &#125;,</span><br><span class="line">	&#123; <span class="string">&#x27;E&#x27;</span>, <span class="number">-1</span> &#125;,</span><br><span class="line">	&#123; <span class="string">&#x27;A&#x27;</span>, <span class="number">+1</span> &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>• Do not use the + or += operators to add two Maps. Adding them this way “form a new Map that uses all the key/value pairs from the two input maps, with duplicates resolved arbitrarily.” It does not mean “form a new Map by adding the two Maps’ elements pairwise.”</p>
-<h4 id="Milestone-Three">Milestone Three:</h4>
-<p>Once we have these scores, we need to find character is “closest” to the user’s scores. There are many ways to define “closest,” but one of the most common ways to do this uses something called the <em>cosine similarity</em>, which is described below.<br>
-![[Pasted image 20240124151254.png]]<br>
+<h4 id="milestone-three"><a class="markdownIt-Anchor" href="#milestone-three"></a> Milestone Three:</h4>
+<p>Once we have these scores, we need to find character is “closest” to the user’s scores. There are many ways to define “closest,” but one of the most common ways to do this uses something called the <em>cosine similarity</em>, which is described below.<br />
+![[Pasted image 20240124151254.png]]<br />
 Person 2 answered more questions, they had more opportunities to have numbers added or subtracted from each category</p>
-<p>To correct for this, you’ll need to normalize the user’s scores. Borrowing a technique from linear algebra, assuming the user’s scores are o, c, e, a, and n, you should compute the value.<br>
+<p>To correct for this, you’ll need to normalize the user’s scores. Borrowing a technique from linear algebra, assuming the user’s scores are o, c, e, a, and n, you should compute the value.<br />
 ![[Pasted image 20240124151355.png]]</p>
-<p>Your next task is to implement a function<br>
+<p>Your next task is to implement a function<br />
 <code>Map&lt;char,double&gt; normalize(const Map&lt;char,int&gt;&amp; scores); </code>that takes as input a set of raw scores, then returns a normalized version of the scores.</p>
 <p>There is an important edge case you need to handle. If the input Map does not contain any nonzero values, then the calculation we’ve instructed you to do above would <strong>divide by zero</strong>. (Do you see why?) To address this, if the map doesn’t contain at least one nonzero value, you should use the <strong>error()</strong> function to report an error.</p>
 <blockquote>
@@ -1046,8 +1051,8 @@ Person 2 answered more questions, they had more opportunities to have numbers ad
 <li>Remember that dividing two ints in C++ always results in an int. Check the textbook for details about how to divide two ints and get back a double.</li>
 <li>Instead, to compute square roots, include the header and use the <code>sqrt</code> function.</li>
 </ul>
-<h4 id="Milestone-Four-Implement-Cosine-Similarity">Milestone Four: Implement Cosine Similarity</h4>
-<p>One measure we can use to determine how similar they are is to compute their cosine similarity<br>
+<h4 id="milestone-four-implement-cosine-similarity"><a class="markdownIt-Anchor" href="#milestone-four-implement-cosine-similarity"></a> Milestone Four: Implement Cosine Similarity</h4>
+<p>One measure we can use to determine how similar they are is to compute their cosine similarity<br />
 ![[Pasted image 20240124152824.png]]Your next task is to write a function <code>double cosineSimilarityOf(const Map&amp; lhs, const Map&amp; rhs);</code> that takes as input two sets of normalized scores, then returns their cosine similarity using the formula given above.</p>
 <p>Some notes:</p>
 <ul>
@@ -1055,12 +1060,12 @@ Person 2 answered more questions, they had more opportunities to have numbers ad
 <li>You can assume that the two sets of input scores are normalized and don’t need to handle the case where this isn’t true.</li>
 <li>As above, while in the finished product this code will be used on OCEAN scores, this function should work equally well if the keys are arbitrary characters.</li>
 </ul>
-<h4 id="Milestone-Five-Find-the-Best-Match">Milestone Five: Find the Best Match</h4>
+<h4 id="milestone-five-find-the-best-match"><a class="markdownIt-Anchor" href="#milestone-five-find-the-best-match"></a> Milestone Five: Find the Best Match</h4>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Person</span> &#123; string name; Map&lt;<span class="type">char</span>,<span class="type">int</span>&gt; scores; &#125;;</span><br></pre></td></tr></table></figure>
-<p><code>Person mostSimilarTo(const Map&lt;char,int&gt;&amp; scores, const Set&lt;Person&gt;&amp; people);</code><br>
-takes as input the user’s raw OCEAN scores and a Set of fictional people.<br>
-This function then returns the Person whose scores have the highest cosine similarity to the user’s scores.<br>
-As an edge case, if the people set is empty, you should call <strong>error()</strong> to report an error, since there’s no one to be similar to in that case.<br>
+<p><code>Person mostSimilarTo(const Map&lt;char,int&gt;&amp; scores, const Set&lt;Person&gt;&amp; people);</code><br />
+takes as input the user’s raw OCEAN scores and a Set of fictional people.<br />
+This function then returns the Person whose scores have the highest cosine similarity to the user’s scores.<br />
+As an edge case, if the people set is empty, you should call <strong>error()</strong> to report an error, since there’s no one to be similar to in that case.<br />
 Similarly, if the user’s scores can’t be normalized – or if any of the people in the input set have scores that can’t be normalized – you should call <strong>error()</strong> to report an error.</p>
 <p>Some notes on this part of the problem:</p>
 <ul>
@@ -1068,21 +1073,21 @@ Similarly, if the user’s scores can’t be normalized – or if any of the peo
 <li>If there is a tie between two or more people being the most similar, you can break the tie in whatever way you’d like.</li>
 <li>As before, while we’re ultimately going to be using this code on OCEAN scores, your function should work regardless of what the keys in the different maps are.</li>
 </ul>
-<h2 id="Assignment-3-Recursion">Assignment 3. Recursion!</h2>
+<h2 id="assignment-3-recursion"><a class="markdownIt-Anchor" href="#assignment-3-recursion"></a> Assignment 3. Recursion!</h2>
 <p>This assignment has four parts to it, and you have seven days to complete it. We recommend that you start this assignment early and make slow, steady progress throughout the week. Here’s a recommended timetable:</p>
 <ul>
 <li>Complete the Sierpinski Triangle within a day of this assignment going out.</li>
 <li>Complete Human Pyramids within two days of this assignment going out.</li>
 <li>Complete What Are YOU Doing? within four days of this assignment going out.</li>
-<li>Complete Shift Scheduling within seven days of this assignment going out.<br>
+<li>Complete Shift Scheduling within seven days of this assignment going out.<br />
 Recursive problem-solving can take a bit of time to get used to, and that’s perfectly normal. Putting in an hour or two each day working on this assignment will give you plenty of time to adjust and gives you a comfortable buffer in case you get stuck somewhere.</li>
 </ul>
-<h4 id="Part-One-The-Sierpinski-Triangle">Part One: The Sierpinski Triangle</h4>
+<h4 id="part-one-the-sierpinski-triangle"><a class="markdownIt-Anchor" href="#part-one-the-sierpinski-triangle"></a> Part One: The Sierpinski Triangle</h4>
 <p>As with many self-similar images, it’s defined recursively:</p>
 <ul>
 <li>An order-0 Sierpinski triangle is a regular, filled triangle.</li>
-<li>An order-<em>n</em> Sierpinski triangle, where <em>n</em> &gt; 0, consists of three Sierpinski triangles of order <em>n</em> – 1, each half as large as the main triangle, arranged so that they meet corner-to-corner.<br>
-![[Pasted image 20240126143505.png]]<br>
+<li>An order-<em>n</em> Sierpinski triangle, where <em>n</em> &gt; 0, consists of three Sierpinski triangles of order <em>n</em> – 1, each half as large as the main triangle, arranged so that they meet corner-to-corner.<br />
+![[Pasted image 20240126143505.png]]<br />
 Every triangle drawn here is black; the white triangles represent places where no triangle was drawn.</li>
 </ul>
 <p>Your task is to implement a function</p>
@@ -1104,20 +1109,20 @@ Every triangle drawn here is black; the white triangles represent places where n
 <li>The three corner points of the triangle don’t necessarily have to form an equilateral triangle or be parallel to the base or side of the window.</li>
 <li>The only function you should call to draw things in the window is <code>drawTriangle</code>, which we mentioned earlier in this handout. You don’t need to, say, call the <code>drawPolarLine</code> function from lecture or anything like that.</li>
 <li>Don’t forget to call <code>error()</code> in the case where the order is less than zero.</li>
-<li>Our coordinate system uses real numbers. Remember that C++ has separate types for integers and real numbers and be careful not to mix the two up.<br>
+<li>Our coordinate system uses real numbers. Remember that C++ has separate types for integers and real numbers and be careful not to mix the two up.<br />
 ![[Pasted image 20240126151529.png]]</li>
 </ul>
-<h4 id="Part-Two-Human-Pyramids">Part Two: Human Pyramids</h4>
-<p>With the exception of the people in the bottom row, each person splits their weight evenly on the two people below them in the pyramid.<br>
-![[Pasted image 20240126151719.png]]<br>
+<h4 id="part-two-human-pyramids"><a class="markdownIt-Anchor" href="#part-two-human-pyramids"></a> Part Two: Human Pyramids</h4>
+<p>With the exception of the people in the bottom row, each person splits their weight evenly on the two people below them in the pyramid.<br />
+![[Pasted image 20240126151719.png]]<br />
  In this question, you’ll explore just how much weight that is. Just so we have nice round numbers here, let’s assume that everyone in the pyramid weighs exactly 160 pounds.</p>
 <p>Person <em>A</em> at the top of the pyramid has no weight on her back. People <em>B</em> and <em>C</em> each carry half of person <em>A</em>’s weight, so each shoulders 80 pounds.</p>
 <p>Now, let’s consider the people in the third row. Focus on person <em>E</em>.  That means she’s supporting a net total of 240 pounds.</p>
-<p>Not everyone in that third row is feeling the same amount, though; let’s take person <em>D</em> for example.<br>
+<p>Not everyone in that third row is feeling the same amount, though; let’s take person <em>D</em> for example.<br />
 Person <em>D</em> therefore ends up supporting</p>
 <ul>
 <li>half of person <em>B</em>’s body weight (80 pounds), plus</li>
-<li>half of the weight person <em>B</em> is holding up (40 pounds),<br>
+<li>half of the weight person <em>B</em> is holding up (40 pounds),<br />
 so person <em>D</em> ends up supporting 120 pounds, only half of what <em>E</em> is feeling!</li>
 </ul>
 <p>Going deeper in the pyramid, how much weight is person <em>H</em> feeling? Well, person <em>H</em> is supporting</p>
@@ -1130,14 +1135,14 @@ so person <em>D</em> ends up supporting 120 pounds, only half of what <em>E</
 <p>There’s a nice, general pattern here that lets us compute how much weight is on each person’s back:</p>
 <ul>
 <li>Each person weighs exactly 160 pounds.</li>
-<li>Each person supports half the body weight of each of the people immediately above them, plus half of the weight that each of those people are supporting.<br>
+<li>Each person supports half the body weight of each of the people immediately above them, plus half of the weight that each of those people are supporting.<br />
 The question then becomes – given some person in the pyramid, how much weight are they supporting?</li>
 </ul>
-<h6 id="Milestone-1-The-Initial-Implementation">Milestone 1: The Initial Implementation</h6>
+<h6 id="milestone-1-the-initial-implementation"><a class="markdownIt-Anchor" href="#milestone-1-the-initial-implementation"></a> Milestone 1: The Initial Implementation</h6>
 <p>Write a recursive function</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">double</span> <span class="title">weightOnBackOf</span><span class="params">(<span class="type">int</span> row, <span class="type">int</span> col, <span class="type">int</span> pyramidHeight)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>that takes as input the row and column number of a person in a human pyramid, along with the number of rows in the pyramid (its height), then returns the total weight on that person’s back.</p>
-<p>(row,col) :<br>
+<p>(row,col) :<br />
 ![[Pasted image 20240126153026.png]]</p>
 <p>If the provided (row, col) position passed into <em>weightOnBackOf</em> is out of bounds you should use the <code>error()</code> function to report an error. For example, if you’re asked to look up position (-1, 0), or position (2, 3), you’d always report an error. Position (3, 1) is in-bounds provided that the pyramid height is at least four, but would be out of bounds if the pyramid height was one, two, or three.</p>
 <blockquote>
@@ -1151,7 +1156,7 @@ The question then becomes – given some person in the pyramid, how much weight 
 <ul>
 <li>Due to the way that the <code>double</code> type works in C++, the values that you get back from your program in large pyramids might contain small rounding errors that make the value close to, but not exactly equal to, the true value (we’re talking about very small errors – less than a part in a thousand). Don’t worry if this happens</li>
 </ul>
-<h6 id="Milestone-2-Speeding-Things-Up">Milestone 2: Speeding Things Up</h6>
+<h6 id="milestone-2-speeding-things-up"><a class="markdownIt-Anchor" href="#milestone-2-speeding-things-up"></a> Milestone 2: Speeding Things Up</h6>
 <p>It takes a long time to say how much weight is on the back of the person in row 30, column 15. Why is this?</p>
 <p>Think about what happens if we call <code>weightOnBackOf(30, 15)</code>. (For simplicity of exposition in this section, we’re going to leave off the height parameter.) This makes two new recursive calls: one to <code>weightOnBackOf(29, 14)</code>, and one to <code>weightOnBackOf(29, 15)</code>. This first recursive call in turn fires off two more: one to <code>weightOnBackOf(28, 13)</code> and another to <code>weightOnBackOf(28, 14)</code>. The second recursive call then calls <code>weightOnBackOf(28, 14)</code> and <code>weightOnBackOf(28, 15)</code>.</p>
 <p>This means that there’s a redundant call being made to <code>weightOnBackOf(28, 14)</code>.For example, calling <code>weightOnBackOf(30, 15)</code> makes over 600,000,000 recursive calls!</p>
@@ -1164,7 +1169,7 @@ The question then becomes – given some person in the pyramid, how much weight 
 <li>Do not add or remove parameters from the <code>weightOnBackOf</code> function. Instead, make it a <strong>wrapper</strong> around a new function that actually does all the recursive magic.</li>
 <li>Make sure that the actual recursive function calls itself and not the wrapper function. If the recursive function calls the wrapper function, it’ll discard the memoization table and start with a new one (do you see why?), which will eliminate all the benefits. More generally, the wrapper should always call the recursive function, and the recursive function should never call the wrapper.</li>
 </ul>
-<h4 id="Part-Three-What-Are-YOU-Doing">Part Three: What Are YOU Doing?</h4>
+<h4 id="part-three-what-are-you-doing"><a class="markdownIt-Anchor" href="#part-three-what-are-you-doing"></a> Part Three: What Are YOU Doing?</h4>
 <p>In conversational English, emphasizing different words in a sentence can change its meaning. For example, the statement</p>
 <blockquote>
 <p>“what are YOU doing?”</p>
@@ -1181,22 +1186,22 @@ The question then becomes – given some person in the pyramid, how much weight 
 <blockquote>
 <p>“what ARE you doing?,”</p>
 </blockquote>
-<p>which reads as a request for clarification about what the listener happens to be doing at the moment.<br>
+<p>which reads as a request for clarification about what the listener happens to be doing at the moment.<br />
 All in all, there are sixteen different ways we could emphasize the words in this sentence:</p>
 <p>Your task is to write a function:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Set&lt;string&gt; <span class="title">allEmphasesOf</span><span class="params">(<span class="type">const</span> string&amp; sentence)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>that takes as input a <code>string</code> containing a sentence, then returns a <code>Set</code> containing all the ways of capitalizing the words in that sentence.<br>
-The input to this function is a string representing a sentence. It’s probably a lot easier to work not with a single string representing a whole sentence, but with a <code>Vector&lt;string&gt;</code> representing all the pieces of that sentence.<br>
+<p>that takes as input a <code>string</code> containing a sentence, then returns a <code>Set</code> containing all the ways of capitalizing the words in that sentence.<br />
+The input to this function is a string representing a sentence. It’s probably a lot easier to work not with a single string representing a whole sentence, but with a <code>Vector&lt;string&gt;</code> representing all the pieces of that sentence.<br />
 For this purpose, we’ve provided you with</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Vector&lt;string&gt; <span class="title">tokenize</span><span class="params">(<span class="type">const</span> string&amp; sentence)</span></span>;</span><br></pre></td></tr></table></figure>
-<p>which takes as input a sentence, then returns a <code>Vector&lt;string&gt;</code> representing the individual units that make up that sentence.<br>
+<p>which takes as input a sentence, then returns a <code>Vector&lt;string&gt;</code> representing the individual units that make up that sentence.<br />
 For example, given the input</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Quoth the raven, <span class="string">&quot;Nevermore.&quot;</span></span><br></pre></td></tr></table></figure>
 <p>the <code>tokenize</code> function would return the <code>Vector&lt;string&gt;</code> shown here:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Quoth] [ ] [the] [ ] [raven] [,] [ ] [&quot;] [Nevermore] [.] [&quot;]</span><br></pre></td></tr></table></figure>
-<p>![[Pasted image 20240126214846.png]]<br>
-These strings are formed by considering all possible ways of rendering each word in both upper-case and lower-case, keeping the rest of the input string (spaces, commas, periods, etc.) unchanged. <br>
-You should consider a <strong>word</strong> to be any string that starts with a letter.<br>
+<p>![[Pasted image 20240126214846.png]]<br />
+These strings are formed by considering all possible ways of rendering each word in both upper-case and lower-case, keeping the rest of the input string (spaces, commas, periods, etc.) unchanged. <br />
+You should consider a <strong>word</strong> to be any string that starts with a letter.<br />
 ######## Part Three Requirements</p>
 <ol>
 <li>Implement the function <code>allEmphasesOf</code> in <code>WhatAreYouDoing.cpp</code> so that it returns a set of all the different ways the words in the input sentence can be capitalized. The non-word strings in the sentence should be included in the output unchanged from the original.</li>
@@ -1214,21 +1219,21 @@ You should consider a <strong>word</strong> to be any string that starts with a 
 <li>[x] Make sure that your solution doesn’t generate the same string more than once. In particular, make sure that your solution doesn’t call <code>toUpperCase</code> or <code>toLowerCase</code> on non-word tokens. If your recursion branches, making one call where the punctuation symbol is converted to upper case and another call where the punctuation symbol is converted to lower case, then it will do a lot of unnecessary work regenerating the same strings twice. (Do you see why?)</li>
 <li>[ ] As you saw in Assignment 2, the default C++ <code>string</code> type is is pretty bad when it comes to handling non-English characters. As a result, if you feed perfectly reasonable statements like “नमस्ते” or “ٱلسَّلَامُ عَلَيْكُمْ” or “你好” into the <code>tokenize</code> function, the results may be completely wrong.</li>
 </ul>
-<h4 id="Part-Four-Shift-Scheduling">Part Four: Shift Scheduling</h4>
+<h4 id="part-four-shift-scheduling"><a class="markdownIt-Anchor" href="#part-four-shift-scheduling"></a> Part Four: Shift Scheduling</h4>
 <p>You’d like to schedule her hours in a way that gets her to produce the most value.</p>
 <p>For each shift（上班伦茨）, you have an estimate of how much money the employee would produce if she worked that shift. Ideally, you’d have her work <em>every</em> shift, but alas, that isn’t possible. There are two restrictions. First, the employee has a limited number of hours she’s allowed to work each week. Second, you can’t assign the employee to work concurrent shifts.Given these restrictions, what shifts should you assign to your new hire?</p>
 <p>For example, imagine that your new employee is available for <strong>twenty</strong> hours each week. Here’s the different shifts she could take, as well as how much value (measured in dollars) she’ll produce in each:</p>
 <p>Your task is to write a function</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;Shift&gt; highestValueScheduleFor(const Set&lt;Shift&gt;&amp; shifts, int maxHours);</span><br></pre></td></tr></table></figure>
-<p>that takes as input a <code>Set</code> of all the possible shifts, along with the maximum number of hours the employee is allowed to work for, then <strong>returns</strong> which shifts the employee should take in order to generate the maximum amount of value.<br>
-Here, <code>Shift</code> is a <code>struct</code> containing information about when the shift is (what day of the week it is, when it starts, and when it ends). It’s defined in the header file <code>Shift.h</code>.<br>
+<p>that takes as input a <code>Set</code> of all the possible shifts, along with the maximum number of hours the employee is allowed to work for, then <strong>returns</strong> which shifts the employee should take in order to generate the maximum amount of value.<br />
+Here, <code>Shift</code> is a <code>struct</code> containing information about when the shift is (what day of the week it is, when it starts, and when it ends). It’s defined in the header file <code>Shift.h</code>.<br />
 Chances are that you won’t need to read any of the fields of this <code>struct</code>, and that instead you’ll want to use these functions from <code>Shift.h</code>:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int lengthOf(const Shift&amp; shift);    // Returns the length of a shift.     </span><br><span class="line">int valueOf(const Shift&amp; shift);     // Returns the value of this shift.   </span><br><span class="line">bool overlapsWith(const Shift&amp; one,  // Returns whether two shifts overlap.</span><br><span class="line">                  const Shift&amp; two); </span><br></pre></td></tr></table></figure>
-<p>Now, let’s talk strategy. We recommend approaching this problem in the following way.<br>
-Select, however you’d like, some shift out of <code>shifts</code>. If the employee can’t take this shift, either because it overlaps with a shift she’s already been assigned or because it would exceed her total hour limit, then the only option is to not give the employee that shift.<br>
-Otherwise, there are two options: you could either give the employee the shift, or not give the employee the shift. One of these two options will be better than the other, or they’ll be tied for how much value is produced.<strong>You won’t know which one is better until you try them out</strong>, so (<strong>recursively</strong>) explore both options and report whichever one leads to more value.<br>
-As you’re working on this one, make sure to test thoroughly! Craft smaller examples (say, with between zero and five shifts) and see how your code does.<br>
-Think of all the tricksy cases that might arise – long shifts that aren’t worth much, short shifts worth a lot, overlapping shifts that are equally good, etc. – and make sure your code handles those cases well.<br>
+<p>Now, let’s talk strategy. We recommend approaching this problem in the following way.<br />
+Select, however you’d like, some shift out of <code>shifts</code>. If the employee can’t take this shift, either because it overlaps with a shift she’s already been assigned or because it would exceed her total hour limit, then the only option is to not give the employee that shift.<br />
+Otherwise, there are two options: you could either give the employee the shift, or not give the employee the shift. One of these two options will be better than the other, or they’ll be tied for how much value is produced.<strong>You won’t know which one is better until you try them out</strong>, so (<strong>recursively</strong>) explore both options and report whichever one leads to more value.<br />
+As you’re working on this one, make sure to test thoroughly! Craft smaller examples (say, with between zero and five shifts) and see how your code does.<br />
+Think of all the tricksy cases that might arise – long shifts that aren’t worth much, short shifts worth a lot, overlapping shifts that are equally good, etc. – and make sure your code handles those cases well.<br />
 ######## Problem Four Requirements</p>
 <ol>
 <li>Implement <code>highestValueScheduleFor</code> using the strategy we outlined above. Select some shift and think about what happens if you assign the employee that shift (if that’s even an option) and what happens if you don’t assign the employee that shift. Take whichever option leads to a better result, and report the set of shifts you’d pick if you chose that route. Use the <code>error()</code> function to report an error if <code>numHours &lt; 0</code>.</li>
@@ -1246,41 +1251,41 @@ Think of all the tricksy cases that might arise – long shifts that aren’t wo
 </ul>
 </li>
 </ul>
-<h2 id="Assignment-4-Recursion-to-the-Rescue">Assignment 4. Recursion to the Rescue!</h2>
+<h2 id="assignment-4-recursion-to-the-rescue"><a class="markdownIt-Anchor" href="#assignment-4-recursion-to-the-rescue"></a> Assignment 4. Recursion to the Rescue!</h2>
 <p>There are three problems in this assignment. The first one is a warmup, and the next two are the main coding exercises.</p>
 <ul>
 <li><strong>Debugging Practice:</strong> The debugger is a powerful tool for helping understand what a program is doing. Learning how to harness it is important to developing as a programmer.</li>
 <li><strong>Matchmaker:</strong> We need to partner people up. What’s the best way to do so?</li>
 <li><strong>Disaster Planning:</strong> Cities need to plan for natural disasters. Emergency supplies are expensive. What’s the cheapest way to prepare for an emergency?</li>
 </ul>
-<h4 id="Part-One-Debugging-Practice">Part One: Debugging Practice</h4>
+<h4 id="part-one-debugging-practice"><a class="markdownIt-Anchor" href="#part-one-debugging-practice"></a> Part One: Debugging Practice</h4>
 <blockquote>
 <p><em>“What <strong>is</strong> my program doing, and why is that different than what I intended?”</em></p>
 </blockquote>
-<h4 id="Part-Two-Matchmaker">Part Two: Matchmaker</h4>
-<h6 id="Background-Perfect-Matchings">Background: Perfect Matchings</h6>
+<h4 id="part-two-matchmaker"><a class="markdownIt-Anchor" href="#part-two-matchmaker"></a> Part Two: Matchmaker</h4>
+<h6 id="background-perfect-matchings"><a class="markdownIt-Anchor" href="#background-perfect-matchings"></a> Background: Perfect Matchings</h6>
 <p>We can visualize this problem by drawing a circle for each person, then drawing lines connecting pairs of people who would be comfortable working with one another. Here’s an example of what that might look like:</p>
-<p><img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/SampleGraph.png" alt="!! TODO: Text description of this image. !!"><br>
-We can encode this diagram as a <code>Map&lt;string, Set&lt;string&gt;&gt;</code>, where each key in the map represents a person and each value represents the set of people they could potentially partner with.<br>
+<p><img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/SampleGraph.png" alt="!! TODO: Text description of this image. !!" /><br />
+We can encode this diagram as a <code>Map&lt;string, Set&lt;string&gt;&gt;</code>, where each key in the map represents a person and each value represents the set of people they could potentially partner with.<br />
 we need to decide which people we will actually partner together.we can do better than all three of the above options. Here’s a better matching:</p>
-<p><img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/Match4.png" alt="!! TODO: Describe this image !!"></p>
-<p>Here, we pair <em>A</em> with <em>B</em>, pair <em>C</em> with <em>D</em>, pair <em>E</em> with <em>F</em>, and pair <em>G</em> with <em>H</em>. Such an arrangement is called a <strong><em>perfect matching</em></strong>.<br>
+<p><img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/Match4.png" alt="!! TODO: Describe this image !!" /></p>
+<p>Here, we pair <em>A</em> with <em>B</em>, pair <em>C</em> with <em>D</em>, pair <em>E</em> with <em>F</em>, and pair <em>G</em> with <em>H</em>. Such an arrangement is called a <strong><em>perfect matching</em></strong>.<br />
 More generally, a perfect matching is a way to pair people off so that</p>
 <ul>
 <li>each person is assigned a partner,</li>
 <li>no person is assigned two or more partners, and</li>
 <li>each partner pair corresponds to one of the original potential pairings.</li>
 </ul>
-<p>However, depending on who wants to work with one another, it’s not always possible to find perfect matchings.Take a minute to convince yourself why a perfect matching isn’t possible in each case.<br>
-<img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/NoPerfectMatch1.png" alt="!! TODO: Describe this image !!"></p>
-<p><img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/NoPerfectMatch2.png" alt="!! TODO: Describe this image !!"></p>
-<p><img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/NoPerfectMatch3.png" alt="!! TODO: Describe this image !!"></p>
-<h6 id="Milestone-One-Find-Perfect-Matchings">Milestone One: Find Perfect Matchings</h6>
+<p>However, depending on who wants to work with one another, it’s not always possible to find perfect matchings.Take a minute to convince yourself why a perfect matching isn’t possible in each case.<br />
+<img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/NoPerfectMatch1.png" alt="!! TODO: Describe this image !!" /></p>
+<p><img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/NoPerfectMatch2.png" alt="!! TODO: Describe this image !!" /></p>
+<p><img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/NoPerfectMatch3.png" alt="!! TODO: Describe this image !!" /></p>
+<h6 id="milestone-one-find-perfect-matchings"><a class="markdownIt-Anchor" href="#milestone-one-find-perfect-matchings"></a> Milestone One: Find Perfect Matchings</h6>
 <p>Your first task is to write a function</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">hasPerfectMatching</span><span class="params">(<span class="type">const</span> Map&lt;<span class="built_in">string</span>, Set&lt;<span class="built_in">string</span>&gt;&gt;&amp; possibleLinks,</span></span><br><span class="line"><span class="params">                        Set&lt;Pair&gt;&amp; matching)</span>;                         </span><br></pre></td></tr></table></figure>
-<p>that takes as input a group of people and the possible links between them, then determines whether a perfect matching exists.If one does, the function should return <code>true</code> and set the <code>matching</code> outparameter to hold one such perfect matching. If one doesn’t, the function should return <code>false</code>, and the contents of matching can be whatever you want them to be.<br>
+<p>that takes as input a group of people and the possible links between them, then determines whether a perfect matching exists.If one does, the function should return <code>true</code> and set the <code>matching</code> outparameter to hold one such perfect matching. If one doesn’t, the function should return <code>false</code>, and the contents of matching can be whatever you want them to be.<br />
 The <code>Pair</code> type represents a pair of strings, where the order of the strings doesn’t matter.</p>
-<p>At each point in time，You’ll find <strong>either</strong> that everyone is paired off, <strong>or</strong> that there’s someone who isn’t paired.<br>
+<p>At each point in time，You’ll find <strong>either</strong> that everyone is paired off, <strong>or</strong> that there’s someone who isn’t paired.<br />
 ######## Milestone One Requirements</p>
 <ol>
 <li>Add at least one <code>STUDENT_TEST</code> for <code>hasPerfectMatching</code> to <code>Matchmaker.cpp</code>. This is a great way to confirm that you understand what the function you’ll be writing is supposed to do.</li>
@@ -1299,22 +1304,22 @@ The <code>Pair</code> type represents a pair of strings, where the order of th
 <li>[ ] You might be tempted to solve this problem by repeatedly taking a person with the most possible partners and then assigning them a partner, or taking the person with the fewest possible partners and picking a partner for them, or something like this. Solutions like these are called <strong><em>greedy algorithms</em></strong>, and while greedy algorithms do work well for some problems, this problem is not one of them. To the best of our knowledge, there is no known greedy algorithm for this problem.</li>
 <li>[x] The very last of the provided tests is a “stress test” designed to check that your algorithmic strategy avoids unnecessary work. Specifically, this test is designed to check whether your code repeatedly generates the same matchings multiple times, or spends time exploring matchings that couldn’t possibly work (say, matchings where a person was intentionally never assigned a partner). If this test never finishes running, or it finishes running only after a very long time, it may mean that the strategy you’ve picked for this problem is intrinsically inefficient. If you run into this, take a look over your code. Make sure each matching you generate is generated exactly once and that you don’t, say, try assigning the same pair of people to each other multiple times.</li>
 </ul>
-<h6 id="Background-Maximum-Weight-Matchings">Background: Maximum-Weight Matchings</h6>
+<h6 id="background-maximum-weight-matchings"><a class="markdownIt-Anchor" href="#background-maximum-weight-matchings"></a> Background: Maximum-Weight Matchings</h6>
 <p>Indeed, there are two major shortcomings of this approach.</p>
 <ul>
 <li>If a particular combination of students has a perfect matching, then we can always assign partners to everyone. <strong>But there are many cases where this isn’t possible.</strong> A simple case would be if there’s an odd number of students, in which case someone necessarily won’t get a partner.</li>
 <li>Up to this point, we’ve been assuming that each pair of people either could be partners, or could not be partners. However, reality is messier than this. There might be a person who could be okay partners with one person, so-so partners with a second, but excellent partners with a third. <strong>In that case, we may want to prioritize matching</strong> with the third person, since that would be better than the other two options.</li>
 </ul>
-<p>Unlike before, though, each one of those possible pairs will have an associated <strong><em>weight</em></strong> representing how good a match they would be.<br>
+<p>Unlike before, though, each one of those possible pairs will have an associated <strong><em>weight</em></strong> representing how good a match they would be.<br />
 ![[Pasted image 20240203153346.png]]</p>
 <blockquote>
-<p><img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/WeightedMatch4.png" alt="!! TODO: Describe this picture"></p>
+<p><img src="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1224/assignments/a4/img/mm/WeightedMatch4.png" alt="!! TODO: Describe this picture" /></p>
 </blockquote>
 <p>This pairs off <em>A</em> with <em>E</em> and <em>B</em> with <em>C</em> for a total weight of 11. This is the highest weight of any matching here, and so it’s called a <strong><em>maximum-weight matching</em></strong>.</p>
 <p>Notice that a <strong>maximum-weight matching might not always be a perfect matching.</strong></p>
 <p>Your next task is to implement a function</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;Pair&gt; <span class="title function_">maximumWeightMatching</span><span class="params">(<span class="type">const</span> Map&lt;<span class="built_in">string</span>, Map&lt;<span class="built_in">string</span>, <span class="type">int</span>&gt;&gt;&amp; possibleLinks)</span>;</span><br></pre></td></tr></table></figure>
-<p>that takes as input a weighted preference graph, then returns a matching in that graph with the maximum possible weight.<br>
+<p>that takes as input a weighted preference graph, then returns a matching in that graph with the maximum possible weight.<br />
 <code>possibleLinks[&quot;A&quot;][&quot;E&quot;]</code> gives the weight of the potential link between <em>A</em> and <em>E</em> (here, 5),</p>
 <p>To repeat an important point from above – a maximum weighted matching might not necessarily be a perfect matching. This means that your code must allow for the case where a particular person is not matched with anyone else.</p>
 <p>######## Milestone Two Requirements</p>

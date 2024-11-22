@@ -58,19 +58,24 @@ document.addEventListener('DOMContentLoaded', function () {
   </a>
 </div>
     <div id="menu" class="book-menu hide">
-  <h1>categories</h1>
+  <h1 id="categories"><a class="markdownIt-Anchor" href="#categories"></a> categories</h1>
 <ul>
 <li><a href="/categories/%E7%BC%96%E7%A8%8B">编程</a></li>
 <li><a href="/categories/%E6%95%B0%E5%AD%A6">数学</a></li>
-<li><a href="/categories/%E9%87%8D%E8%A6%81">重要</a></li>
 <li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB">未分类</a></li>
 <li><a href="/categories/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0">情绪日记</a></li>
 </ul>
-<h2 id="archives">archives</h2>
+<h2 id="archives"><a class="markdownIt-Anchor" href="#archives"></a> archives</h2>
 <ul>
 <li><a href="/archives/2024">2024</a></li>
 <li><a href="/archives/2023">2023</a></li>
+<li><a href="/archives/2022">2022</a></li>
 </ul>
+<h2 id="图床"><a class="markdownIt-Anchor" href="#图床"></a> 图床</h2>
+<ul>
+<li><a href="image">–</a></li>
+</ul>
+<h2 id="资源"><a class="markdownIt-Anchor" href="#资源"></a> 资源</h2>
 
 </div>
 
@@ -129,39 +134,18 @@ function sidebar_toggle() {
         <div class="book-content">
           <div class="book-post">
   <h1>  2022-09-05.md </h1>
-  <h1>2022-09-05</h1>
-<p><em>周一，居家办公，没有学习</em></p>
-<h2 id="1-草药爬虫">1. 草药爬虫</h2>
-<p>php返回想要的内容， 直接浏览器脚本从html中截取，发到nodejs即可。</p>
-<h2 id="2-视频爬取">2. 视频爬取</h2>
-<img src="D:\2022-09-05.assets\image-20220905222220989.png" alt="image-20220905222220989" style="zoom: 80%;" />
-<img src="D:\2022-09-05.assets\image-20220905222704458.png" alt="image-20220905222704458" style="zoom:80%;" />
-<blockquote>
-<p>打开就是播放：617459b37e0f4a658472508251ceb8a8/</p>
-<p>且多次点击不变</p>
-</blockquote>
-<img src="D:\2022-09-05.assets\image-20220905222621566.png" alt="image-20220905222621566" style="zoom: 80%;" />
-<blockquote>
-<p>播放链接是由这里重定向过去的。</p>
-<p>此时搜索重定向地址：搜索不到请求。 ===》一般就是参数混淆，加密了</p>
-<p>1…试着搜索decrypt.猜测</p>
-</blockquote>
-<img src="D:\2022-09-05.assets\image-20220905224417269.png" alt="image-20220905224417269" style="zoom:80%;" />
-<img src="D:\2022-09-05.assets\image-20220905223347168.png" alt="image-20220905223347168" style="zoom:80%;" />
-<blockquote>
-<p>发现这个地址就是上面要找的。 data为固定密文，k34ae0为key固定，iv固定</p>
-</blockquote>
-<img src="D:\2022-09-05.assets\image-20220905230747961.png" alt="image-20220905230747961" style="zoom:80%;" />
-<p>得到的是16进制的iv</p>
-<img src="D:\2022-09-05.assets\image-20220905231102570.png" alt="image-20220905231102570" style="zoom:80%;" />
-<blockquote>
-<p>成功找到。 现在我们找 请求这个脚本（html）的过程</p>
-</blockquote>
-<img src="D:\2022-09-05.assets\image-20220905231411359.png" alt="image-20220905231411359" style="zoom:80%;" />
-<img src="D:\2022-09-05.assets\image-20220905231705493.png" alt="image-20220905231705493" style="zoom:80%;" />
-<img src="D:\2022-09-05.assets\image-20220905231852654.png" alt="image-20220905231852654" style="zoom:80%;" />
-<h3 id="1-2-2-m3u8视频">1.2.2 m3u8视频</h3>
-
+  <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="a9df531e22298ecac435705b165c61704cd30703f31c75ccad84b14027f1b104">7de2d0084bea0e695f102f738b528e42906fcabd2edbbbdef3c98e41899d20724d7d380fc3836d54a1bffcd4f446ef363123ead7f52fb70b5b89138c94b5e3799318730f3e5b931468d776ba98e65c4716865015f440ec12ca66d7ed4ec14d4e45b4d41c5cb5fa8d86e5d2a9f2b681640527b914cc97d6198145031448e3fa9639c92fc3083879931b2bb59d92d5ce4978ab60dff5033aa0fadfef5e215c261b986434915323b145abc97fde898ff6da293a6f5329255fc667079e31e6ed5f68e7db679136d169e500c4e3d169264e036f9fd968663af61cc6f75dcd72a554ec06ea0370f45c70e0a7eadec5c3461196de098562db4a86ec0a1ce56d3c4ae738650c204232c665901fadb2729377a099eeb87dc2948635925ec5dad421bf216d999b66223b665ad35883963ae057a2fe818d4bbdf6ee03a1533507ee867dfa7b6f361848d495ace480cdef062277ec433bb1548137d3b5da615a7668261bc73eaaf77b6acac46dabc9bddb20af7a63731beed61a710878b4e2088cd47d33eec26d54734a6a21bf6dff25a4dc274c29f28a28611445b25112d4d51c6f4715de0c57c931fd80d2ada589634bb281be623d76cd14eb1c979e6881d0a8b6f06908be8d1f0a1bb9b265db76409dbaaad53e4220baa17c502be02f03c0be2256c4fb33e29afdd12a25000bb35a6ac83a76d076153a54b3b382e28553927ae8ed16d220c5f38d7a49944b3cb9398556202e2f0c9fcc19c81353a9d439c04fa09a059275379227ae8c26dd6439e2203cd6792e1da3621257f5193eda34e92a881c9225478e03f12b8485656929206e073a5835726c60bf1a07e294defb98bac7345365d3e9bc7fb8cd35a3ed9b9a586a9782106ccfa750ced7c537ca7268e1ad3dcf33080c691211c629b29c43bcb521877735a3d05ccde4ba5f20285243c2ac6349cf7df4294539bf8cc72f186d580e006a6b32b052a3c1ef42174b3d8a04f1c466654818f8404437d05e3503b46ab59945bc261657067014fe0ed91385381063246864d9b7ad6cc559bec06f8dd0e7f7079a4fbcfadfe9cc1c73a428e7a447f157aad788336607606b7ada89c917ec3e2170a0807f1761459c526c8796b85c9080014adf4aa9ee57f15a96209e164e0d29d9abc9af7e6d5491ec48ad0fab93e38c63c3eb6053a0dd50208e431d860ec39695607ab3160b9f9210d32e9b71bc73dbc32c5f7e2914e4eba2ff2a9c949bcc548ed89ca24062f9dfbf739b0564c77742f52511ef4b2881c1a1f9476fafdb477c35a40c3827ce19e2ba61dc622d750ad9de5dd49eb640cf60d389659e9a4f6982e5d59f53deb43c4c975039a6712e4b4df0aa464075eb667788d0909714b7f41bbf758e66c2b6ef66ae1b3e92a320efb20226b49646b170576db4a93e527faffc5e18ac225b8d7144c8fbbda225fb01a25d5a337f14e4e58cac3757ea94ea8104d02dcad98fe94bd22794dddbfbd482bfe121903a924a2d54e3e0b3d59f35b40704ca733db725168bc822769df6d7f3fe05a5e1467501f30a51e942c3f559e5e7680e252235715a833d3e6e7c9d632a66c1df111908ab7ec581fddb07e4238fc271f2e825e4667ee4aa11d456ec27ccc7f5d6260ce77f1b55930ae87d49aaef2e1f226aca0326374dc1e2d3e9135ecde3cfee44ae77cdc4c949c696dfe65fbc2b4be777e610ca02bef0a434eeed8f8e5e623eee802eb1d79713974d07ea1af887a8e0acc2d26601b35021390fe292eb6d6b7d0059a4bc7431ae137922eea595f1358ccb3b241ba9da0da087448fdb343053ffb393b4aa645498dbe67bfd2b4572e94bdd0bc0f6e429066ff59896fd5b0dae9152c86bb81914eb165362cb056525d0bc50ec4b20170001a8c39cc5c2f369d30d836a1f568fe4c6463a353828edba2ab4e247c2c64c207066a5ee8e2a1215ee542c889cd87000946aa09122852f15725dbc127bd2536508454fc5c81d7c0f573fa97556fd7da2ead70eacceded1c0808e42957fd3180e9c302de2390e7022ea7c2e1ff9e7b82cf20cb92ab5057cd8945d64764f3a5f8bea27d67f2d2d1da67830d4620d75f564ff701262f61a7dc94ba39c86151ab8ac984aa0e42fe26f75ace91f6fc426b425c4c5478cd3965b52ef23282245fe95f3e08e0cf890e52b18040b86eca076553b6a2451ee84fb8f79ca08eb956ba303a16f14141e406b2704029f322b033905de71b863a3b3c413a7474810a98368f490510084b0cc691681bcac221dbdd49033ba0dde85e1ef1d3b35a420105a1ba0ad61469cc72eb7cd9d14e97a7ca5829611b39615fb75b0be8cb987fafd1ec3b5429b7981eb7c0e782ba26f56d78ef1a3c58cedb83393bf325b0d3db1dba195e728d4856cb10b1cabaf23df8770d77fcf0fd5f4a6e62d89a48939b17e269363635cb048c53cb48a657e38a09036875bc70ba7f66adca55d9a0162aa1c9334aedebf36b446f8c96df3061c87a5b0c6dda870e2b18e9fafa8ca717a731f7d99ebb18663e732b5f003b34500c17663f7625d5b03cd3e6d2a5650c13b26d3329f752cb469810a2fc1a68247c9599f1d2c09d9f52241b03ca1a2ee7caf2ba9b519617af6f86a7ced759075f4339fbb735a44af29875c573e95acdb23da6289a2f45ea4f56251579e9421be08f2003930a2454a934e1509fce18f18d9be327634a8cb2dce1c1873fa5248291e048c6d1acce386439a0a90e1352d328b597309c9e85afd5836936481c47905b9055aa50aa72e039d3452fab451d8ebc16e6672c9b5bfce0bce78b18130dfd6a2c2b2b572c0e96277d3122d651d749e6e6f206aa46e0eb3821963978b32ae5734a45e96a154801a91f1a8c659d22f40e694b6c8e9f7fe14d7fcdf92db1db45aec6e23cd0bb019f714d197db07b61119f56bbfd264cae6579c57e1b622bd285af579bed34d8ff48cf55762a4f7d53c042edd4b3ce41c746404c615032963a80c820899452563af33b19337ab9b1ed6eebadf2c0e856226ca13a21320b0665328b51a4c6a715c53ed958eb801d6738fe73e40862bac702bb116331cb808a5df4deff04d5361f15a88d05dac07e912cce7c86a32863b77c4877092712c976d8135583256ea4d6c0fcf5ab1fdfe9e9b764a1b24a1f979184439a0c410b86769f0e3102f3150136776518d6d35be7e6f7466621130f6c8f29dfb5dade392f92de4a93217d79a646365cdae25f506f4d01a67570c63</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">You must enter the password to read.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
 </div>
 
 

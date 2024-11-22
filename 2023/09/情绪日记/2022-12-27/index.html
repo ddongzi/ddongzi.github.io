@@ -58,19 +58,24 @@ document.addEventListener('DOMContentLoaded', function () {
   </a>
 </div>
     <div id="menu" class="book-menu hide">
-  <h1>categories</h1>
+  <h1 id="categories"><a class="markdownIt-Anchor" href="#categories"></a> categories</h1>
 <ul>
 <li><a href="/categories/%E7%BC%96%E7%A8%8B">编程</a></li>
 <li><a href="/categories/%E6%95%B0%E5%AD%A6">数学</a></li>
-<li><a href="/categories/%E9%87%8D%E8%A6%81">重要</a></li>
 <li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB">未分类</a></li>
 <li><a href="/categories/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0">情绪日记</a></li>
 </ul>
-<h2 id="archives">archives</h2>
+<h2 id="archives"><a class="markdownIt-Anchor" href="#archives"></a> archives</h2>
 <ul>
 <li><a href="/archives/2024">2024</a></li>
 <li><a href="/archives/2023">2023</a></li>
+<li><a href="/archives/2022">2022</a></li>
 </ul>
+<h2 id="图床"><a class="markdownIt-Anchor" href="#图床"></a> 图床</h2>
+<ul>
+<li><a href="image">–</a></li>
+</ul>
+<h2 id="资源"><a class="markdownIt-Anchor" href="#资源"></a> 资源</h2>
 
 </div>
 
@@ -129,40 +134,18 @@ function sidebar_toggle() {
         <div class="book-content">
           <div class="book-post">
   <h1>  2022-12-27.md </h1>
-  <h3 id="20221227">20221227</h3>
-<p>一、今日内容</p>
-<p>1.公钥密码体制：</p>
-<ul>
-<li>基于大数分解：RSA</li>
-<li>基于离散对数：
-<ul>
-<li>有限域上的离散对数：EIGamal</li>
-<li>椭圆曲线上的离散对数：SM2</li>
-</ul>
-</li>
-</ul>
-<p>2.SM2数字签名和“RSA”签名</p>
-<ul>
-<li>RSA：对摘要进行对比。 <code>m||s</code></li>
-<li>SM2: <code>M||r||s</code></li>
-</ul>
-<p>3.密钥交换：</p>
-<ul>
-<li>RSA密钥交换</li>
-<li>DHE密钥交换</li>
-<li>ECDHE密钥交换</li>
-</ul>
-<p>二、明日计划</p>
-<p>三、存在的问题</p>
-<ol>
-<li></li>
-</ol>
-<p>早上</p>
-<p>梦里所反应的，是个人的潜意识，是想见的人，是想要成为的人，是钦羡的人，是不经意的深刻的画面。</p>
-<p>😔晚上梦到了居卓儒，路上偶遇，他一家三口，一时没有认出我，带我到他家，他母亲问：现在在哪所大学、单位，我说没有，沉默了，居拿着相机分享他拍的照片，梦中想来他从新国立毕业了，问他现在在哪里读，他说在港大，很高兴的样子，既然读了就要读到博士了。</p>
-<p>又怀疑了，是否做错了，就像之前自寻偏方。js放着又动不下去了。</p>
-<p>真走不出牢笼了吗，这一天过着一天的。</p>
-
+  <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="4f0e60b35006d0e188e0b8e60478f4ffdc8d4e996bfcc28ef6211db34c3e8083">7de2d0084bea0e695f102f738b528e420b6f2f719ad7070c57e8158d201aca6e0ffc56862a06df4366edb7b8fc6ca9d58815e46e5ba29e3fc2ac5e7c48610df28265a1205f1c7613def5a4b718860368433a40b4c8e9797ec40c46da8d32cd51928a64c443f95de11a23eacc8e31ebb3b1240bf94f793f9360b6669aa659a9f66a4135a552ec49f8e1039f7aab1c1b175b40ed4b8f8734302dc6c1b4a8b6ae7f3d66808f6a6f06a5a17309e3db4938219e2b4cf19acb218d4cd9551acc830dbe5de7fe3caac28b6c743b5d6dfb3616f65b346caa66f426840eda05b08ad16125218398005caef7cf54cf8c611e4f0c0dfa9280f27edeb9651af7962d29733d149c3c67334c48f1a818cab3de9a9d1265e346cc1c7cb558b969b7b640869d77ba97fbfe558e91d13253270a781ec3e250e2d072b03ccbd192923f17103c82b42b07352ca12d902829739312031df5e5ee596eb1c0f4f51c21573ea00fc580ced0036a2b1060e9c5a1460e05710052ce56ed7627b632d36ff8a5bc32dda72a96725b63e600418df20db19f69e5240d5f9b145c880c2696d7c68677833129535dd9c166cf075b0c6335e8989671f58003f5d1448335a644dee9f020386df156e26ed7e4a4dfa0fa5b6710e67c5fdb9063e1af860610368766aea85e3ecf12d8e09db370a663b88b8d69ac4dd38d9a886613411eb1af1a916ef3e93b92ed73d8d5ef7eaacf101e7ece43a19d4fa12725c73ee9ba15fae37b949d142fbfbbe8b6110b653f72b0440da4f7a624063ce392e0c59b8f2150807c7f413802f2302fb283f770d92db4368800efdbbd49318776ca75526381af4b52adb303eff76f1be26becd9e6c01a1dfbf1c506940561b035a1e78a941acfe3bde2d13f34c7d5b9516f72b6216c38036ef7c235ee3d429eb6c3bea888220fcb88615949414b21fd579e21cf680b5b72b7d1de1eea7592c19201836d377b73b098bf2eb84941b2b0c8cc119934479172140e3a6dc7c9c29993e3e21d719c723da4f0755cde4c28bd373a3b13aa66eaef2115346664a68a36600d7e216c79e99d9989fc3642fde06b0d333eeec24c3c7916136bbb0068a421cb83d8f4cf64e6c01f5453a6b0889c51b37d0117cbf808dec6a06e779dc6814b49767b4730408533ae45c3f35d3f251e800998ee03e8ad24f8c262f2cab9b61e36650f2f67c9b698b88ca00ba3aaa0e1352e77b1feda9a00d9d6c93a6402053582babe0b78903806f802f63f7f08bdf3c7f11db46acef52a635ab4f2c5ec908b89702643a3ee394d9bbcdfa9afab52e935c6d9db86f0a4f5708f9722b28b81a6ea0cf364ee5e91a7b455e45ebc4d39d0e5a960bdb1adc5d27381f347cd040023c5ab530cd05929d8cdbc018f0feff5d4f904af280185ec3b4a6fa1726f4898062f840e9bc6db5affc582535489fc9b29ddeae9e4d501c7d65194bcdf4b84b95f624e04254c6f57ce07f91e1df5421f4aeeba457badd3fb298055cb9bfa81f111aa18c301c305a2289b4ac989334f9dfa9859560aeef2ab80318d1feedad962bec89666d8a8ad7f6e184245cd819dcda0a37d57214d275d759895862a9b2b0de5209a3ab623e4edc26cc4c6015f9695248216eb5e2b8cd38517426e97bb2a8e9d16ae46f95079e0fae4dae19b9bf247fec5c620353f62186eb8af3ee89c49d68d18c57ee0ea62626dd1c5d7b39c5e54ec23805645e7f63efb24d4cf8daf8d952b244c1d525c07df91d67607c3d6423e9040e7b40109baab00b496e5bec5fec84d131f41f9efb3aed785ea0dd0988a7c7e5c9a1e30003da160daabbe7ea15d2c29c7bac942d149f7ee618cbb9dc242a15303edca1a503940f01db8c1e1e1a222b7752b66abf23d05308c3b30bf5916c35d14abe4c7cdc10ea4779213daebb8a916e08755bd758827ae7ab46163782c2089045cea</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">You must enter the password to read.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
 </div>
 
 

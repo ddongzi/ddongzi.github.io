@@ -58,19 +58,24 @@ document.addEventListener('DOMContentLoaded', function () {
   </a>
 </div>
     <div id="menu" class="book-menu hide">
-  <h1>categories</h1>
+  <h1 id="categories"><a class="markdownIt-Anchor" href="#categories"></a> categories</h1>
 <ul>
 <li><a href="/categories/%E7%BC%96%E7%A8%8B">编程</a></li>
 <li><a href="/categories/%E6%95%B0%E5%AD%A6">数学</a></li>
-<li><a href="/categories/%E9%87%8D%E8%A6%81">重要</a></li>
 <li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB">未分类</a></li>
 <li><a href="/categories/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0">情绪日记</a></li>
 </ul>
-<h2 id="archives">archives</h2>
+<h2 id="archives"><a class="markdownIt-Anchor" href="#archives"></a> archives</h2>
 <ul>
 <li><a href="/archives/2024">2024</a></li>
 <li><a href="/archives/2023">2023</a></li>
+<li><a href="/archives/2022">2022</a></li>
 </ul>
+<h2 id="图床"><a class="markdownIt-Anchor" href="#图床"></a> 图床</h2>
+<ul>
+<li><a href="image">–</a></li>
+</ul>
+<h2 id="资源"><a class="markdownIt-Anchor" href="#资源"></a> 资源</h2>
 
 </div>
 
@@ -129,14 +134,14 @@ function sidebar_toggle() {
         <div class="book-content">
           <div class="book-post">
   <h1>  C.md </h1>
-  <h1>UNIX</h1>
+  <h1 id="unix"><a class="markdownIt-Anchor" href="#unix"></a> UNIX</h1>
 <p>网络编程</p>
-<h1>Concurrent Servers</h1>
+<h1 id="concurrent-servers"><a class="markdownIt-Anchor" href="#concurrent-servers"></a> Concurrent Servers</h1>
 <p>测试评价现代的并发网络模型</p>
-<h2 id="1-介绍">1. 介绍</h2>
-<h1>Build your own redis</h1>
-<h2 id="3-2-Create-a-TCP-Server">3.2 Create a TCP Server</h2>
-<h3 id="Step-1-Obtain-a-Socket-Handle">Step 1: Obtain a Socket Handle</h3>
+<h2 id="1-介绍"><a class="markdownIt-Anchor" href="#1-介绍"></a> 1. 介绍</h2>
+<h1 id="build-your-own-redis"><a class="markdownIt-Anchor" href="#build-your-own-redis"></a> Build your own redis</h1>
+<h2 id="32-create-a-tcp-server"><a class="markdownIt-Anchor" href="#32-create-a-tcp-server"></a> 3.2 Create a TCP Server</h2>
+<h3 id="step-1-obtain-a-socket-handle"><a class="markdownIt-Anchor" href="#step-1-obtain-a-socket-handle"></a> Step 1: Obtain a Socket Handle</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> fd = socket(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
 <p>关于<code>socket(int socket_family, int socket_type, int protocol);</code>参数说明：</p>
 <ol>
@@ -145,58 +150,58 @@ function sidebar_toggle() {
 <li>0暂时不用</li>
 </ol>
 <p>Tips：<code>man socket.7</code>查看socket手册，<code>.7</code>表示具体章节。</p>
-<h3 id="Step-2-Configure-the-Socket">Step 2: Configure the Socket</h3>
+<h3 id="step-2-configure-the-socket"><a class="markdownIt-Anchor" href="#step-2-configure-the-socket"></a> Step 2: Configure the Socket</h3>
 <p><code>socket</code>函数并没有提供入口直接配置参数。</p>
 <p>但，使用<code>setsockopt()</code>可以用来配置<code>socket</code>的参数。比如<code>keepalive</code></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> val = <span class="number">1</span>; </span><br><span class="line">setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &amp;val, <span class="keyword">sizeof</span>(val));</span><br></pre></td></tr></table></figure>
 <p>上述配置说明，重启时候可以重复使用监听地址。否则<code>bind</code>失败。</p>
-<h3 id="Step-3-Bind-to-an-Address">Step 3: Bind to an Address</h3>
+<h3 id="step-3-bind-to-an-address"><a class="markdownIt-Anchor" href="#step-3-bind-to-an-address"></a> Step 3: Bind to an Address</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">addr</span> =</span> &#123;&#125;;</span><br><span class="line">addr.sin_family = AF_INET;</span><br><span class="line">addr.sin_port = ntohs(<span class="number">1234</span>);</span><br><span class="line">addr.sin_addr.s_addr = ntohl(<span class="number">0</span>);</span><br><span class="line"><span class="type">int</span> rv = bind(fd, (<span class="type">const</span> <span class="keyword">struct</span> sockaddr *) &amp;addr, <span class="keyword">sizeof</span>(addr));</span><br><span class="line"><span class="keyword">if</span> (rv) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>bind</code>为了适配<code>IPV6</code>地址，需要传入套接字地址长度。</p>
-<h3 id="Step-4-Listen">Step 4: Listen</h3>
+<h3 id="step-4-listen"><a class="markdownIt-Anchor" href="#step-4-listen"></a> Step 4: Listen</h3>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rv = listen(fd, SOMAXCONN);</span><br></pre></td></tr></table></figure>
 <p>关于<code>int listen(int sockfd, int backlog);</code> 函数参数说明：</p>
 <p>backlog表示最大连接数，这里默认是128</p>
-<h3 id="Step-5-Accept-Connections">Step 5: Accept Connections</h3>
-<h1>C experts</h1>
+<h3 id="step-5-accept-connections"><a class="markdownIt-Anchor" href="#step-5-accept-connections"></a> Step 5: Accept Connections</h3>
+<h1 id="c-experts"><a class="markdownIt-Anchor" href="#c-experts"></a> C experts</h1>
 <p>2.3 重载冗杂</p>
 <p><code>sizeof</code>并不是一个函数，而是一个操作符。</p>
 <ul>
 <li>操作数是变量：不必加括号。 <code>sizeof *p</code> 获取p指针指向对象的字节数</li>
-<li>操作数是类型：必须加括号。<code>sizeof(int) *p</code>。<br>
+<li>操作数是类型：必须加括号。<code>sizeof(int) *p</code>。<br />
 这里含义是什么？ 强制转换int型之后 sizeof？还是int长度乘以p？ 实践：是后者。</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2                                                                                                                             3 int main ()                                                                                                                 4 &#123;                                                                                                                           5     char a = &#x27;5&#x27;;                                                                                                           6     int *p = &amp;a;                                                                                                            7     int q = sizeof(int) * p;                                                                                                8     printf(&quot;%d&quot;, q);                                                                                                        9     return 0;                                                                                                              10 &#125; </span><br></pre></td></tr></table></figure>
-<h1>apue</h1>
-<h2 id="线程">线程</h2>
-<h4 id="线程同步">线程同步</h4>
-<p>多线程共享相同内存，需要保证每个线程看到一致的内容。<br>
+<h1 id="apue"><a class="markdownIt-Anchor" href="#apue"></a> apue</h1>
+<h2 id="线程"><a class="markdownIt-Anchor" href="#线程"></a> 线程</h2>
+<h4 id="线程同步"><a class="markdownIt-Anchor" href="#线程同步"></a> 线程同步</h4>
+<p>多线程共享相同内存，需要保证每个线程看到一致的内容。<br />
 有线程写就可能触发数据不一致，所以读写要加锁。</p>
-<h6 id="互斥量">互斥量</h6>
-<p><code>pthread_mutex_t</code> 互斥量可以嵌入数据结构、也可以全局变量。<br>
+<h6 id="互斥量"><a class="markdownIt-Anchor" href="#互斥量"></a> 互斥量</h6>
+<p><code>pthread_mutex_t</code> 互斥量可以嵌入数据结构、也可以全局变量。<br />
 <code>pthread_mutex_init , pthread_mutex_destory , pthread_mutex_lock, pthread_mutex_trylock, pthread_mutex_unlock</code></p>
-<h6 id="条件变量">条件变量</h6>
-<p>条件变量运行线程以无竞争的方式等待条件发生。<br>
-条件变量由互斥量保护 计算更新。<br>
-条件变量初始化和销毁：<code>pthread_cond_init, pthread_cond_destory</code><br>
-等待条件状态：<code>pthread_cond_wait(mutex, cond)</code> 线程把锁住的互斥量传入， 函数会把该线程放到等待条件的线程列表上，<strong>并对互斥量解锁</strong>。函数返回时，互斥量再次锁住。<br>
-通知条件状态： 在状态改变后通知。<br>
-<code>pthread_cond_signal(cond)</code> 会唤醒至少一个等待该条件的线程。<br>
+<h6 id="条件变量"><a class="markdownIt-Anchor" href="#条件变量"></a> 条件变量</h6>
+<p>条件变量运行线程以无竞争的方式等待条件发生。<br />
+条件变量由互斥量保护 计算更新。<br />
+条件变量初始化和销毁：<code>pthread_cond_init, pthread_cond_destory</code><br />
+等待条件状态：<code>pthread_cond_wait(mutex, cond)</code> 线程把锁住的互斥量传入， 函数会把该线程放到等待条件的线程列表上，<strong>并对互斥量解锁</strong>。函数返回时，互斥量再次锁住。<br />
+通知条件状态： 在状态改变后通知。<br />
+<code>pthread_cond_signal(cond)</code> 会唤醒至少一个等待该条件的线程。<br />
 <code>pthread_cond_broadcast(cond)</code> 唤醒所有等待线程</p>
-<p>案例：消息入队时候队列需锁住， 但处理消息时无需锁住，只需等待某一条件发生。<br>
+<p>案例：消息入队时候队列需锁住， 但处理消息时无需锁住，只需等待某一条件发生。<br />
 对比互斥量而言，等待条件更灵活。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#<span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pthread.h&quot;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">msg</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">msg</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">msg</span> *<span class="title">queue</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="type">pthread_cond_t</span> qready = PTHREAD_COND_INITIALIZER;</span><br><span class="line"><span class="type">pthread_mutex_t</span> qlock = PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取消息时需要队列上锁，</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">process_msg</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">msg</span> *<span class="title">tmp</span>;</span></span><br><span class="line">    <span class="keyword">for</span> ( ; ; ) &#123;</span><br><span class="line">	    <span class="comment">// 只是为了可以正确等待条件，不会在这里真的上锁，cond会解开。</span></span><br><span class="line">        pthread_mutex_lock(&amp;qlock);</span><br><span class="line">        <span class="comment">// 等待条件可以操作队列</span></span><br><span class="line">        pthread_cond_wait(&amp;qready, &amp;qlock);</span><br><span class="line">        <span class="keyword">while</span> (tmp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            tmp = <span class="built_in">queue</span>;</span><br><span class="line">            <span class="built_in">queue</span> = tmp-&gt;next;</span><br><span class="line">            pthread_mutex_unlock(&amp;qlock);</span><br><span class="line">            <span class="comment">// 处理取出来的消息</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">enqueue_msg</span><span class="params">(<span class="keyword">struct</span> msg *mp)</span></span><br><span class="line">&#123;</span><br><span class="line">    pthread_mutex_lock(&amp;qlock);</span><br><span class="line">    mp-&gt;next = <span class="built_in">queue</span>;</span><br><span class="line">    <span class="built_in">queue</span> = mp;</span><br><span class="line">    pthread_mutex_unlock(&amp;qlock);</span><br><span class="line">    pthread_cond_signal(&amp;qready);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="12-线程控制">12.线程控制</h2>
-<h4 id="同步属性：">同步属性：</h4>
-<h6 id="互斥量属性：">互斥量属性：</h6>
-<p>默认属性初始化：<code>pthread_mutex_t qlock = PTHREAD_MUTEX_INITIALIZER;</code>， 或者<code>pthread_mutex_init(&amp;mutex, NULL)</code><br>
+<h2 id="12线程控制"><a class="markdownIt-Anchor" href="#12线程控制"></a> 12.线程控制</h2>
+<h4 id="同步属性"><a class="markdownIt-Anchor" href="#同步属性"></a> 同步属性：</h4>
+<h6 id="互斥量属性"><a class="markdownIt-Anchor" href="#互斥量属性"></a> 互斥量属性：</h6>
+<p>默认属性初始化：<code>pthread_mutex_t qlock = PTHREAD_MUTEX_INITIALIZER;</code>， 或者<code>pthread_mutex_init(&amp;mutex, NULL)</code><br />
 非默认属性：<code>pthread_mutexattr_init(attr) . pthread_mutex_init(&amp;mutex, &amp;attr)</code> 先初始化设置互斥量属性，再用属性来初始化互斥量</p>
 <ol>
-<li>类型属性<br>
+<li>类型属性<br />
 <code>PTHREAD_MUTEX_RECURSIVE</code>:  互斥量通过计数来加锁解锁。</li>
 </ol>
-<h2 id="进程关系">进程关系</h2>
-<p>会话<br>
+<h2 id="进程关系"><a class="markdownIt-Anchor" href="#进程关系"></a> 进程关系</h2>
+<p>会话<br />
 建立一个新会话<code>setsid()</code></p>
 <ol>
 <li>如果进程是进程组组长，出错。 一般先调用fork，然后使父进程终止。子进程即继承进程组ID，但不是进程组组长。</li>
@@ -208,10 +213,10 @@ function sidebar_toggle() {
 </ul>
 </li>
 </ol>
-<h2 id="守护进程">守护进程</h2>
-<h4 id="系统守护进程">系统守护进程</h4>
+<h2 id="守护进程"><a class="markdownIt-Anchor" href="#守护进程"></a> 守护进程</h2>
+<h4 id="系统守护进程"><a class="markdownIt-Anchor" href="#系统守护进程"></a> 系统守护进程</h4>
 <p>cron：定期日期实践执行。</p>
-<h4 id="初始化守护进程">初始化守护进程</h4>
+<h4 id="初始化守护进程"><a class="markdownIt-Anchor" href="#初始化守护进程"></a> 初始化守护进程</h4>
 <ol>
 <li>创建一个会话：（a）新进程会直接成为会话的首进程。(b)成为一个新进程组的组长进程。（c）没有控制终端</li>
 </ol>
@@ -228,10 +233,10 @@ function sidebar_toggle() {
 <li>文件描述符 attach 到 <code>/dev/null</code> ：守护进程不与终端输入输出交互。</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fd0 = open(<span class="string">&quot;/dev/null&quot;</span>, O_RDWR);</span><br><span class="line">fd1 = dup(<span class="number">0</span>);</span><br><span class="line">fd2 = dup(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="出错记录">出错记录</h4>
+<h4 id="出错记录"><a class="markdownIt-Anchor" href="#出错记录"></a> 出错记录</h4>
 <p>大多数守护进程使用syslog记录日志消息。syslogd守护进程处理日志消息。<code>syslog</code>不生产数据报，用户进程或守护进程需要按照日志消息格式发送到套接字。</p>
-<p>产生日志消息的方法：<br>
-（1）大多数守护进程通过<code>syslog(3)</code>函数产生日志消息，消息会被发送到<strong>UNIX域数据报套接字</strong> <code>/dev/log</code> 上。<br>
+<p>产生日志消息的方法：<br />
+（1）大多数守护进程通过<code>syslog(3)</code>函数产生日志消息，消息会被发送到<strong>UNIX域数据报套接字</strong> <code>/dev/log</code> 上。<br />
 （2）任何用户进程可以将日志消息发送到<strong>网络套接字</strong>udp端口514。</p>
 <p>用法：</p>
 <ol>
@@ -242,25 +247,25 @@ function sidebar_toggle() {
 <li>记录日志消息</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">syslog(LOG_ERR, <span class="string">&quot;open error for %s: %m&quot;</span>, filename);</span><br></pre></td></tr></table></figure>
-<p><code>syslog</code> 为方法一，与<code>/dev/log</code>套接字通信。<br>
-进程根目录为<code>/</code> , 如果<code>chroot(newroot)</code>改变进程根目录，那么根路径从newroot开始<br>
+<p><code>syslog</code> 为方法一，与<code>/dev/log</code>套接字通信。<br />
+进程根目录为<code>/</code> , 如果<code>chroot(newroot)</code>改变进程根目录，那么根路径从newroot开始<br />
 查看syslog，<code>tail -f /var/log/syslog</code></p>
-<h4 id="单实例守护进程">单实例守护进程</h4>
+<h4 id="单实例守护进程"><a class="markdownIt-Anchor" href="#单实例守护进程"></a> 单实例守护进程</h4>
 <p>如网络服务，需要任一时刻只有一个实例运行，避免发生资源冲突，如端口冲突。</p>
 <p>实现方法：任一时刻只运行守护进程一个副本。 通过文件和记录锁机制来实现，每个守护进程有一个固定名字的文件，只允许这个文件有一个写锁，创建写锁失败，即表示不能不能创建守护进程。在守护进程终止时，会自动清理锁。</p>
 <p>案例：创建守护进程时调用，试图创建一个文件，将pid写入。如果返回1，表明文件有锁，创建失败。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">#<span class="meta">#<span class="keyword">define</span> LOCKFILE <span class="string">&quot;/var/run/daemon.pid&quot;</span></span></span><br><span class="line">#<span class="meta">#<span class="keyword">define</span> LOCKMODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="type">int</span> <span class="title function_">lockfile</span><span class="params">(<span class="type">int</span> )</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">already_running</span><span class="params">(<span class="type">void</span> )</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> fd;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">16</span>];</span><br><span class="line">    fd = open(LOCKFILE, O_RDWR|O_CREAT, LOCKMODE);</span><br><span class="line">    <span class="keyword">if</span> (fd &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        syslog(LOG_ERR, <span class="string">&quot;can&#x27;t open %s: %s&quot;</span>, LOCKFILE, strerror(errno));</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (lockfile(fd) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (errno == EACCES || errno == EAGAIN) &#123;</span><br><span class="line">            close(fd);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        syslog(LOG_ERR, <span class="string">&quot;can&#x27;t lock %s: %s&quot;</span>, LOCKFILE, strerror(errno));</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    ftruncate(fd, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">sprintf</span>(buf, <span class="string">&quot;%ld&quot;</span>, (<span class="type">long</span> )getpid());</span><br><span class="line">    write(fd, buf, <span class="built_in">strlen</span>(buf) + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>ftruncate(fd, 0);</code> 将文件长度截断为0，清空文件内容。<br>
-<code>errno == EACCES || errno == EAGAIN</code> ；表示权限不足或者操作失败。<br>
+<p><code>ftruncate(fd, 0);</code> 将文件长度截断为0，清空文件内容。<br />
+<code>errno == EACCES || errno == EAGAIN</code> ；表示权限不足或者操作失败。<br />
 <code>LOCKMODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)</code> :  文件所有者读写权限、所属组读权限、其他用户读权限。</p>
-<h4 id="守护进程的惯例">守护进程的惯例</h4>
+<h4 id="守护进程的惯例"><a class="markdownIt-Anchor" href="#守护进程的惯例"></a> 守护进程的惯例</h4>
 <ul>
 <li>如果守护进程使用文件锁，文件格式为<code>/var/run/守护进程name.pid</code>, 如：<code>/var/run/crond.pid</code> 内容为pid</li>
 <li>如果守护进程支持配置，文件格式为<code>/etc/守护进程name.conf</code></li>
 <li>守护进程可以用命令行启动。通常由 <code>/etc/init.d/*</code>系统初始化脚本初始启动，当守护进程终止时，应当自动重启，自动重启通过 <code>/etc/inittab</code> 包括respawn记录项，init就会自动重启守护进程。</li>
 <li>重读配置文件方法：kill重启。另外方法，守护进程去捕获SIGHUP信号，因为没有控制终端，可以安全重复自己使用。</li>
 </ul>
-<p>单线程守护进程：<br>
+<p>单线程守护进程：<br />
 获取当前文件名</p>
 <figure class="highlight c"><figcaption><span>// 获取当前文件名</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *cmd;</span><br><span class="line"><span class="keyword">if</span> ((cmd = <span class="built_in">strchr</span>(argv[<span class="number">0</span>], <span class="string">&#x27;/&#x27;</span>)) == <span class="literal">NULL</span>)</span><br><span class="line">	cmd = argv[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	cmd++;</span><br></pre></td></tr></table></figure>
 <p>设置SIGHUP信号处理为默认，且不阻塞任何信号。</p>
@@ -269,9 +274,9 @@ function sidebar_toggle() {
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sigfillset(&amp;mask);</span><br><span class="line"><span class="keyword">if</span> ((err = pthread_sigmask(SIG_BLOCK, &amp;mask, <span class="literal">NULL</span>)) != <span class="number">0</span>) &#123;</span><br><span class="line">	err_exit(err, <span class="string">&quot;SIG BLOCK error&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">err = pthread_create(&amp;tid, <span class="literal">NULL</span>, thr_fn, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">if</span> (err != <span class="number">0</span>)</span><br><span class="line">	err_exit(err, <span class="string">&quot;can&#x27;t create thread&quot;</span>);</span><br></pre></td></tr></table></figure>
 <p>处理信号的线程：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> *<span class="title function_">thr_fn</span><span class="params">(<span class="type">void</span> *arg)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> err, signo;</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        err = sigwait(&amp;mask, &amp;signo);</span><br><span class="line">        <span class="keyword">if</span> (err != <span class="number">0</span>) &#123;</span><br><span class="line">            syslog(LOG_ERR, <span class="string">&quot;sigwait failed.&quot;</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">switch</span> (signo) &#123;</span><br><span class="line">            <span class="keyword">case</span> SIGHUP:</span><br><span class="line">                syslog(LOG_INFO, <span class="string">&quot;Re-reading configuration file&quot;</span>);</span><br><span class="line">                reread();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> SIGTERM:</span><br><span class="line">                syslog(LOG_INFO, <span class="string">&quot;got SIGTERM; exiting&quot;</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                syslog(LOG_INFO, <span class="string">&quot;unexpected signal %d\n&quot;</span>, signo);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>sigwait</code>：设置要等待的阻塞信号，与<code>pthread_sigmask</code>一致，表示等待所有被阻塞的信号。线程挂起，直到其中有被阻塞信号触发。<br>
+<p><code>sigwait</code>：设置要等待的阻塞信号，与<code>pthread_sigmask</code>一致，表示等待所有被阻塞的信号。线程挂起，直到其中有被阻塞信号触发。<br />
 SIGTERM和SIGHUP默认动作都是终止线程，这里作为替代，不会终止线程。</p>
-<h4 id="常见守护进程">常见守护进程</h4>
+<h4 id="常见守护进程"><a class="markdownIt-Anchor" href="#常见守护进程"></a> 常见守护进程</h4>
 <ol>
 <li><code>/usr/sbin/cron</code>：这是定时任务调度器 <code>cron</code> 的进程。</li>
 <li><code>/usr/sbin/rsyslogd</code>：这是系统日志服务 <code>rsyslogd</code> 的进程，它负责收集、处理和转发系统日志。</li>
@@ -280,24 +285,24 @@ SIGTERM和SIGHUP默认动作都是终止线程，这里作为替代，不会终�
 <li><code>/usr/libexec/packagekitd</code>：这是 PackageKit 守护进程，它是一个软件包管理服务，用于管理软件包的安装、更新等操作。</li>
 <li><code>/usr/libexec/polkitd</code>：这是 PolicyKit 守护进程，它是一个系统权限管理服务，用于控制用户对系统资源的访问权限。</li>
 </ol>
-<h4 id="场景">场景</h4>
+<h4 id="场景"><a class="markdownIt-Anchor" href="#场景"></a> 场景</h4>
 <ol>
 <li>守护进程查看是否有登录名。A：没有。因为没有控制终端。</li>
 </ol>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line">#<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line">#<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line">#<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fcntl.h&gt;</span></span></span><br><span class="line">#<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;syslog.h&gt;</span></span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">void</span> <span class="title function_">daemonize</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *cmd)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span> )</span></span><br><span class="line">&#123;</span><br><span class="line">    daemonize(<span class="string">&quot;login daemon&quot;</span>);</span><br><span class="line">    <span class="type">char</span> *file_name = <span class="string">&quot;/var/log/mydaemon.log&quot;</span>;</span><br><span class="line">    FILE *file = fopen(file_name, <span class="string">&quot;w&quot;</span>);</span><br><span class="line">    syslog(LOG_INFO, <span class="string">&quot;pid : %ld&quot;</span>, (<span class="type">long</span>)getpid());</span><br><span class="line">    <span class="keyword">if</span> (file == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        syslog(LOG_ERR, <span class="string">&quot;file  open failed.&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">char</span> *name = getlogin();</span><br><span class="line">    <span class="keyword">if</span> (name == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        syslog(LOG_ERR, <span class="string">&quot;getlogin name failed.&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fprintf</span>(file, <span class="string">&quot;%s\n&quot;</span>, name);</span><br><span class="line">    fclose(file);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="高级IO">高级IO</h2>
-<h4 id="非阻塞IO">非阻塞IO</h4>
-<p>系统调用分为两类：低速系统调用和其他。低速系统调用是可能使进程永远阻塞。<br>
+<h2 id="高级io"><a class="markdownIt-Anchor" href="#高级io"></a> 高级IO</h2>
+<h4 id="非阻塞io"><a class="markdownIt-Anchor" href="#非阻塞io"></a> 非阻塞IO</h4>
+<p>系统调用分为两类：低速系统调用和其他。低速系统调用是可能使进程永远阻塞。<br />
 并不是所有有磁盘IO相关的系统调用都是低速系统调用、都会阻塞。</p>
-<p>非阻塞IO可以发出open、read、write这样的操作，并永远不阻塞。<br>
-对于一个文件描述符，可以指定其为非阻塞IO。<br>
-（1）调用open获得描述符，指定O_NONBLOCK标志。<br>
-<code>open()</code><br>
+<p>非阻塞IO可以发出open、read、write这样的操作，并永远不阻塞。<br />
+对于一个文件描述符，可以指定其为非阻塞IO。<br />
+（1）调用open获得描述符，指定O_NONBLOCK标志。<br />
+<code>open()</code><br />
 （2）已经打开的描述符，调用fcntl，打开O_NONBLOCK标志。</p>
 <p>实例：如果被阻塞，立即返回。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">set_fl(fd, O_NONBLOCK);</span><br><span class="line"><span class="comment">// 尝试从文件描述符中读取数据 </span></span><br><span class="line">bytes_read = read(fd, buffer, <span class="keyword">sizeof</span>(buffer)); </span><br><span class="line"><span class="comment">// 处理读取结果 </span></span><br><span class="line"><span class="keyword">if</span> (bytes_read == <span class="number">-1</span>) &#123; <span class="comment">// 如果读取操作被阻塞 </span></span><br><span class="line">	<span class="keyword">if</span> (errno == EAGAIN || errno == EWOULDBLOCK) &#123; </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;No data available yet.\n&quot;</span>); </span><br><span class="line">	&#125; <span class="keyword">else</span> &#123; <span class="comment">// 其他错误情况 perror(&quot;read&quot;); &#125; </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="记录锁">记录锁</h4>
-<p>多个人同时编辑一个文件，结果如何？<br>
+<h4 id="记录锁"><a class="markdownIt-Anchor" href="#记录锁"></a> 记录锁</h4>
+<p>多个人同时编辑一个文件，结果如何？<br />
 一般的，会取决于写该文件的最后一个进程。但是对于数据库，只能一个写。</p>
 <p>记录锁：一个进程读或者修改文件某个区域，阻止其他进程同时修改这一区域。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fcntl</span><span class="params">(<span class="type">int</span> fd, <span class="type">int</span> cmd, <span class="keyword">struct</span> flock *ptr)</span>;</span><br></pre></td></tr></table></figure>
@@ -307,15 +312,15 @@ SIGTERM和SIGHUP默认动作都是终止线程，这里作为替代，不会终�
 <li></li>
 </ul>
 <p>加解锁时，会组合或分裂区域。</p>
-<p><img src="https://raw.githubusercontent.com/ddongzi/image/main/markdown/20240421231155.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/ddongzi/ddongzi.github.io/main/image/markdown/20240421231155.png" alt="image.png" /></p>
 <p>案例：请求和释放一把锁：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#<span class="meta">#<span class="keyword">define</span>	read_lock(fd, offset, whence, len) \</span></span><br><span class="line"><span class="meta">			lock_reg((fd), F_SETLK, F_RDLCK, (offset), (whence), (len))</span></span><br><span class="line">#<span class="meta">#<span class="keyword">define</span>	readw_lock(fd, offset, whence, len) \</span></span><br><span class="line"><span class="meta">			lock_reg((fd), F_SETLKW, F_RDLCK, (offset), (whence), (len))</span></span><br><span class="line">#<span class="meta">#<span class="keyword">define</span>	write_lock(fd, offset, whence, len) \</span></span><br><span class="line"><span class="meta">			lock_reg((fd), F_SETLK, F_WRLCK, (offset), (whence), (len))</span></span><br><span class="line">#<span class="meta">#<span class="keyword">define</span>	writew_lock(fd, offset, whence, len) \</span></span><br><span class="line"><span class="meta">			lock_reg((fd), F_SETLKW, F_WRLCK, (offset), (whence), (len))</span></span><br><span class="line">#<span class="meta">#<span class="keyword">define</span>	un_lock(fd, offset, whence, len) \</span></span><br><span class="line"><span class="meta">			lock_reg((fd), F_SETLK, F_UNLCK, (offset), (whence), (len))</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">lock_reg</span><span class="params">(<span class="type">int</span> fd, <span class="type">int</span> cmd, <span class="type">int</span> type, <span class="type">off_t</span> offset, <span class="type">int</span> whence, <span class="type">off_t</span> len)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">flock</span> <span class="title">lock</span>;</span></span><br><span class="line">    lock.l_type = type; <span class="comment">/* F_RDLCK, F_WRLCK, F_UNLCK*/</span></span><br><span class="line">    lock.l_start = offset;</span><br><span class="line">    lock.l_whence = whence;</span><br><span class="line">    lock.l_len = len; <span class="comment">/*##bytes (o means to EOF)*/</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fcntl(fd, cmd, &amp;lock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="IO多路转接">IO多路转接</h4>
-<p><img src="https://raw.githubusercontent.com/ddongzi/image/main/markdown/20240425105134.png" alt="image.png"></p>
+<h4 id="io多路转接"><a class="markdownIt-Anchor" href="#io多路转接"></a> IO多路转接</h4>
+<p><img src="https://raw.githubusercontent.com/ddongzi/ddongzi.github.io/main/image/markdown/20240425105134.png" alt="image.png" /></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> ((n = read(STDIN_FILENO, buf, BUFSIZ)) &gt; <span class="number">0</span>) </span><br><span class="line">	<span class="keyword">if</span> (write(STDOUT_FILENO, buf, n) != n)</span><br><span class="line">		err_sys(<span class="string">&quot;wrtite error&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>需求：从两个描述符读， 可能会阻塞在一个读IO上，导致另外的描述符也不能读。也不知道到底哪个输入会得到数据<br>
+<p>需求：从两个描述符读， 可能会阻塞在一个读IO上，导致另外的描述符也不能读。也不知道到底哪个输入会得到数据<br />
 IO多路转接：构造一个感兴趣的描述符表，调用一个函数，直到其中一个描述符已经准备好，该函数才返回。 <code>poll , select, pselect </code>， 返回后 进程会得知哪些描述符已经准备好。  然后就可以正确调用IO <code>read , write </code></p>
-<h6 id="select">select</h6>
+<h6 id="select"><a class="markdownIt-Anchor" href="#select"></a> select</h6>
 <p><code>int select(maxfdp1, readfds, writefds, exceptfds, time)</code></p>
 <ul>
 <li><code>maxfdp1</code> 表示三个描述符集最大值加1.</li>
@@ -327,25 +332,25 @@ IO多路转接：构造一个感兴趣的描述符表，调用一个函数，直
 <li>返回值:  -1表示出错， 0表示描述符都没有准备好，大于0为准备好的描述符个数</li>
 <li>“准备好”含义：读集合中读不会阻塞，写集合写不会阻塞，</li>
 </ul>
-<h1>sql4</h1>
+<h1 id="sql4"><a class="markdownIt-Anchor" href="#sql4"></a> sql4</h1>
 <p>sqllite简单版</p>
-<p><img src="https://raw.githubusercontent.com/ddongzi/image/main/markdown/20240425125451.png" alt="image.png"><br>
+<p><img src="https://raw.githubusercontent.com/ddongzi/ddongzi.github.io/main/image/markdown/20240425125451.png" alt="image.png" /><br />
 <a target="_blank" rel="noopener" href="https://www.sqlite.org/arch.html">https://www.sqlite.org/arch.html</a></p>
-<h4 id="Part-1-Introduction-and-Setting-up-the-REPL">Part 1 - Introduction and Setting up the REPL</h4>
-<p><a target="_blank" rel="noopener" href="https://cstack.github.io/db_tutorial/parts/part1.html">https://cstack.github.io/db_tutorial/parts/part1.html</a><br>
+<h4 id="part-1-introduction-and-setting-up-the-repl"><a class="markdownIt-Anchor" href="#part-1-introduction-and-setting-up-the-repl"></a> Part 1 - Introduction and Setting up the REPL</h4>
+<p><a target="_blank" rel="noopener" href="https://cstack.github.io/db_tutorial/parts/part1.html">https://cstack.github.io/db_tutorial/parts/part1.html</a><br />
 REPL指的是&quot;Read-Eval-Print Loop&quot;，是一个交互式的编程环境，通常用于解释性语言</p>
-<h4 id="Part-2-World’s-Simplest-SQL-Compiler-and-Virtual-Machine">Part 2 - World’s Simplest SQL Compiler and Virtual Machine</h4>
-<p><a target="_blank" rel="noopener" href="https://cstack.github.io/db_tutorial/parts/part2.html">https://cstack.github.io/db_tutorial/parts/part2.html</a><br>
+<h4 id="part-2-worlds-simplest-sql-compiler-and-virtual-machine"><a class="markdownIt-Anchor" href="#part-2-worlds-simplest-sql-compiler-and-virtual-machine"></a> Part 2 - World’s Simplest SQL Compiler and Virtual Machine</h4>
+<p><a target="_blank" rel="noopener" href="https://cstack.github.io/db_tutorial/parts/part2.html">https://cstack.github.io/db_tutorial/parts/part2.html</a><br />
 The “front-end” of sqlite is a <strong>SQL compiler</strong> that parses a string and outputs an internal representation called <strong>bytecode</strong>.</p>
-<h4 id="Part-3-An-In-Memory-Append-Only-Single-Table-Database">Part 3 - An In-Memory, Append-Only, Single-Table Database</h4>
+<h4 id="part-3-an-in-memory-append-only-single-table-database"><a class="markdownIt-Anchor" href="#part-3-an-in-memory-append-only-single-table-database"></a> Part 3 - An In-Memory, Append-Only, Single-Table Database</h4>
 <p>将行放入内存，需要紧凑化处理。</p>
-<h4 id="Part-4-Our-First-Tests-and-Bugs">Part 4 - Our First Tests (and Bugs)</h4>
-<p>strtok() vs scanf()<br>
+<h4 id="part-4-our-first-tests-and-bugs"><a class="markdownIt-Anchor" href="#part-4-our-first-tests-and-bugs"></a> Part 4 - Our First Tests (and Bugs)</h4>
+<p>strtok() vs scanf()<br />
 后者不会检查字段长度。</p>
-<h4 id="Part-5-Persistence-to-Disk">Part 5 - Persistence to Disk</h4>
+<h4 id="part-5-persistence-to-disk"><a class="markdownIt-Anchor" href="#part-5-persistence-to-disk"></a> Part 5 - Persistence to Disk</h4>
 <p>缓存命中，</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim mydb.db</span><br><span class="line">:%!xxd</span><br></pre></td></tr></table></figure>
-<h4 id="Part-7-Introduction-to-the-B-Tree">Part 7 - Introduction to the B-Tree</h4>
+<h4 id="part-7-introduction-to-the-b-tree"><a class="markdownIt-Anchor" href="#part-7-introduction-to-the-b-tree"></a> Part 7 - Introduction to the B-Tree</h4>
 <p>A B-Tree is different from a binary tree (the “B” probably stands for the inventor’s name, but could also stand for “balanced”). Here’s an example B-Tree:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TOb1tuEZ2X4?si=V4LsLtV2qgjUnFrL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <p>SQLlite 使用的是B+</p>
@@ -396,7 +401,7 @@ The “front-end” of sqlite is a <strong>SQL compiler</strong> that parses a s
 </tbody>
 </table>
 <p>例子：</p>
-<p><img src="https://raw.githubusercontent.com/ddongzi/personal/refs/heads/main/image/markdown/20240426125313.png?token=GHSAT0AAAAAACYZEKARZFZ2PJC4HXM5BFGWZYZYU6Q" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/ddongzi/personal/refs/heads/main/image/markdown/20240426125313.png?token=GHSAT0AAAAAACYZEKARZFZ2PJC4HXM5BFGWZYZYU6Q" alt="" /></p>
 <p>为什么选择树结构?</p>
 <table>
 <thead>
@@ -440,11 +445,11 @@ The “front-end” of sqlite is a <strong>SQL compiler</strong> that parses a s
 </tr>
 </tbody>
 </table>
-<p>- changing the format of our table from an unsorted array of rows to a B-Tree.<br>
+<p>- changing the format of our table from an unsorted array of rows to a B-Tree.<br />
  - single-node tree</p>
-<p><img src="https://cstack.github.io/db_tutorial/assets/images/splitting-internal-node.png" alt=""></p>
-<h2 id="B-树">B+树</h2>
-<h3 id="1-计算">1. 计算</h3>
+<p><img src="https://cstack.github.io/db_tutorial/assets/images/splitting-internal-node.png" alt="" /></p>
+<h2 id="b树"><a class="markdownIt-Anchor" href="#b树"></a> B+树</h2>
+<h3 id="1-计算"><a class="markdownIt-Anchor" href="#1-计算"></a> 1. 计算</h3>
 <p>假设一个page 1KB</p>
 <blockquote>
 <p>叶子节点内的cell数：默认定义为阶数-1， 但实际上可以很大，填充page即可。</p>
@@ -453,23 +458,21 @@ The “front-end” of sqlite is a <strong>SQL compiler</strong> that parses a s
 <li>32阶B+树，高度为3，默认容纳这么多记录。节点数*每个节点内数量。</li>
 <li></li>
 </ul>
-<p>$$<br>
-32^2 * 31 = 31744<br>
-$$</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>3</mn><msup><mn>2</mn><mn>2</mn></msup><mo>∗</mo><mn>31</mn><mo>=</mo><mn>31744</mn></mrow><annotation encoding="application/x-tex">32^2 * 31 = 31744
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">1</span><span class="mord">7</span><span class="mord">4</span><span class="mord">4</span></span></span></span></span></p>
 <ul>
 <li>
 <p>32阶B+树，高度为4，默认容纳这么多记录。叶子节点数*每个节点内数量。</p>
 <p>每层节点数分别为：1，32，32<em>32，32 * 32</em>32，共计 33,825个节点，约33MB</p>
 </li>
 </ul>
-<p>$$<br>
-32^3 * 31 = 1015808<br>
-$$</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>3</mn><msup><mn>2</mn><mn>3</mn></msup><mo>∗</mo><mn>31</mn><mo>=</mo><mn>1015808</mn></mrow><annotation encoding="application/x-tex">32^3 * 31 = 1015808
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">1</span><span class="mord">5</span><span class="mord">8</span><span class="mord">0</span><span class="mord">8</span></span></span></span></span></p>
 <blockquote>
 <p>SQLlite 阶数常为32或者64</p>
 </blockquote>
 <p>2.1 B+树的定义</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232853119-1460626460.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232854940-1019144331.png" alt="clip_image039"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232853119-1460626460.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232854940-1019144331.png" alt="clip_image039" /></a></p>
 <p>各种资料上B+树的定义各有不同，一种定义方式是关键字个数和孩子结点个数相同。这里我们采取维基百科上所定义的方式，即关键字个数比孩子结点个数小1，这种方式是和B树基本等价的。上图就是一颗阶数为4的B+树。</p>
 <p>除此之外B+树还有以下的要求。</p>
 <p>1）B+树包含2种类型的结点：内部结点（也称索引结点）和叶子结点。根结点本身即可以是内部结点，也可以是叶子结点。根结点的关键字个数最少可以只有1个。</p>
@@ -482,37 +485,37 @@ $$</p>
 <p>2）针对叶子类型结点：根据key值找到叶子结点，向这个叶子结点插入记录。插入后，若当前结点key的个数小于等于m-1，则插入结束。否则将这个叶子结点分裂成左右两个叶子结点，左叶子结点包含前m/2个记录，右结点包含剩下的记录，将第m/2+1个记录的key进位到父结点中（父结点一定是索引类型结点），进位到父结点的key左孩子指针向左结点,右孩子指针向右结点。将当前结点的指针指向父结点，然后执行第3步。</p>
 <p>3）针对索引类型结点：若当前结点key的个数小于等于m-1，则插入结束。否则，将这个索引类型结点分裂成两个索引结点，左索引结点包含前(m-1)/2个key，右结点包含m-(m-1)/2个key，将第m/2个key进位到父结点中，进位到父结点的key左孩子指向左结点, 进位到父结点的key右孩子指向右结点。将当前结点的指针指向父结点，然后重复第3步。</p>
 <p>下面是一颗5阶B树的插入过程，5阶B数的结点最少2个key，最多4个key。</p>
-<hr>
+<hr />
 <p>a）空树中插入5</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232856515-1989097703.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232858129-694616618.png" alt="clip_image041"></a></p>
-<hr>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232856515-1989097703.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232858129-694616618.png" alt="clip_image041" /></a></p>
+<hr />
 <p>b）依次插入8，10，15</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232859746-1983069652.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232901391-1401289774.png" alt="clip_image043"></a></p>
-<hr>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232859746-1983069652.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232901391-1401289774.png" alt="clip_image043" /></a></p>
+<hr />
 <p>c）插入16</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232903956-296813367.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232905559-1698012761.png" alt="clip_image045"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232903956-296813367.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232905559-1698012761.png" alt="clip_image045" /></a></p>
 <p>插入16后超过了关键字的个数限制，所以要进行分裂。在叶子结点分裂时，分裂出来的左结点2个记录，右边3个记录，中间key成为索引结点中的key，分裂后当前结点指向了父结点（根结点）。结果如下图所示。</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232907805-1210471622.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232909712-1807724284.png" alt="clip_image047"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232907805-1210471622.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232909712-1807724284.png" alt="clip_image047" /></a></p>
 <p>当然我们还有另一种分裂方式，给左结点3个记录，右结点2个记录，此时索引结点中的key就变为15。</p>
-<hr>
+<hr />
 <p>d）插入17</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232911666-589419211.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232913379-576202883.png" alt="clip_image049"></a></p>
-<hr>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232911666-589419211.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232913379-576202883.png" alt="clip_image049" /></a></p>
+<hr />
 <p>e）插入18，插入后如下图所示</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232915173-859633380.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232917817-1240573630.png" alt="clip_image051"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232915173-859633380.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232917817-1240573630.png" alt="clip_image051" /></a></p>
 <p>当前结点的关键字个数大于5，进行分裂。分裂成两个结点，左结点2个记录，右结点3个记录，关键字16进位到父结点（索引类型）中，将当前结点的指针指向父结点。</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232919602-1261506387.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232921679-618565224.png" alt="clip_image053"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232919602-1261506387.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232921679-618565224.png" alt="clip_image053" /></a></p>
 <p>当前结点的关键字个数满足条件，插入结束。</p>
-<hr>
+<hr />
 <p>f）插入若干数据后</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232924458-602071692.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232926305-812650003.png" alt="clip_image055"></a></p>
-<hr>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232924458-602071692.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232926305-812650003.png" alt="clip_image055" /></a></p>
+<hr />
 <p>g）在上图中插入7，结果如下图所示</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232932420-897395371.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232935105-1001982143.png" alt="clip_image057"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232932420-897395371.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232935105-1001982143.png" alt="clip_image057" /></a></p>
 <p>当前结点的关键字个数超过4，需要分裂。左结点2个记录，右结点3个记录。分裂后关键字7进入到父结点中，将当前结点的指针指向父结点，结果如下图所示。</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232938704-1997149607.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232940557-1204742223.png" alt="clip_image059"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232938704-1997149607.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232940557-1204742223.png" alt="clip_image059" /></a></p>
 <p>当前结点的关键字个数超过4，需要继续分裂。左结点2个关键字，右结点2个关键字，关键字16进入到父结点中，将当前结点指向父结点，结果如下图所示。</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232943232-17049271.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232945267-543224744.png" alt="clip_image061"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232943232-17049271.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232945267-543224744.png" alt="clip_image061" /></a></p>
 <p>当前结点的关键字个数满足条件，插入结束。</p>
 <p>2.3 B+树的删除操作</p>
 <p>如果叶子结点中没有相应的key，则删除失败。否则执行下面的步骤</p>
@@ -524,29 +527,29 @@ $$</p>
 <p>6）当前结点和兄弟结点及父结点下移key合并成一个新的结点。将当前结点指向父结点，重复第4步。</p>
 <p>注意，通过B+树的删除操作后，索引结点中存在的key，不一定在叶子结点中存在对应的记录。</p>
 <p>下面是一颗5阶B树的删除过程，5阶B数的结点最少2个key，最多4个key。</p>
-<hr>
+<hr />
 <p>a）初始状态</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232947400-1567033079.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232951603-2095664521.png" alt="clip_image063"></a></p>
-<hr>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232947400-1567033079.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232951603-2095664521.png" alt="clip_image063" /></a></p>
+<hr />
 <p>b）删除22,删除后结果如下图</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232954830-219884109.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232956857-909502342.png" alt="clip_image065"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232954830-219884109.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232956857-909502342.png" alt="clip_image065" /></a></p>
 <p>删除后叶子结点中key的个数大于等于2，删除结束</p>
-<hr>
+<hr />
 <p>c）删除15，删除后的结果如下图所示</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232959965-1316994866.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233002074-155906598.png" alt="clip_image067"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406232959965-1316994866.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233002074-155906598.png" alt="clip_image067" /></a></p>
 <p>删除后当前结点只有一个key,不满足条件，而兄弟结点有三个key，可以从兄弟结点借一个关键字为9的记录,同时更新将父结点中的关键字由10也变为9，删除结束。</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233005979-1876471897.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233008129-433585803.png" alt="clip_image069"></a></p>
-<hr>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233005979-1876471897.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233008129-433585803.png" alt="clip_image069" /></a></p>
+<hr />
 <p>d）删除7，删除后的结果如下图所示</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233010241-2135973119.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233017339-92051658.png" alt="clip_image071"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233010241-2135973119.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233017339-92051658.png" alt="clip_image071" /></a></p>
 <p>当前结点关键字个数小于2，（左）兄弟结点中的也没有富余的关键字（当前结点还有个右兄弟，不过选择任意一个进行分析就可以了，这里我们选择了左边的），所以当前结点和兄弟结点合并，并删除父结点中的key，当前结点指向父结点。</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233019407-1044051627.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233022828-172757536.png" alt="clip_image073"></a></p>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233019407-1044051627.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233022828-172757536.png" alt="clip_image073" /></a></p>
 <p>此时当前结点的关键字个数小于2，兄弟结点的关键字也没有富余，所以父结点中的关键字下移，和两个孩子结点合并，结果如下图所示。</p>
-<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233024613-583960048.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233027773-1578264573.png" alt="clip_image075"></a></p>
-<h4 id=""></h4>
-<h1>框架项目</h1>
-<h2 id="libevent">libevent</h2>
-<p>file:///C:/Users/63517/Documents/libevent%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.pdf<br>
+<p><a target="_blank" rel="noopener" href="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233024613-583960048.png"><img src="https://images2018.cnblogs.com/blog/834468/201804/834468-20180406233027773-1578264573.png" alt="clip_image075" /></a></p>
+<h4 id=""><a class="markdownIt-Anchor" href="#"></a> </h4>
+<h1 id="框架项目"><a class="markdownIt-Anchor" href="#框架项目"></a> 框架项目</h1>
+<h2 id="libevent"><a class="markdownIt-Anchor" href="#libevent"></a> libevent</h2>
+<p>file:///C:/Users/63517/Documents/libevent%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.pdf<br />
 2.0.21 <a target="_blank" rel="noopener" href="https://src.fedoraproject.org/repo/pkgs/libevent/libevent-2.0.21-stable.tar.gz/b2405cc9ebf264aa47ff615d9de527a2/">https://src.fedoraproject.org/repo/pkgs/libevent/libevent-2.0.21-stable.tar.gz/b2405cc9ebf264aa47ff615d9de527a2/</a></p>
 
 </div>
