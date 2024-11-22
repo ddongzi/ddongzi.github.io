@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.jpg" />
+    
+
+    <title>
+        
+          ruby.md - 迷失
+        
+    </title>
+
+    <!-- Spectre.css framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre-icons.min.css">
+
+    <!-- theme css & js -->
+    
+<link rel="stylesheet" href="/css/book.css">
+
+    
+<script src="/js/book.js"></script>
+
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zooming/2.1.1/zooming.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const zooming = new Zooming()
+    zooming.listen('.book-content img')
+})
+</script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+<div class="book-container">
+  <div class="book-sidebar">
+    <div class="book-brand">
+  <a href="/">
+    <img src="/favicon.jpg">
+    <span>迷失</span>
+  </a>
+</div>
+    <div id="menu" class="book-menu hide">
+  <h1 id="categories"><a class="markdownIt-Anchor" href="#categories"></a> categories</h1>
+<ul>
+<li><a href="/categories/%E7%BC%96%E7%A8%8B">编程</a></li>
+<li><a href="/categories/%E6%95%B0%E5%AD%A6">数学</a></li>
+<li><a href="/categories/%E9%87%8D%E8%A6%81">重要</a></li>
+<li><a href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB">未分类</a></li>
+<li><a href="/categories/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0">情绪日记</a></li>
+</ul>
+<h2 id="archives"><a class="markdownIt-Anchor" href="#archives"></a> archives</h2>
+<ul>
+<li><a href="/archives/2024">2024</a></li>
+<li><a href="/archives/2023">2023</a></li>
+</ul>
+
+</div>
+
+
+<script src="/js/book-menu.js"></script>
+
+  </div>
+
+  <div class="sidebar-toggle" onclick="sidebar_toggle()" onmouseover="add_inner()" onmouseleave="remove_inner()">
+  <div class="sidebar-toggle-inner"></div>
+</div>
+
+<script>
+function add_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.add('show')  
+}
+
+function remove_inner() {
+  let inner = document.querySelector('.sidebar-toggle-inner')
+  inner.classList.remove('show')
+}
+
+function sidebar_toggle() {
+    let sidebar_toggle = document.querySelector('.sidebar-toggle')
+    let sidebar = document.querySelector('.book-sidebar')
+    let content = document.querySelector('.off-canvas-content')
+    if (sidebar_toggle.classList.contains('extend')) { // show
+        sidebar_toggle.classList.remove('extend')
+        sidebar.classList.remove('hide')
+        content.classList.remove('extend')
+    }
+    else { // hide
+        sidebar_toggle.classList.add('extend')
+        sidebar.classList.add('hide')
+        content.classList.add('extend')
+    }
+}
+</script>
+
+  <div class="off-canvas-content">
+    <div class="columns">
+      <div class="column col-10 col-lg-12">
+        <div class="book-navbar">
+          <!-- For Responsive Layout -->
+
+<header class="navbar">
+  <section class="navbar-section">
+    <a onclick="open_sidebar()">
+      <i class="icon icon-menu"></i>
+    </a>
+  </section>
+</header>
+
+        </div>
+        <div class="book-content">
+          <div class="book-post">
+  <h1>  ruby.md </h1>
+  <h2 id="rspec"><a class="markdownIt-Anchor" href="#rspec"></a> RSpec</h2>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">describe <span class="string">&quot;MyTestSuite&quot;</span> <span class="keyword">do</span></span><br><span class="line">  it <span class="string">&quot;does something&quot;</span> <span class="keyword">do</span>    </span><br><span class="line">	  <span class="comment"># test code goes here  </span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p><code>rspec file.rb</code></p>
+<p>这段代码使用 <code>IO.popen</code> 打开了一个管道，用于与子进程进行通信。在 Ruby 中，<code>IO.popen</code> 方法用于创建一个与另一个进程进行通信的管道，并返回一个 IO 对象，可以在这个对象上进行读取或写入操作。</p>
+<p>让我们逐行解释这段代码：</p>
+<ol>
+<li><code>IO.popen(&quot;./db&quot;, &quot;r+&quot;) do |pipe|</code>：这行代码打开了一个管道，用于执行名为 <code>&quot;./db&quot;</code> 的子进程，并且允许对这个进程进行读写操作。子进程的标准输入和输出会分别连接到管道的输入和输出端。管道对象被传递给一个块，在这个块内部可以使用管道对象来进行读写操作。</li>
+<li><code>commands.each do |command|</code>：这是一个迭代循环，遍历了一个名为 <code>commands</code> 的数组中的每一个元素，其中每个元素代表一个命令。</li>
+<li><code>pipe.puts command</code>：在循环中，对管道对象 <code>pipe</code> 调用了 <code>puts</code> 方法，将每个命令写入到管道的输入端。这样，每个命令都会被发送给子进程进行执行。</li>
+<li><code>pipe.close_write</code>：在发送完所有命令之后，通过调用 <code>close_write</code> 方法关闭了管道的写入端。这样做可以告诉子进程已经没有更多的输入数据了，从而触发子进程的执行。</li>
+<li><code>raw_output = pipe.gets(nil)</code>：最后，使用 <code>gets(nil)</code> 方法从管道的输出端读取了子进程的输出，并将其存储在 <code>raw_output</code> 变量中。在这里，<code>nil</code> 参数表示读取所有可用的输出数据，直到管道被关闭。</li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/ruby</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># describe 是一个块， database表示一个测试集合，里面it表示一个测试例子</span></span><br><span class="line">describe <span class="string">&#x27;database&#x27;</span> <span class="keyword">do</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">run_script</span>(<span class="params">commands</span>)</span><br><span class="line">    raw_output = <span class="literal">nil</span></span><br><span class="line">    <span class="comment"># 打开一个管道，</span></span><br><span class="line">    <span class="variable constant_">IO</span>.popen(<span class="string">&quot;./db&quot;</span>, <span class="string">&quot;r+&quot;</span>) <span class="keyword">do</span> |<span class="params">pipe</span>|</span><br><span class="line">      commands.each <span class="keyword">do</span> |<span class="params">command</span>|</span><br><span class="line">        pipe.puts command</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      pipe.close_write</span><br><span class="line"></span><br><span class="line">      <span class="comment"># Read entire output</span></span><br><span class="line">      raw_output = pipe.gets(<span class="literal">nil</span>)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    raw_output.split(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  it <span class="string">&#x27;inserts and retrieves a row&#x27;</span> <span class="keyword">do</span></span><br><span class="line">    result = run_script([</span><br><span class="line">      <span class="string">&quot;insert 1 user1 person1@example.com&quot;</span>,</span><br><span class="line">      <span class="string">&quot;select&quot;</span>,</span><br><span class="line">      <span class="string">&quot;.exit&quot;</span>,</span><br><span class="line">    ])</span><br><span class="line">    expect(result).to match_array([</span><br><span class="line">      <span class="string">&quot;db &gt; Executed.&quot;</span>,</span><br><span class="line">      <span class="string">&quot;db &gt; (1, user1, person1@example.com)&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Executed.&quot;</span>,</span><br><span class="line">      <span class="string">&quot;db &gt; &quot;</span>,</span><br><span class="line">    ])</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="匹配规则"><a class="markdownIt-Anchor" href="#匹配规则"></a> 匹配规则</h2>
+<p><img src="https://raw.githubusercontent.com/ddongzi/image/main/markdown/20240427095011.png" alt="image.png" /></p>
+<p>后者为测试脚本 .constants执行输出结果</p>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+
+
+  </div>
+
+
+
+<script src="/js/book-post.js"></script>
+
+        </div>
+      </div>
+      <div class="column col-2 hide-lg">
+        <div class="book-post-info">
+  
+    <div class="book-post-meta">
+
+  <div class="author">
+
+    <!-- Author image -->
+    <div class="author-img">
+      
+        <figure
+          class="avatar avatar-lg"
+          data-initial="东"
+          style="background-color: #3b4351;">
+        </figure>
+      
+    </div>
+
+    <!-- Author title -->
+    <div class="author-title">
+      <div>东东</div>
+      <div>2024-04-25</div>
+    </div>
+  </div>
+
+  
+    <div class="divider"></div>
+
+    <div class="link">
+      <a class="category-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+
+      
+    </div>
+    
+  
+
+  <div class="divider"></div>
+</div>
+  
+
+  <div class="book-tocbot">
+</div>
+<div class="book-tocbot-menu">
+  <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+  <a onclick="go_top()">Back to top</a>
+  <a onclick="go_bottom()">Go to bottom</a>
+</div>
+
+
+<script src="/js/book-toc.js"></script>
+
+</div>
+      </div>
+    </div>
+  </div>
+  
+  <a class="off-canvas-overlay" onclick="hide_canvas()"></a>
+</div>
+
+</body>
+</html>
+
+
+<script src="/js/book.js"></script>
