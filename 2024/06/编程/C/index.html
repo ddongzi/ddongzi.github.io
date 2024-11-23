@@ -134,35 +134,21 @@ function sidebar_toggle() {
         <div class="book-content">
           <div class="book-post">
   <h1>  C.md </h1>
-  <h1 id="unix"><a class="markdownIt-Anchor" href="#unix"></a> UNIX</h1>
-<p>网络编程</p>
-<h1 id="concurrent-servers"><a class="markdownIt-Anchor" href="#concurrent-servers"></a> Concurrent Servers</h1>
-<p>测试评价现代的并发网络模型</p>
-<h2 id="1-介绍"><a class="markdownIt-Anchor" href="#1-介绍"></a> 1. 介绍</h2>
-<h1 id="build-your-own-redis"><a class="markdownIt-Anchor" href="#build-your-own-redis"></a> Build your own redis</h1>
-<h2 id="32-create-a-tcp-server"><a class="markdownIt-Anchor" href="#32-create-a-tcp-server"></a> 3.2 Create a TCP Server</h2>
-<h3 id="step-1-obtain-a-socket-handle"><a class="markdownIt-Anchor" href="#step-1-obtain-a-socket-handle"></a> Step 1: Obtain a Socket Handle</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> fd = socket(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<p>关于<code>socket(int socket_family, int socket_type, int protocol);</code>参数说明：</p>
-<ol>
-<li>AF_INET表示IPV4</li>
-<li>SOCK_STEAM表示TCP</li>
-<li>0暂时不用</li>
-</ol>
-<p>Tips：<code>man socket.7</code>查看socket手册，<code>.7</code>表示具体章节。</p>
-<h3 id="step-2-configure-the-socket"><a class="markdownIt-Anchor" href="#step-2-configure-the-socket"></a> Step 2: Configure the Socket</h3>
-<p><code>socket</code>函数并没有提供入口直接配置参数。</p>
-<p>但，使用<code>setsockopt()</code>可以用来配置<code>socket</code>的参数。比如<code>keepalive</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> val = <span class="number">1</span>; </span><br><span class="line">setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &amp;val, <span class="keyword">sizeof</span>(val));</span><br></pre></td></tr></table></figure>
-<p>上述配置说明，重启时候可以重复使用监听地址。否则<code>bind</code>失败。</p>
-<h3 id="step-3-bind-to-an-address"><a class="markdownIt-Anchor" href="#step-3-bind-to-an-address"></a> Step 3: Bind to an Address</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">addr</span> =</span> &#123;&#125;;</span><br><span class="line">addr.sin_family = AF_INET;</span><br><span class="line">addr.sin_port = ntohs(<span class="number">1234</span>);</span><br><span class="line">addr.sin_addr.s_addr = ntohl(<span class="number">0</span>);</span><br><span class="line"><span class="type">int</span> rv = bind(fd, (<span class="type">const</span> <span class="keyword">struct</span> sockaddr *) &amp;addr, <span class="keyword">sizeof</span>(addr));</span><br><span class="line"><span class="keyword">if</span> (rv) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>bind</code>为了适配<code>IPV6</code>地址，需要传入套接字地址长度。</p>
-<h3 id="step-4-listen"><a class="markdownIt-Anchor" href="#step-4-listen"></a> Step 4: Listen</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rv = listen(fd, SOMAXCONN);</span><br></pre></td></tr></table></figure>
-<p>关于<code>int listen(int sockfd, int backlog);</code> 函数参数说明：</p>
-<p>backlog表示最大连接数，这里默认是128</p>
-<h3 id="step-5-accept-connections"><a class="markdownIt-Anchor" href="#step-5-accept-connections"></a> Step 5: Accept Connections</h3>
+  <h1 id="cp"><a class="markdownIt-Anchor" href="#cp"></a> c&amp;p</h1>
+<h2 id="一-标准函数库"><a class="markdownIt-Anchor" href="#一-标准函数库"></a> 一. 标准函数库</h2>
+<h3 id="1-时间"><a class="markdownIt-Anchor" href="#1-时间"></a> 1. 时间</h3>
+<p>类型对比：</p>
+<ul>
+<li>
+<p>定义：</p>
+<p><code>time_t</code> 是当天日期时间，<code>clock_t</code>是程序运行时间。</p>
+</li>
+<li>
+<p>长度没区别</p>
+</li>
+</ul>
+<p><code>time_t : typedef long time_t</code></p>
+<p><code>clock_t : typedef *long* *clock_t*</code></p>
 <h1 id="c-experts"><a class="markdownIt-Anchor" href="#c-experts"></a> C experts</h1>
 <p>2.3 重载冗杂</p>
 <p><code>sizeof</code>并不是一个函数，而是一个操作符。</p>
@@ -171,9 +157,9 @@ function sidebar_toggle() {
 <li>操作数是类型：必须加括号。<code>sizeof(int) *p</code>。<br />
 这里含义是什么？ 强制转换int型之后 sizeof？还是int长度乘以p？ 实践：是后者。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2                                                                                                                             3 int main ()                                                                                                                 4 &#123;                                                                                                                           5     char a = &#x27;5&#x27;;                                                                                                           6     int *p = &amp;a;                                                                                                            7     int q = sizeof(int) * p;                                                                                                8     printf(&quot;%d&quot;, q);                                                                                                        9     return 0;                                                                                                              10 &#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span> <span class="params">()</span>                                                                           &#123;                                                                                     	<span class="type">char</span> a = <span class="string">&#x27;5&#x27;</span>;                                                                         <span class="type">int</span> *p = &amp;a;                                                                           <span class="type">int</span> q = <span class="keyword">sizeof</span>(<span class="type">int</span>) * p;                                                               <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, q);                                                                       <span class="keyword">return</span> <span class="number">0</span>;                                                                         &#125; </span><br></pre></td></tr></table></figure>
 <h1 id="apue"><a class="markdownIt-Anchor" href="#apue"></a> apue</h1>
-<h2 id="线程"><a class="markdownIt-Anchor" href="#线程"></a> 线程</h2>
+<h2 id="1-线程"><a class="markdownIt-Anchor" href="#1-线程"></a> 1. 线程</h2>
 <h4 id="线程同步"><a class="markdownIt-Anchor" href="#线程同步"></a> 线程同步</h4>
 <p>多线程共享相同内存，需要保证每个线程看到一致的内容。<br />
 有线程写就可能触发数据不一致，所以读写要加锁。</p>
@@ -551,6 +537,24 @@ The “front-end” of sqlite is a <strong>SQL compiler</strong> that parses a s
 <h2 id="libevent"><a class="markdownIt-Anchor" href="#libevent"></a> libevent</h2>
 <p>file:///C:/Users/63517/Documents/libevent%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90.pdf<br />
 2.0.21 <a target="_blank" rel="noopener" href="https://src.fedoraproject.org/repo/pkgs/libevent/libevent-2.0.21-stable.tar.gz/b2405cc9ebf264aa47ff615d9de527a2/">https://src.fedoraproject.org/repo/pkgs/libevent/libevent-2.0.21-stable.tar.gz/b2405cc9ebf264aa47ff615d9de527a2/</a></p>
+<h1 id="错误"><a class="markdownIt-Anchor" href="#错误"></a> 错误</h1>
+<h2 id="1-segmentation-fault段错误定位"><a class="markdownIt-Anchor" href="#1-segmentation-fault段错误定位"></a> 1. Segmentation Fault（段错误）定位</h2>
+<h3 id="valgrind"><a class="markdownIt-Anchor" href="#valgrind"></a> valgrind</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -g -o your_program your_program.c</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">valgrind --tool=memcheck --leak-check=full ./db</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Address 0x4a3af30 is 0 bytes after a block of size 512 alloc’d</li>
+</ul>
+<p>访问越界，比如分配了512，</p>
+<h1 id="makefile"><a class="markdownIt-Anchor" href="#makefile"></a> makefile</h1>
+<ul>
+<li>如果一行太长，用/连接</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SRC_SERVER = array.c connect_manager.c connection_table.c connection.c \</span><br><span class="line">log.c message_manager.c message_queue.c message.c mutex.c server.c socket.c queue.c</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="tcp-server"><a class="markdownIt-Anchor" href="#tcp-server"></a> TCP server</h1>
+<ul>
+<li>[ ] return msg</li>
+</ul>
 
 </div>
 

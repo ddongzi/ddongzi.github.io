@@ -163,16 +163,16 @@ top -Hp pid</p>
 <p>project_source_dir : cmake执行所在目录</p>
 <p>CMAKE_CURRENT_SOURCE_DIR ; 同样,为cmake执行路径</p>
 <p>cmake自定义宏，  使得一些代码是否进入。调试开关</p>
-<h1 id="valgrind"><a class="markdownIt-Anchor" href="#valgrind"></a> valgrind</h1>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -g -o your_program your_program.c</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">valgrind --tool=memcheck --leak-check=full ./db</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li></li>
+</ul>
+<h1 id="vim"><a class="markdownIt-Anchor" href="#vim"></a> vim</h1>
 <p><code>:%!xxd</code></p>
 <ul>
 <li><code>:%</code> 表示对整个文件进行操作。</li>
 <li><code>!</code> 表示执行外部命令。</li>
 <li><code>xxd</code> 是一个十六进制编辑工具，它可以将文件的内容转换为十六进制格式并显示出来。</li>
 </ul>
-<h1 id="vim"><a class="markdownIt-Anchor" href="#vim"></a> vim</h1>
 <p><a target="_blank" rel="noopener" href="https://github.com/WilsonQ1n/VIM_C_IDE">https://github.com/WilsonQ1n/VIM_C_IDE</a></p>
 <h2 id="vundle插件管理"><a class="markdownIt-Anchor" href="#vundle插件管理"></a> vundle插件管理</h2>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">set nocompatible</span><br><span class="line">filetype off</span><br><span class="line"></span><br><span class="line">&quot; 设置Vundle管理vim插件 set the runtime path to include Vundle and initialize</span><br><span class="line">set rtp+=~/.vim/bundle/Vundle.vim</span><br><span class="line">call vundle#begin()</span><br><span class="line">&quot; 安装的vim插件写在下面</span><br><span class="line"></span><br><span class="line">Plugin &#x27;VundleVim/Vundle.vim&#x27;   &quot; let Vundle manage Vundle, required</span><br><span class="line">Plugin &#x27;scrooloose/nerdtree&#x27;</span><br><span class="line"></span><br><span class="line">&quot; 安装的vim插件写在上面</span><br><span class="line">call vundle#end()     &quot; required</span><br><span class="line">filetype plugin on    &quot; required</span><br></pre></td></tr></table></figure>
