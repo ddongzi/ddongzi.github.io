@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>2024-07-02.md | 张彦东的博客</title><meta name="author" content="张彦东的博客"><meta name="copyright" content="张彦东的博客"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024-07-02.md">
+<meta property="og:url" content="https://ddongzi.github.io/2024/07/02/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0/2024-07-02/index.html">
+<meta property="og:site_name" content="张彦东的博客">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ddongzi.github.io/img/cat.jpg">
+<meta property="article:published_time" content="2024-07-02T02:55:15.000Z">
+<meta property="article:modified_time" content="2025-02-06T03:13:58.101Z">
+<meta property="article:author" content="张彦东的博客">
+<meta property="article:tag" content="抽象数学追求者,架构师">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ddongzi.github.io/img/cat.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "2024-07-02.md",
+  "url": "https://ddongzi.github.io/2024/07/02/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0/2024-07-02/",
+  "image": "https://ddongzi.github.io/img/cat.jpg",
+  "datePublished": "2024-07-02T02:55:15.000Z",
+  "dateModified": "2025-02-06T03:13:58.101Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "张彦东的博客",
+      "url": "https://ddongzi.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/images.jpg"><link rel="canonical" href="https://ddongzi.github.io/2024/07/02/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0/2024-07-02/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxxxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=xxx"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'xxx')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'xxx', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":100,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: 张彦东的博客","link":"链接: ","source":"来源: 张彦东的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2024-07-02.md',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/cat.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-chart-bar"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/talk2me/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">张彦东的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">2024-07-02.md</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-chart-bar"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/talk2me/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">2024-07-02.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-02T02:55:15.000Z" title="发表于 2024-07-02 10:55:15">2024-07-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-06T03:13:58.101Z" title="更新于 2025-02-06 11:13:58">2025-02-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0/">情绪日记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">6</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="7f8d7a240d5cbd4e9e22e5cfebbda68033f583bd1f7ddd49ceb4910e52ffd6ed">7de2d0084bea0e695f102f738b528e42906fcabd2edbbbdef3c98e41899d20727acabcd9f13337a769306f007f736e4268c361ed05ff009958941906dd1a3f2d3737989c1819d911d65931ca9fca210210ecae15725d42e762b827478170b7e305cb73018dbd2711499081917bdbc69f0da4c4321edfb5a7dd5cb152b7495a5dc509a0824fbeb5d17b221991959a637eccabfe1c0668b8ee35fc13ce541c4b91fe58c8f7ed0ce4fb77d63adafd09449676e071401b63dc42e38ed832888c11ff0c31272a9e1bac80a27a808550246e5eb517bf32996bd98d076a2e3573d7e88a28fb4fb395a8e0aee9ef6bf496819f2ea6df037eda0343c7d31c195d1b639cb722e6f1532ad108c39986ea6ff08666576b426444c6e10c9f4f347b9ac8ddd0eace8e0c97e9fff336f56501ab1b6171faa1101e411ed199edf64d16c6d162d71b5e47e06d713ca7f09f9f33dc7600dbd21b6f4843b00ec4750fa186e5f46ac077a565f158fbe11dc506bbbc1bc95c9a55e42be74a6b9d090b7548e750096eff1df19c6f95fbfd14bbfba82127c3c08b904ce9cdb7aa274eee3576850762bb1a0d2eb403fbe3a8d7734669c54241255b17d212283eed931b13a4dbf37bc46cd9cc2add8cba23e563e99c5026d14f3bb42b4ad880f805095d38e1e2d1d932130ec8c8ac6267f2fdaafd271b77202574be09f9c760d395341338b13bcd228a3168bb770f207b86978ae730c57e03831fbbf90b9b3a5306b6f262b88603b20023f5e2090b02fcbc2ecfecd8a46e852ab2c0fe9068fd2381fcac02d6643f9dfde98c9faefcbdae8c4c40dbd24345e96131bcc9419996716a0cc26f7063373c4cb5619761d682f247a58ab46fda85a56b669ee78f7c52215b33d8b53da6390a0957a7ac50fe953077e608f677e4d642d5f19dc3e8078e0c90a6d2b4c0ab3f95514bc124b850d2545fbf1ebddfc571179d3f87237e05db0b23f8e65ab69e4e7b7ceffac6b43deb8900047944becc09618b2b031b61168637717aeca8d87c91998406e0b0d0786f9f821123d52806b7fea452b8dc20c9e698f6470edbf4b2bc14a0307ff784e13e9bf7f54f1f62b80571b2597bab7e2fd53f3708b7cc94516bbd313b8d3691ec33eb84532a49f166d28e6ddf2a7ec6360cdcae6478cffe351538193fdafd92630c2449282fa970f135d44066ebc445b4b37eb5e36772c9c47035a986c7144e2319895906bbec8d8f39d5349f24840a6a502d536532acec0a88b44d317336e3d28c6966f323f32b97b7c288062c853e9e2e8b3ebcfaf64a0b0f107adef4f4da24b1c2a035b8de4ef47af275afa06ddea090dddfe9b4fb486a16b90fe3e4eb</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ddongzi.github.io">张彦东的博客</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ddongzi.github.io/2024/07/02/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0/2024-07-02/">https://ddongzi.github.io/2024/07/02/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0/2024-07-02/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://ddongzi.github.io" target="_blank">张彦东的博客</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/cat.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/06/22/%E6%89%80%E6%9C%89%E4%B8%9A%E4%BD%99/" title="乱.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">乱.md</div></div><div class="info-2"><div class="info-item-1"> 读书笔记 如果太专业，难懂，可以找一本简单的介绍看看，在入门 记笔记   记读书笔记应该以 能坚持下去 为先   你为别人讲解书中的内容时，才会真正理解他。当以思想输出为前提去读书时，思想输入质量也会提高。 ![[Pasted image 20231231113300.png]]   笔记要简略又全面，如何做到： 提炼内容，承上启下，总结性句子。  如果实在理解不了，没兴趣，就不要记笔记，略读即可。    一句话： 读书重点是 自己认为重要的内容，将其消化吸收  即使是一句话，也比空白的一天好    不要为了坚持而走形式主义   做记号 ![https://raw.githubusercontent.com/ddongzi/ddongzi.github.io/main/image/markdown/20231231114717.png]]   标记区分： ![[Pasted image 20231231115153.png]]   读书笔记 信息要素  日期，书名，作者名。 摘抄和评论。    摘抄促进消化，理解。  自己总结...</div></div></div></a><a class="pagination-related" href="/2024/07/06/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0/2024-07-06/" title="2024-07-06.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">2024-07-06.md</div></div><div class="info-2"><div class="info-item-1">   7de2d0084bea0e695f102f738b528e427f9d212d79db0cd9c832bc21495701b48e498bb31ec1e0cd4f55f40b23ac4a72974f94fe48cd938a9fca6b57b30eafbe543418ae67b71de97028cd38d5930e06d6c64c1da7c3d60c208569ae18cf51760a9c4184f9673bd5d345180dfaf395cb594554e77a03cea1339ddfd7a91369047e271b08bb2e5f9b7faa7e0e54bc317608400e0b8d87b443a115116e1aa716096c6fd588913fc0f69528746e05b574d3971741c4911bdebdcca26c5bbebf5f87006d345cc9c0205d3ab7b1857ed61c6fa3f2dee6262a2cdcd8f0d8024232594eac6b12640aa4f6e803002c0524f765a4             ...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/cat.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">张彦东的博客</div><div class="author-info-description"> 孩儿立志出乡关，学不成名誓不还。 埋骨何须桑梓地，人生无处不青山。 </div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ddongzi"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/ddongzi" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:aa635176614@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content toc-div-class" style="display:none"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text"> 做了什么</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/C%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="网络编程">网络编程</a><time datetime="2025-02-07T11:48:38.000Z" title="发表于 2025-02-07 19:48:38">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/redis/12-%E4%BA%8B%E4%BB%B6/" title="12-事件">12-事件</a><time datetime="2025-02-07T10:48:38.000Z" title="发表于 2025-02-07 18:48:38">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/redis/14-%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="14-服务器">14-服务器</a><time datetime="2025-02-07T03:48:38.000Z" title="发表于 2025-02-07 11:48:38">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" title="IO多路复用">IO多路复用</a><time datetime="2025-02-07T01:48:38.000Z" title="发表于 2025-02-07 09:48:38">2025-02-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 张彦东的博客</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

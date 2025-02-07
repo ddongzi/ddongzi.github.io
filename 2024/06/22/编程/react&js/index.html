@@ -1,0 +1,789 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>react&amp;js.md | 张彦东的博客</title><meta name="author" content="张彦东的博客"><meta name="copyright" content="张彦东的博客"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="位运算 var a; 奇偶 a&amp;1  取相反数-n &#x3D; ~(n - 1) &#x3D; ~n + 1 将n的二进制表示中最右侧的一个1去掉 n &amp; (n - 1)  firebase in: FirebaseError: ‘IN’ supports up to 10 comparison values.  react  官方文档  Thinking in React : how to bu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react&amp;js.md">
+<meta property="og:url" content="https://ddongzi.github.io/2024/06/22/%E7%BC%96%E7%A8%8B/react&js/index.html">
+<meta property="og:site_name" content="张彦东的博客">
+<meta property="og:description" content="位运算 var a; 奇偶 a&amp;1  取相反数-n &#x3D; ~(n - 1) &#x3D; ~n + 1 将n的二进制表示中最右侧的一个1去掉 n &amp; (n - 1)  firebase in: FirebaseError: ‘IN’ supports up to 10 comparison values.  react  官方文档  Thinking in React : how to bu">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ddongzi.github.io/img/cat.jpg">
+<meta property="article:published_time" content="2024-06-22T06:05:56.000Z">
+<meta property="article:modified_time" content="2025-02-05T17:59:45.841Z">
+<meta property="article:author" content="张彦东的博客">
+<meta property="article:tag" content="抽象数学追求者,架构师">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ddongzi.github.io/img/cat.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "react&js.md",
+  "url": "https://ddongzi.github.io/2024/06/22/%E7%BC%96%E7%A8%8B/react&js/",
+  "image": "https://ddongzi.github.io/img/cat.jpg",
+  "datePublished": "2024-06-22T06:05:56.000Z",
+  "dateModified": "2025-02-05T17:59:45.841Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "张彦东的博客",
+      "url": "https://ddongzi.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/images.jpg"><link rel="canonical" href="https://ddongzi.github.io/2024/06/22/%E7%BC%96%E7%A8%8B/react&amp;js/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxxxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=xxx"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'xxx')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'xxx', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":100,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: 张彦东的博客","link":"链接: ","source":"来源: 张彦东的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'react&js.md',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><script src="https://npm.elemecdn.com/echarts@4.9.0/dist/echarts.min.js"></script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/cat.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-chart-bar"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/talk2me/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">张彦东的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">react&amp;js.md</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/charts/"><i class="fa-fw fas fa-chart-bar"></i><span> 统计</span></a></div><div class="menus_item"><a class="site-page" href="/talk2me/"><i class="fa-fw fas fa-comment-dots"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">react&amp;js.md</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-22T06:05:56.000Z" title="发表于 2024-06-22 14:05:56">2024-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-05T17:59:45.841Z" title="更新于 2025-02-06 01:59:45">2025-02-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">7.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>31分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="位运算"><a class="markdownIt-Anchor" href="#位运算"></a> 位运算</h1>
+<p>var a;<br />
+奇偶 a&amp;1</p>
+<h3 id="取相反数-n-~n-1-~n-1"><a class="markdownIt-Anchor" href="#取相反数-n-~n-1-~n-1"></a> 取相反数-n = ~(n - 1) = ~n + 1</h3>
+<p>将n的二进制表示中最右侧的一个1去掉 n &amp; (n - 1)</p>
+<h1 id="firebase"><a class="markdownIt-Anchor" href="#firebase"></a> firebase</h1>
+<p>in: FirebaseError: ‘IN’ supports up to 10 comparison values.</p>
+<h1 id="react"><a class="markdownIt-Anchor" href="#react"></a> react</h1>
+<h3 id="官方文档"><a class="markdownIt-Anchor" href="#官方文档"></a> 官方文档</h3>
+<h4 id="thinking-in-react-how-to-build-a-react-app"><a class="markdownIt-Anchor" href="#thinking-in-react-how-to-build-a-react-app"></a> Thinking in React : how to build a react app</h4>
+<p><a target="_blank" rel="noopener" href="https://react.dev/learn/thinking-in-react">https://react.dev/learn/thinking-in-react</a></p>
+<h5 id="step-3-find-the-minimal-but-complete-representation-of-ui-state"><a class="markdownIt-Anchor" href="#step-3-find-the-minimal-but-complete-representation-of-ui-state"></a> Step 3: Find the minimal but complete representation of UI state</h5>
+<ul>
+<li></li>
+<li></li>
+</ul>
+<h3 id="useeffect"><a class="markdownIt-Anchor" href="#useeffect"></a> useEffect:</h3>
+<p><code>useEffect</code>通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作。</p>
+<p>所谓的**“副作用”**，举个通俗一点的例子，假如感冒了本来吃点药就没事了，但是吃了药发现身体过敏了，而这个“过敏”就是副作用。</p>
+<p>放到React中，本来只是想渲染DOM展示到页面上，但除了DOM之外还有数据，而这些数据必须从外部的数据源中获取，这个“获取外部数据源”的过程就是副作用。</p>
+<p>需要清除的 effect,可以防止引起内存泄露！</p>
+<p>如果你的 effect 返回一个函数，React 将会在执行清除操作时调用它：</p>
+<p>无参数，组件的初始化和更新都会执行</p>
+<p>[]初始化调用一次之后不再执行，相当于componentDidMount</p>
+<p>useEffect, useState 用来视图刷新。 不支持 异步</p>
+<p>对象和数组是通过引用进行比较的</p>
+<p>更新的是组件，</p>
+<p>state只要变化，视图就会渲染，而useEffect只是渲染时候做些其他事情</p>
+<ol>
+<li><code>Counter</code>内部状态改变，会使得Counter全都更新，</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">const BigNumber = (&#123; number &#125;) =&gt; (</span><br><span class="line">  &lt;div style=&#123;&#123; fontWeight: 700, fontSize: 36 &#125;&#125;&gt;&#123;number&#125;&lt;/div&gt;</span><br><span class="line">);</span><br><span class="line">const SomeDecoration = () =&gt; &lt;div&gt;Hooray!&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const Counter = () =&gt; &#123;</span><br><span class="line">  const [count, setCount] = useState(0);</span><br><span class="line">  const handleButtonClick = useCallback(() =&gt; setCount(count =&gt; count + 1), []);</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;BigNumber number=&#123;count&#125; /&gt;</span><br><span class="line">      &lt;button onClick=&#123;handleButtonClick&#125;&gt;Increment&lt;/button&gt;</span><br><span class="line">      &lt;SomeDecoration /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const App = () =&gt; (</span><br><span class="line">  &lt;&gt;</span><br><span class="line">    &lt;Counter /&gt;</span><br><span class="line">    &lt;footer&gt;</span><br><span class="line">      &lt;a href=&quot;https://skk.moe/&quot;&gt;Sukka&lt;/a&gt;</span><br><span class="line">    &lt;/footer&gt;</span><br><span class="line">  &lt;/&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="01reactcreateref"><a class="markdownIt-Anchor" href="#01reactcreateref"></a> 01.<code>React.createRef()	</code></h2>
+<p>React 支持一种非常特殊的属性 <strong>Ref</strong> ，你可以用来绑定到 render() 输出的任何组件上。</p>
+<p>（1）挂载HTML元素，返回真实的DOM<br />
+（2）挂载React元素，返回render后的实例对象</p>
+<p>React.createRef() 调用后返回一个容器,该容器可以存储被ref标识的节点</p>
+<ol start="2">
+<li>组件式</li>
+</ol>
+<p>​            <ChatTile chatId={chatId} size={44}/></p>
+<p>像这样， 头像样式 到处用，</p>
+<p>函数组件中使用</p>
+<p>useRef</p>
+<p>使用<code>current</code> 属性访问挂载的对象</p>
+<p>ref.current 返回null</p>
+<h2 id="02-reactsuspense"><a class="markdownIt-Anchor" href="#02-reactsuspense"></a> 02. React.Suspense</h2>
+<p><code>React.Suspense</code> 是一种虚拟组件（类似于 Fragment，仅用作类型标识）。通常用来包裹住延迟加载组件。</p>
+<ul>
+<li>提供 <code>fallback</code> 属性，用来在组件的延迟加载过程中显式某些 React 元素</li>
+</ul>
+<h2 id="03-props-和-state"><a class="markdownIt-Anchor" href="#03-props-和-state"></a> 03. props 和 state</h2>
+<p>如果下层组件需要使用上层组件的数据或方法，上层组件就可以通过下层组件的 <code>props</code> 属性进行传递，因此 <code>props</code> 是组件对外的接口。组件除了使用上层组件传递的数据外，自身也可能需要维护管理数据，这就是组件对内的接口 <code>state</code>。</p>
+<p><code>props</code> 是组件的只读属性，组件内部不能直接修改 <code>props</code>，要想修改 <code>props</code>，只能在该组件的上层组件中修改。在组件状态上移的场景中，父组件正是通过子组件的 <code>props</code>，传递给子组件其所需要的状态。</p>
+<p><code>state</code> 的主要作用是用于组件保存、控制以及修改自己的状态，它只能在 <code>constructor</code> 中初始化，它是组件的私有属性，不可通过外部访问和修改，只能通过组件内部的 <code>this.setState</code> 来修改，修改 <code>state</code> 属性会导致组件的重新渲染。</p>
+<h2 id="04-函数式组件和类组件"><a class="markdownIt-Anchor" href="#04-函数式组件和类组件"></a> 04. 函数式组件和类组件</h2>
+<p>下面，是具体的 class 与 Hooks 的生命周期对应关系：</p>
+<table>
+<thead>
+<tr>
+<th>class 组件</th>
+<th>Hooks 组件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>constructor</td>
+<td>useState</td>
+</tr>
+<tr>
+<td>getDerivedStateFromProps</td>
+<td>useState 里面 update 函数</td>
+</tr>
+<tr>
+<td>shouldComponentUpdate</td>
+<td>useMemo</td>
+</tr>
+<tr>
+<td>render</td>
+<td>函数本身</td>
+</tr>
+<tr>
+<td>componentDidMount</td>
+<td>useEffect</td>
+</tr>
+<tr>
+<td>componentDidUpdate</td>
+<td>useEffect</td>
+</tr>
+<tr>
+<td>componentWillUnmount</td>
+<td>useEffect  里面返回的函数</td>
+</tr>
+<tr>
+<td>componentDidCatch</td>
+<td>无</td>
+</tr>
+<tr>
+<td>getDerivedStateFromError</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
+<h2 id="05-classnames"><a class="markdownIt-Anchor" href="#05-classnames"></a> 05. classnames</h2>
+<p>1.在<code>react</code>中想要动态添加<code>className</code>时，通常会使用<code>classnames</code>这个库。</p>
+<p>2.我们可以通过<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=npm%E5%AE%89%E8%A3%85&amp;spm=1001.2101.3001.7020">npm安装</a>：<code>npm install classnames</code></p>
+<p>2.<code>classnames</code>是一个函数，使用的形式较多，记住常用的使用方法即可：</p>
+<p>（1）传入一个对象：<code>classnames(&#123;class1:true,class2:false&#125;)</code> ，<code>true</code>表示相应的class生效，反之false表示不生效。</p>
+<p>（2）接受多个类名：<code>classnames(class1,class2,&#123; class3:false &#125;)</code></p>
+<h2 id="06-react-组件通信"><a class="markdownIt-Anchor" href="#06-react-组件通信"></a> 06. React 组件通信</h2>
+<ul>
+<li>父组件通过 props 给子组件传参，子组件通过触发父组件提供的回调函数来给父组件传递数据</li>
+<li>React.Context</li>
+<li>自定义事件</li>
+<li>redux/mobx 之类的状态管理器</li>
+</ul>
+<p>状态props提升， 将数据都放置在最近父亲组件</p>
+<p><a target="_blank" rel="noopener" href="http://socket.io">socket.io</a> 在react 中</p>
+<p><a target="_blank" rel="noopener" href="https://socket.io/how-to/use-with-react">https://socket.io/how-to/use-with-react</a></p>
+<h3 id="context"><a class="markdownIt-Anchor" href="#context"></a> context</h3>
+<ol>
+<li>创建context, context是一个存储数据的对象</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; createContext, useState, useContext &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">NodeContext</span> = <span class="title function_">createContext</span>(); <span class="comment">// 创建一个新的 Context</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>创建provider， 通过provider组件的value 向组件传递数据，向组件暴露state,</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">NodeProvider</span> = (<span class="params">&#123; children &#125;</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> [nodeUrl, setNodeUrl] = <span class="title function_">useState</span>(<span class="string">&#x27;http://localhost:3001&#x27;</span>); <span class="comment">// 定义共享状态</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">NodeContext.Provider</span> <span class="attr">value</span>=<span class="string">&#123;&#123;</span> <span class="attr">nodeUrl</span>, <span class="attr">setNodeUrl</span> &#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">            &#123;children&#125; &#123;/* children 是指包含的所有子组件 */&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">NodeContext.Provider</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用context</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; nodeUrl, setNodeUrl &#125; = <span class="title function_">useContext</span>(<span class="title class_">NodeContext</span>);</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>(额外) 将其包装为一个自定义hook</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// NodeContext.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; createContext, useState, useContext &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">NodeContext</span> = <span class="title function_">createContext</span>();</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">useNode</span> = (<span class="params"></span>) =&gt; <span class="title function_">useContext</span>(<span class="title class_">NodeContext</span>); <span class="comment">// 自定义钩子，方便使用</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">NodeProvider</span> = (<span class="params">&#123; children &#125;</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> [nodeUrl, setNodeUrl] = <span class="title function_">useState</span>(<span class="string">&#x27;http://localhost:3001&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">NodeContext.Provider</span> <span class="attr">value</span>=<span class="string">&#123;&#123;</span> <span class="attr">nodeUrl</span>, <span class="attr">setNodeUrl</span> &#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">            &#123;children&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">NodeContext.Provider</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">const</span> &#123; nodeUrl, setNodeUrl &#125; = <span class="title function_">useNode</span>(); <span class="comment">// 获取 context 中的值</span></span><br></pre></td></tr></table></figure>
+<h3 id="自定义hook和context联系区别"><a class="markdownIt-Anchor" href="#自定义hook和context联系区别"></a> 自定义hook和context联系区别</h3>
+<ol>
+<li>使用自定义hook内部状态：</li>
+</ol>
+<ul>
+<li>适用于在单个组件中管理状态，不需要共享状态；</li>
+<li>适用于状态只需要在自定义hook内部使用的情况，不需要暴露给其他组件；</li>
+<li>适用于状态更新只需要在自定义hook内部处理，不需要通知其他组件。</li>
+</ul>
+<ol>
+<li>使用Context共享状态：</li>
+</ol>
+<ul>
+<li>适用于需要在多个组件中共享状态的情况；</li>
+<li>适用于需要在不同的组件之间传递数据的情况；</li>
+<li>适用于需要监听状态变化并及时通知其他组件更新的情况。</li>
+</ul>
+<h2 id="问题"><a class="markdownIt-Anchor" href="#问题"></a> 问题</h2>
+<h3 id="1-在-useeffect-usecallback-usememo-中获取到的-state-props-为什么是旧值"><a class="markdownIt-Anchor" href="#1-在-useeffect-usecallback-usememo-中获取到的-state-props-为什么是旧值"></a> 1. 在 <code>useEffect、useCallback、useMemo</code> 中获取到的 <code>state、props</code> 为什么是旧值</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Counter() &#123;</span><br><span class="line">    const [count, setCount] = useState(0);</span><br><span class="line"></span><br><span class="line">    useEffect(() =&gt; &#123;</span><br><span class="line">      const handleClick = function() &#123;</span><br><span class="line">        console.log(&#x27;count: &#x27;, count);</span><br><span class="line">      &#125;</span><br><span class="line">        window.addEventListener(&#x27;click&#x27;, handleClick, false)</span><br><span class="line"></span><br><span class="line">        return () =&gt; &#123;</span><br><span class="line">          window.removeEventListener(&#x27;click&#x27;, handleClick, false)</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;, []);</span><br><span class="line"></span><br><span class="line">    return &lt;p onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;clicked &#123;count&#125; times&lt;/p&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>还是上一个例子，如果此时给 <code>useEffect</code> 设置空数组为依赖项，那么无论 <code>count</code> 改变了多少次，点击 <code>window</code>，打印出来的 <code>count</code> 依然是 0</p>
+</blockquote>
+<h3 id="2-useeffect-事件注册的闭包陷阱"><a class="markdownIt-Anchor" href="#2-useeffect-事件注册的闭包陷阱"></a> 2. <code>useEffect</code> 事件注册的闭包陷阱</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">useEffect(() =&gt; &#123;</span><br><span class="line">     AppStore.on(&quot;send-msg&quot;, ()=&gt;&#123;</span><br><span class="line">         console.log(&quot;Event: send-msg&quot;,chatId)</span><br><span class="line">         update(chatId)</span><br><span class="line">     &#125;)</span><br><span class="line">     return () =&gt; &#123;</span><br><span class="line">         AppStore.off(&quot;send-msg&quot;, update) </span><br><span class="line">     &#125;</span><br><span class="line"> &#125;, [])</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>原因：事件函数获取到的<code>chatId</code>永远是旧的</p>
+<p>办法：<code>[chatId]</code>保证是最新值</p>
+</blockquote>
+<p>3.Warning: React has detected a change in the order of Hooks called by DialogDetails. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: <a target="_blank" rel="noopener" href="https://reactjs.org/link/rules-of-hooks">https://reactjs.org/link/rules-of-hooks</a></p>
+<p>Previous render            Next render</p>
+<ol>
+<li>useContext                 useContext</li>
+<li>undefined                  useState</li>
+</ol>
+<h1 id="mui"><a class="markdownIt-Anchor" href="#mui"></a> MUI</h1>
+<p>mui5的menu anchorEl什么意思？</p>
+<blockquote>
+<p>在mui5中，Menu组件是一个弹出式菜单，它可以在点击一个按钮或一个链接时弹出，然后允许用户从菜单中选择一个选项。</p>
+<p>anchorEl是Menu组件中的一个属性，它指定了Menu组件相对于哪个元素进行定位。当用户点击指定的元素时，Menu组件将相对于该元素弹出。</p>
+<p>例如，如果你想在一个按钮上创建一个Menu组件，你可以将这个按钮的元素作为anchorEl属性的值。这样当用户点击按钮时，Menu组件将会弹出在按钮的位置上。</p>
+</blockquote>
+<h2 id="进度和问题"><a class="markdownIt-Anchor" href="#进度和问题"></a> 进度和问题</h2>
+<ul>
+<li>
+<p>[x] 刚开始，消息列表没有滑倒底部。：分清数据更新，视图更新流程： 更新数据后useEfffect准确视图</p>
+</li>
+<li>
+<p>[x] 基本聊天刷新已经实现</p>
+</li>
+<li>
+<p>[ ] react子组件异步函数有时候获取不到props值</p>
+</li>
+<li>
+<p>[ ] 数据库速度慢，有时候刚插入，就要获取更新， 数据库还没插进去呢</p>
+</li>
+</ul>
+<h1 id="css"><a class="markdownIt-Anchor" href="#css"></a> CSS</h1>
+<p>word-wrap：属性允许长单词或 URL 地址换行到下一行。</p>
+<p>text-overflow:;当文本溢出包含它的元素时，应该如何显示。</p>
+<p>white-space属性指定元素内的空白怎样处理。是否环行</p>
+<p>flex-grow: 1; 当父元素有剩余空间时，如何占用，默认为0</p>
+<p><strong><code>flex-basis</code></strong> 指定了 flex 元素在主轴方向上的初始大小。</p>
+<p>object-fit 属性指定元素的内容应该如何去适应指定容器的高度与宽度。一般可以对这些元素进行保留原始比例的剪切、缩放或者直接进行拉伸等。</p>
+<p>user-select 属性规定是否能选取元素的文本。</p>
+<p>flex: 1 1 75%; /* 三个值：flex-grow | flex-shrink | flex-basis */</p>
+<p>align-self 属性定义flex子项单独在侧轴（纵轴）方向上的对齐方式。</p>
+<p><strong><code>mask:url()</code></strong> 允许使用者通过遮罩或者裁切特定区域的图片的方式来隐藏一个元素的部分或者全部可见区域。</p>
+<h1 id="swagger"><a class="markdownIt-Anchor" href="#swagger"></a> swagger</h1>
+<p><code>swagger-ui-express</code> 是一个用于在 Express.js 应用中集成 Swagger UI 的中间件。<br />
+Swagger UI 是一个前端界面，根据document生成，使得开发者可以方便地查看和测试 API。<br />
+<code>swagger-jsdoc</code> 是document 文档</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> swaggerUi = <span class="built_in">require</span>(<span class="string">&#x27;swagger-ui-express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> swaggerDocument = <span class="built_in">require</span>(<span class="string">&#x27;./swagger.json&#x27;</span>); <span class="comment">// 你的 Swagger 文档</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;/api-docs&#x27;</span>, swaggerUi.<span class="property">serve</span>, swaggerUi.<span class="title function_">setup</span>(swaggerDocument));</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;服务器运行在端口 3000&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="nodejs"><a class="markdownIt-Anchor" href="#nodejs"></a> Nodejs</h1>
+<h2 id="多线程"><a class="markdownIt-Anchor" href="#多线程"></a> 多线程</h2>
+<h3 id="worker_threads模块"><a class="markdownIt-Anchor" href="#worker_threads模块"></a> <code>worker_threads</code>模块：</h3>
+<p>如mine挖矿while循环会占用阻塞线程，如果放在主线程，那么就会阻塞其他网络请求异步线程的返回。</p>
+<ol>
+<li>主线程管理</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Worker</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;worker_threads&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个新的 Worker 线程，执行 miner.js 中的代码</span></span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="string">&#x27;./miner.js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接收 Worker 线程发送的消息</span></span><br><span class="line">worker.<span class="title function_">on</span>(<span class="string">&#x27;message&#x27;</span>, <span class="function">(<span class="params">msg</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Message from worker:&#x27;</span>, msg);</span><br><span class="line">    <span class="comment">// 在此处处理挖矿的结果</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听 Worker 线程的错误事件</span></span><br><span class="line">worker.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, <span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Worker error:&#x27;</span>, error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听 Worker 线程的退出事件</span></span><br><span class="line">worker.<span class="title function_">on</span>(<span class="string">&#x27;exit&#x27;</span>, <span class="function">(<span class="params">code</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (code !== <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">`Worker stopped with exit code <span class="subst">$&#123;code&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向 Worker 线程发送消息，开始挖矿</span></span><br><span class="line">worker.<span class="title function_">postMessage</span>(&#123; <span class="attr">start</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>worker线程</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; parentPort &#125; = <span class="built_in">require</span>(<span class="string">&#x27;worker_threads&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接收主线程发送的消息</span></span><br><span class="line">parentPort.<span class="title function_">on</span>(<span class="string">&#x27;message&#x27;</span>, <span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (message.<span class="property">start</span>) &#123;</span><br><span class="line">        <span class="comment">// 挖矿逻辑</span></span><br><span class="line">        <span class="keyword">let</span> mined = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">while</span> (!mined) &#123;</span><br><span class="line">            <span class="comment">// 这里是挖矿逻辑的示例</span></span><br><span class="line">            <span class="comment">// 假设我们挖到了一个区块，退出循环</span></span><br><span class="line">            mined = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 向主线程发送挖矿结果</span></span><br><span class="line">            parentPort.<span class="title function_">postMessage</span>(&#123; <span class="attr">mined</span>: <span class="literal">true</span>, <span class="attr">block</span>: &#123;<span class="comment">/* ... block data ... */</span>&#125; &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>workerdata基于消息机制通信，所以workerdata都是字符串或者基本类型传输，是浅拷贝，不能传递复杂对象。  可以通过序列化反序列化完成。</p>
+<p>parentPort.postMessage({ type: “newBlock”, newBlock }); 可以直接传递对象</p>
+<h2 id="websocket"><a class="markdownIt-Anchor" href="#websocket"></a> websocket</h2>
+<p>WebSocket 是一种在单个 TCP 连接上进行全双工通信的协议。它被设计为可以在客户端和服务器之间建立一个长时间存在的连接，这样客户端和服务器可以在任何时间相互发送数据，而不需要传统的 HTTP 请求和响应机制。<br />
+<code>socket._socket.remoteAddress + ':' + socket._socket.remotePort</code></p>
+<p>启动本地webserver</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">WebSocket</span> = <span class="built_in">require</span>(<span class="string">&#x27;ws&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建 WebSocket 服务器，监听 8080 端口</span></span><br><span class="line"><span class="keyword">const</span> wss = <span class="keyword">new</span> <span class="title class_">WebSocket</span>.<span class="title class_">Server</span>(&#123; <span class="attr">port</span>: <span class="number">8080</span> &#125;);</span><br><span class="line"></span><br><span class="line">wss.<span class="title function_">on</span>(<span class="string">&#x27;connection&#x27;</span>, <span class="keyword">function</span> <span class="title function_">connection</span>(<span class="params">ws</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;A new client connected&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 监听客户端发送的消息</span></span><br><span class="line">    ws.<span class="title function_">on</span>(<span class="string">&#x27;message&#x27;</span>, <span class="keyword">function</span> <span class="title function_">incoming</span>(<span class="params">message</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Received:&#x27;</span>, message);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 发送消息给客户端</span></span><br><span class="line">        ws.<span class="title function_">send</span>(<span class="string">&#x27;Hello from server&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接关闭时触发</span></span><br><span class="line">    ws.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Client disconnected&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发生错误时触发</span></span><br><span class="line">    ws.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;WebSocket error observed:&#x27;</span>, error);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发送欢迎消息给客户端</span></span><br><span class="line">    ws.<span class="title function_">send</span>(<span class="string">&#x27;Welcome new client!&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;WebSocket server is running on ws://localhost:8080&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>连接到对端</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> newPeer = <span class="string">&#x27;ws://localhost:8080&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个新的 WebSocket 连接</span></span><br><span class="line"><span class="keyword">const</span> socket = <span class="keyword">new</span> <span class="title class_">WebSocket</span>(newPeer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当连接打开时触发</span></span><br><span class="line">socket.<span class="title function_">addEventListener</span>(<span class="string">&#x27;open&#x27;</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;WebSocket is connected&#x27;</span>);</span><br><span class="line">    <span class="comment">// 发送数据到服务器</span></span><br><span class="line">    socket.<span class="title function_">send</span>(<span class="string">&#x27;Hello Server!&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当接收到服务器数据时触发</span></span><br><span class="line">socket.<span class="title function_">addEventListener</span>(<span class="string">&#x27;message&#x27;</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Message from server:&#x27;</span>, event.<span class="property">data</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当连接关闭时触发</span></span><br><span class="line">socket.<span class="title function_">addEventListener</span>(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;WebSocket is closed now.&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当发生错误时触发</span></span><br><span class="line">socket.<span class="title function_">addEventListener</span>(<span class="string">&#x27;error&#x27;</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;WebSocket error observed:&#x27;</span>, event);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送消息给服务器</span></span><br><span class="line">socket.<span class="title function_">send</span>(<span class="string">&#x27;Another message to server&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>send 和 write 区别</p>
+<ul>
+<li><strong><code>send</code></strong> 和 <strong><code>recv</code></strong>：更通用，可以在 TCP 和 UDP 套接字中使用，支持额外的标志位。</li>
+<li><strong><code>write</code></strong> 和 <strong><code>read</code></strong>：更常用于流式套接字（如 TCP），在 Node.js 中常用于 TCP 套接字。<br />
+通常使用 <code>write</code> 和 <code>read</code>（或 <code>data</code> 事件）处理 TCP 套接字，而使用 <code>send</code> 和 <code>message</code> 事件处理 WebSocket。</li>
+</ul>
+<h2 id="express"><a class="markdownIt-Anchor" href="#express"></a> express</h2>
+<p>### app.get(‘/blocks’, function (req, res) {})</p>
+<h3 id="applistenport-hostname-backlog-callback"><a class="markdownIt-Anchor" href="#applistenport-hostname-backlog-callback"></a> app.listen([port], [hostname], [backlog], [callback])</h3>
+<p>返回一个 <code>http.Server</code> 实例。提供各种方法控制服务器。<br />
+如server.close</p>
+<h3 id="appuse-注册中间件"><a class="markdownIt-Anchor" href="#appuse-注册中间件"></a> app.use 注册中间件</h3>
+<p>// 解析 application/json 类型的请求体<br />
+app.use(bodyParser.json());</p>
+<h3 id="模板引擎"><a class="markdownIt-Anchor" href="#模板引擎"></a> 模板引擎：</h3>
+<p>使用：</p>
+<ol>
+<li>设置</li>
+</ol>
+<ul>
+<li><code>views</code>, the directory where the template files are located. Eg: <code>app.set('views', './views')</code>. This defaults to the <code>views</code> directory in the application root directory.</li>
+<li><code>view engine</code>, the template engine to use. For example, to use the Pug template engine: <code>app.set('view engine', 'pug')</code>.</li>
+</ul>
+<ol start="2">
+<li>index.pug</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line">  head</span><br><span class="line">    title= title</span><br><span class="line">  body</span><br><span class="line">    h1= message</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>渲染</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">render</span>(<span class="string">&#x27;index&#x27;</span>, &#123; <span class="attr">title</span>: <span class="string">&#x27;Hey&#x27;</span>, <span class="attr">message</span>: <span class="string">&#x27;Hello there!&#x27;</span> &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="applocals"><a class="markdownIt-Anchor" href="#applocals"></a> app.locals</h3>
+<p><code>locals</code> 对象中的变量可以在整个应用程序中访问，并且在渲染视图时自动传递给模板引擎。</p>
+<p>eg.  formatters是自定义的属性变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="property">locals</span>.<span class="property">formatters</span> = &#123; </span><br><span class="line">	<span class="attr">uppercase</span>: <span class="function"><span class="params">str</span> =&gt;</span> str.<span class="title function_">toUpperCase</span>(), <span class="attr">lowercase</span>: <span class="function"><span class="params">str</span> =&gt;</span> str.<span class="title function_">toLowerCase</span>() </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="fs-extra"><a class="markdownIt-Anchor" href="#fs-extra"></a> fs-extra</h2>
+<h2 id="socketio"><a class="markdownIt-Anchor" href="#socketio"></a> <a target="_blank" rel="noopener" href="http://socket.io">socket.io</a></h2>
+<p>Websocket 是一种自然的<strong>全双工、双向、单套接字连接</strong>，解决了 HTTP 协议中不适合于实时通信的问题。</p>
+<p>客户端</p>
+<p>const io = require(‘socket.io-client’);</p>
+<h3 id="iourl-options"><a class="markdownIt-Anchor" href="#iourl-options"></a> io(url[, options])</h3>
+<hr />
+<ul>
+<li>url （字符串）默认的指向widnow.location</li>
+<li>option （Object）forceNew （布尔型）是否重用当前已存在的链接。</li>
+<li>Return Socket</li>
+</ul>
+<h2 id="密码库"><a class="markdownIt-Anchor" href="#密码库"></a> 密码库</h2>
+<p><code>elliptic</code> 库 ： 专门用来椭圆算法ECC<br />
+<code>crypto</code>库：更加复杂广泛</p>
+<p>密钥对生成格式：</p>
+<ul>
+<li><strong>SPKI</strong>：主要用于存储和传输公钥，常用于 X.509 证书等。</li>
+<li><strong>PKCS8</strong>：主要用于存储和传输私钥，可以选择性地加密私钥。</li>
+</ul>
+<p>ECDSA:<br />
+签名值格式为（r,s),  不同系统库使用不同编码格式表示值，最常见的两种格式是 <strong>IEEE P1363（windows web）</strong> 和 <strong>DER (openssk)</strong></p>
+<p>如p-256曲线，r,s均为32字节。<br />
+IEEE P1363 和 DER 编码格式的区别：</p>
+<p>IEEE P1363 格式</p>
+<ul>
+<li><strong>结构</strong>：<code>r</code> 和 <code>s</code> 被简单地连接在一起，形成一个固定长度的字节串。</li>
+<li><strong>长度</strong>：<code>r</code> 和 <code>s</code> 的每个值都被填充到固定的长度，具体长度取决于椭圆曲线的大小。例如，对于 P-256 曲线，<code>r</code> 和 <code>s</code> 都是 32 字节长（共 64 字节）。</li>
+<li><strong>简单性</strong>：没有额外的元数据或长度信息，因此非常简单，但缺乏灵活性。</li>
+</ul>
+<p><strong>DER 格式</strong></p>
+<ul>
+<li><strong>结构</strong>：DER（Distinguished Encoding Rules）是一种 ASN.1 编码规范。<code>r</code> 和 <code>s</code> 被编码为两个整数（INTEGER 类型），并通过 SEQUENCE 结构打包在一起。</li>
+<li><strong>灵活性</strong>：DER 格式灵活地表示整数长度（没有固定的字节数限制），并包括元数据（如类型标识和长度）。</li>
+<li><strong>序列化</strong>：DER 格式的签名通常比 IEEE P1363 格式稍长，因为它包含了类型和长度信息。</li>
+</ul>
+<p>如<code>r = 0x1234567890abcdef</code>，<code>s = 0xfedcba0987654321</code></p>
+<p>IEEE P1363 格式<code>0000000000000000000000000000000000000000000000001234567890abcdef000000000000000000000000000000000000000000000000fedcba0987654321</code></p>
+<p>der格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// r 的 DER 编码</span><br><span class="line">02                // INTEGER 类型标识符</span><br><span class="line">08                // r 的长度为 8 字节</span><br><span class="line">1234567890abcdef  // r 的值</span><br><span class="line"></span><br><span class="line">// s 的 DER 编码</span><br><span class="line">02                // INTEGER 类型标识符</span><br><span class="line">08                // s 的长度为 8 字节</span><br><span class="line">fedcba0987654321  // s 的值</span><br><span class="line"></span><br><span class="line">// 完整的 DER 编码签名</span><br><span class="line">30                // SEQUENCE 类型标识符</span><br><span class="line">12                // 总长度为 18 字节</span><br><span class="line">02 08 1234567890abcdef  // r 的编码</span><br><span class="line">02 08 fedcba0987654321  // s 的编码</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="env"><a class="markdownIt-Anchor" href="#env"></a> .env</h2>
+<h2 id="异步"><a class="markdownIt-Anchor" href="#异步"></a> 异步</h2>
+<h2 id="buffer-vs-arraybuffer"><a class="markdownIt-Anchor" href="#buffer-vs-arraybuffer"></a> Buffer vs ArrayBuffer</h2>
+<ul>
+<li>都是用来处理二进制数据的，比如文件读写、网络、加解密。</li>
+<li>前者是Nodejs的，后者是标准JS对象。</li>
+</ul>
+<h2 id="定时器"><a class="markdownIt-Anchor" href="#定时器"></a> 定时器</h2>
+<p>场景：while 挖矿占用过高，通过settimeout限制。 但是settimeout是异步的，导致会直接返回undefined</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">generateNextBlock</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> timestamp = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toUTCString</span>();</span><br><span class="line">  <span class="keyword">var</span> hash = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="keyword">let</span> nouce = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">whileNounce</span>(<span class="params"></span>) &#123;</span><br><span class="line">    hash = <span class="title class_">Block</span>.<span class="title function_">caculateHash</span>(</span><br><span class="line">      info.<span class="property">index</span>,</span><br><span class="line">      timestamp,</span><br><span class="line">      data,</span><br><span class="line">      info.<span class="property">previousHash</span>,</span><br><span class="line">      info.<span class="property">difficulty</span>,</span><br><span class="line">      nouce</span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_">hasMatchesDifficulty</span>(hash, info.<span class="property">difficulty</span>)) &#123;</span><br><span class="line">      <span class="comment">// 外部需要从这里返回的构建</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Block</span>(</span><br><span class="line">        info.<span class="property">index</span>,</span><br><span class="line">        timestamp,</span><br><span class="line">        info.<span class="property">difficulty</span>,</span><br><span class="line">        nouce,</span><br><span class="line">        data,</span><br><span class="line">        info.<span class="property">previousHash</span>,</span><br><span class="line">        hash</span><br><span class="line">      );</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      nouce ++;</span><br><span class="line">      <span class="built_in">setTimeout</span>(whileNounce, <span class="number">100</span>) <span class="comment">// 防止while占用过高，0.1s while一次</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">whileNounce</span>();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解决： 不直接返回。只在符合条件返回。</p>
+<ol>
+<li>回调函数</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">generateNextBlock</span>(<span class="params">data, callback</span>) &#123;</span><br><span class="line"><span class="comment">// 。。。。。。</span></span><br><span class="line">.  <span class="keyword">function</span> <span class="title function_">whileNounce</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_">hasMatchesDifficulty</span>(hash, info.<span class="property">difficulty</span>)) &#123;</span><br><span class="line">      <span class="comment">// 外部需要从这里返回的构建</span></span><br><span class="line">      <span class="keyword">const</span> newblock =  <span class="keyword">new</span> <span class="title class_">Block</span>(</span><br><span class="line">        info.<span class="property">index</span>,</span><br><span class="line">        timestamp,</span><br><span class="line">        info.<span class="property">difficulty</span>,</span><br><span class="line">        nouce,</span><br><span class="line">        data,</span><br><span class="line">        info.<span class="property">previousHash</span>,</span><br><span class="line">        hash</span><br><span class="line">      );</span><br><span class="line">      <span class="title function_">callback</span>(newblock)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      nouce ++;</span><br><span class="line">      <span class="built_in">setTimeout</span>(whileNounce, <span class="number">100</span>) <span class="comment">// 防止while占用过高，0.1s while一次</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">whileNounce</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Promise异步 (async/await)</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">generateNextBlock</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> timestamp = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toUTCString</span>();</span><br><span class="line">    <span class="keyword">var</span> hash = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">let</span> nonce = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">whileNounce</span>(<span class="params"></span>) &#123;</span><br><span class="line">      hash = <span class="title class_">Block</span>.<span class="title function_">caculateHash</span>(</span><br><span class="line">        info.<span class="property">index</span>,</span><br><span class="line">        timestamp,</span><br><span class="line">        data,</span><br><span class="line">        info.<span class="property">previousHash</span>,</span><br><span class="line">        info.<span class="property">difficulty</span>,</span><br><span class="line">        nonce</span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">if</span> (<span class="title function_">hasMatchesDifficulty</span>(hash, info.<span class="property">difficulty</span>)) &#123;</span><br><span class="line">        <span class="keyword">const</span> newBlock = <span class="keyword">new</span> <span class="title class_">Block</span>(</span><br><span class="line">          info.<span class="property">index</span>,</span><br><span class="line">          timestamp,</span><br><span class="line">          info.<span class="property">difficulty</span>,</span><br><span class="line">          nonce,</span><br><span class="line">          data,</span><br><span class="line">          info.<span class="property">previousHash</span>,</span><br><span class="line">          hash</span><br><span class="line">        );</span><br><span class="line">        <span class="title function_">resolve</span>(newBlock); <span class="comment">// 使用 resolve 返回结果</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        nonce++;</span><br><span class="line">        <span class="built_in">setTimeout</span>(whileNounce, <span class="number">100</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">whileNounce</span>();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 Promise 处理结果</span></span><br><span class="line"><span class="title function_">generateNextBlock</span>(data)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function"><span class="params">newBlock</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;生成的区块:&#x27;</span>, newBlock);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;挖矿出错:&#x27;</span>, err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="javascript"><a class="markdownIt-Anchor" href="#javascript"></a> JavaScript</h1>
+<p>ArrayBuffer:<br />
+字节数组<br />
+<code>Uint8Array</code>： 无符号数组，</p>
+<h2 id="map"><a class="markdownIt-Anchor" href="#map"></a> Map</h2>
+<h2 id="const"><a class="markdownIt-Anchor" href="#const"></a> const</h2>
+<p><code>const</code> 关键字用于声明一个常量引用，这意味着一旦声明，变量的引用不能被重新赋值。但是，这并不意味着它所引用的对象或数组的内容是不可变的。可以使用 <code>const</code> 来声明类的实例，这个实例的引用不能被改变，但实例本身的属性和方法仍然可以被修改。</p>
+<h2 id="数组"><a class="markdownIt-Anchor" href="#数组"></a> 数组</h2>
+<p><code>a.concat(b)</code> 将当前元素（子数组）合并到累积器 <code>a</code> 中</p>
+<p><code>[1, 2].concat([3, 4])</code> 的结果是 <code>[1, 2, 3, 4]</code>。</p>
+<p><code>flat()</code> 嵌套数组 扁平化：.</p>
+<p>JavaScript 的数组是一种泛型容器，它可以容纳任意类型的对象，但它并不保持对象的构造函数信息或类类型。<br />
+类对象放入数组 再拿出来就是Object丢失类型了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123; <span class="title function_">constructor</span>(<span class="params">name, age</span>) &#123; <span class="variable language_">this</span>.<span class="property">name</span> = name; <span class="variable language_">this</span>.<span class="property">age</span> = age; &#125; <span class="title function_">greet</span>(<span class="params"></span>) &#123; <span class="keyword">return</span> <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>.`</span>; &#125; &#125;</span><br></pre></td></tr></table></figure>
+<p>json只是一种数据格式， 可以表示字符串， 也可以表示js对象</p>
+<p>unicode: 符号集，规定了符号对应的二进制。</p>
+<p>utf-8：unicode的一种格式，规定unicode二进制的存储 划分方式。</p>
+<blockquote>
+<p>UTF-8 的编码规则很简单，只有二条：</p>
+<ol>
+<li>
+<p>对于单字节的符号，字节的第一位设为<code>0</code>，后面 7 位为这个符号的码点。因此对于英语字母，UTF-8 编码和 ASCII 编码是相同的。</p>
+</li>
+<li>
+<p>对于<code>n</code>字节的符号（<code>n &gt; 1</code>），第一个字节的前<code>n</code>位都设为<code>1</code>，第<code>n + 1</code>位设为<code>0</code>，后面字节的前两位一律设为<code>10</code>。剩下的没有提及的二进制位，全部为这个符号的码点。</p>
+</li>
+</ol>
+</blockquote>
+<p>bitArray: 32-bit words</p>
+<p>toBits():</p>
+<p>​	符号的unicode二进制， 组装为bitArray</p>
+<p>partial():</p>
+<p>​	将不足32-bit的，扩充为bitArray</p>
+<h2 id="dom"><a class="markdownIt-Anchor" href="#dom"></a> DOM</h2>
+<p>Element.scrollIntoView()</p>
+<p>方法会滚动元素的父容器，使被调用 scrollIntoView() 的元素对用户可见。</p>
+<h2 id="类型判断"><a class="markdownIt-Anchor" href="#类型判断"></a> 类型判断</h2>
+<p>判断是否是数组：<br />
+if (Array.isArray(data)) {<br />
+console.error(“Invalid Transactions data”);<br />
+return data; // 创世区块不是数组<br />
+}</p>
+<p>typeof 数组 返回的是object</p>
+<h2 id="array"><a class="markdownIt-Anchor" href="#array"></a> Array</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>];</span><br><span class="line"><span class="keyword">const</span> result = ages.<span class="title function_">filter</span>(checkAdult);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">checkAdult</span>(<span class="params">age</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> age &gt;= <span class="number">18</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id=""><a class="markdownIt-Anchor" href="#"></a> …</h2>
+<p>扩展运算符(…)是ES6的语法，用于取出参数对象的所有可遍历属性，然后拷贝到当前对象之中。</p>
+<h2 id="类"><a class="markdownIt-Anchor" href="#类"></a> 类</h2>
+<h2 id="导入导出"><a class="markdownIt-Anchor" href="#导入导出"></a> 导入导出</h2>
+<p>exports 用于js<br />
+nodejs导入：require、module.exports</p>
+<p>JavaScript 和 Node.js有不同的模块系统：</p>
+<h3 id="javascriptes6模块"><a class="markdownIt-Anchor" href="#javascriptes6模块"></a> JavaScript（ES6模块）</h3>
+<h4 id="导出"><a class="markdownIt-Anchor" href="#导出"></a> 导出</h4>
+<p>允许在一个文件定义变量、函数、类，并导出</p>
+<ol>
+<li><strong>命名导出 (Named Export)</strong>:<br />
+可以导出多个值，每个值有一个名字。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// myModule.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> name = <span class="string">&#x27;Alice&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">sayHello</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Hello&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>默认导出 (Default Export)</strong>:<br />
+一个文件（模块）只能有一个默认导出，常用于导出主要功能或值</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// myModule.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">mainFunction</span> = (<span class="params"></span>) =&gt; &#123; <span class="comment">/* ... */</span> &#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> mainFunction;</span><br></pre></td></tr></table></figure>
+<h4 id="导入"><a class="markdownIt-Anchor" href="#导入"></a> 导入</h4>
+<ol>
+<li>导入 命名导出：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;name, sayHello&#125; <span class="keyword">from</span> <span class="string">&#x27;./module.js&#x27;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>导入 默认导出：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mainFunc <span class="keyword">from</span> <span class="string">&#x27;./module.js&#x27;</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>重命名导入 命名导出：</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;name <span class="keyword">as</span> myname, sayhello <span class="keyword">as</span> hello&#125; <span class="keyword">from</span> <span class="string">&#x27;./module.js&#x27;</span></span><br></pre></td></tr></table></figure>
+<h2 id="nodejscommanjs模块"><a class="markdownIt-Anchor" href="#nodejscommanjs模块"></a> Nodejs(CommanJS模块)</h2>
+<p>同样的，可以导入导出变量、函数、类</p>
+<h4 id="导出-2"><a class="markdownIt-Anchor" href="#导出-2"></a> 导出</h4>
+<p>使用<code>module.exports</code>导出， <code>exports</code>只是他的简写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&#x27;alice&#x27;</span>, <span class="comment">// 导出变量</span></span><br><span class="line">	<span class="attr">hello</span>: <span class="function">()=&gt;</span>&#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title class_">Student</span>, <span class="comment">// 导出类</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>module.exports = new EventEmitter(); 单例，只有第一次加载时候创建</p>
+<h3 id="导入-2"><a class="markdownIt-Anchor" href="#导入-2"></a> 导入</h3>
+<p>使用<code>require</code>导入。</p>
+<ul>
+<li>导入整个模块</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mymodule = <span class="built_in">require</span>(<span class="string">&#x27;./module.js&#x27;</span>)</span><br><span class="line">mymodule.<span class="property">name</span> </span><br><span class="line">mymodule.<span class="title function_">hello</span>()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>导入模块一部分</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;name,hello&#125; = <span class="built_in">require</span>(<span class="string">&#x27;./module.js&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="区别"><a class="markdownIt-Anchor" href="#区别"></a> 区别</h2>
+<ol>
+<li><strong>语法</strong>:</li>
+</ol>
+<ul>
+<li>ES6 模块是语言层级的特性，支持静态分析，能够提前知道依赖关系。</li>
+<li>CommonJS 模块在运行时解析依赖。</li>
+</ul>
+<h2 id="ramda库"><a class="markdownIt-Anchor" href="#ramda库"></a> ramda库</h2>
+<h2 id="时间"><a class="markdownIt-Anchor" href="#时间"></a> 时间</h2>
+<p>在 JavaScript 中，<code>Date</code> 对象提供了多种方法来操作和格式化日期和时间。</p>
+<ol>
+<li>
+<p><strong><code>toISOString</code></strong>：</p>
+<ul>
+<li>返回一个 ISO 格式的日期字符串 (UTC 时间)。</li>
+<li>格式为：<code>YYYY-MM-DDTHH:mm:ss.sssZ</code>。</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toISOString</span>());  <span class="comment">// e.g., &quot;2024-07-15T12:34:56.789Z&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong><code>toUTCString</code></strong>：</p>
+<ul>
+<li>返回一个基于世界时（UTC）的字符串表示形式。</li>
+<li>这种格式通常用于 HTTP 标头等应用。</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toUTCString</span>());  <span class="comment">// e.g., &quot;Mon, 15 Jul 2024 12:34:56 GMT&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong><code>toLocaleString</code></strong>：</p>
+<ul>
+<li>返回一个表示日期的字符串，根据本地时间格式化。</li>
+<li>可以接受两个可选参数，用于指定语言和格式化选项。</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toLocaleString</span>());  <span class="comment">// e.g., &quot;7/15/2024, 12:34:56 PM&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toLocaleString</span>(<span class="string">&#x27;en-GB&#x27;</span>));  <span class="comment">// e.g., &quot;15/07/2024, 12:34:56&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong><code>toDateString</code></strong>：</p>
+<ul>
+<li>返回一个表示日期部分的字符串，不包含时间部分。</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toDateString</span>());  <span class="comment">// e.g., &quot;Mon Jul 15 2024&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong><code>toTimeString</code></strong>：</p>
+<ul>
+<li>返回一个表示时间部分的字符串，不包含日期部分。</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toTimeString</span>());  <span class="comment">// e.g., &quot;12:34:56 GMT+0000 (Coordinated Universal Time)&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong><code>toLocaleDateString</code></strong>：</p>
+<ul>
+<li>返回一个表示日期部分的字符串，根据本地时间格式化。</li>
+<li>可以接受两个可选参数，用于指定语言和格式化选项。</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toLocaleDateString</span>());  <span class="comment">// e.g., &quot;7/15/2024&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toLocaleDateString</span>(<span class="string">&#x27;en-GB&#x27;</span>));  <span class="comment">// e.g., &quot;15/07/2024&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong><code>toLocaleTimeString</code></strong>：</p>
+<ul>
+<li>返回一个表示时间部分的字符串，根据本地时间格式化。</li>
+<li>可以接受两个可选参数，用于指定语言和格式化选项。</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toLocaleTimeString</span>());  <span class="comment">// e.g., &quot;12:34:56 PM&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">toLocaleTimeString</span>(<span class="string">&#x27;en-GB&#x27;</span>));  <span class="comment">// e.g., &quot;12:34:56&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong><code>getTime</code></strong>：</p>
+<ul>
+<li>返回自 1970 年 1 月 1 日 00:00:00 UTC 以来的毫秒数。</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">getTime</span>());  <span class="comment">// e.g., 1626356096789</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong><code>getTimezoneOffset</code></strong>：</p>
+<ul>
+<li>返回当前时间与 UTC 时间的分钟差。</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(date.<span class="title function_">getTimezoneOffset</span>());  <span class="comment">// e.g., -120 (for UTC+2)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong><code>Date.now</code></strong>：</p>
+<ul>
+<li>返回自 1970 年 1 月 1 日 00:00:00 UTC 以来的毫秒数（静态方法）。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>());  <span class="comment">// e.g., 1626356096789</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="promise"><a class="markdownIt-Anchor" href="#promise"></a> Promise</h2>
+<p><code>Promise</code> 是一种用于处理异步操作的对象。它代表一个在未来某个时间点可能会完成或失败的操作及其结果值。</p>
+<ol>
+<li><strong><code>Promise</code></strong> 构造器函数</li>
+</ol>
+<ul>
+<li>主要用于包装不支持 promise（返回值不是 <code>Promise</code>）的函数。</li>
+<li>如<code>setTimeout(()=&gt;&#123;&#125;,3000);</code>返回值是定时器的编号。(异步操作)</li>
+<li>构造器参数实为一个异步函数，在内部进行异步任务，并且设定<code>promise</code>对象的状态:<code>resolved</code>,<code>reject</code></li>
+<li>构造<code>promise</code>对象时，将参数（异步函数、成功函数、拒绝函数）绑定在<code>promise</code>对象上，  并且执行：异步操作、设定<code>promise</code>状态</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myFirstPromise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// do something asynchronous which eventually calls either:</span></span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  <span class="comment">//   resolve(someValue)        // fulfilled</span></span><br><span class="line">  <span class="comment">// or</span></span><br><span class="line">  <span class="comment">//   reject(&quot;failure reason&quot;)  // rejected</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myAsyncFunction</span>(<span class="params">url</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">    xhr.<span class="title function_">open</span>(<span class="string">&quot;GET&quot;</span>, url)</span><br><span class="line">    xhr.<span class="property">onload</span> = <span class="function">() =&gt;</span> <span class="title function_">resolve</span>(xhr.<span class="property">responseText</span>)</span><br><span class="line">    xhr.<span class="property">onerror</span> = <span class="function">() =&gt;</span> <span class="title function_">reject</span>(xhr.<span class="property">statusText</span>)</span><br><span class="line">    xhr.<span class="title function_">send</span>()</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>2.<code>then()</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// using a resolved promise, the &#x27;then&#x27; block will be triggered instantly,</span></span><br><span class="line"><span class="comment">// but its handlers will be triggered asynchronously as demonstrated by the console.logs</span></span><br><span class="line"><span class="keyword">const</span> resolvedProm = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="number">33</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> thenProm = resolvedProm.<span class="title function_">then</span>(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;this gets called after the end of the main stack. the value received and returned is: &quot;</span> + value);</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// instantly logging the value of thenProm</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(thenProm);</span><br><span class="line"></span><br><span class="line"><span class="comment">// using setTimeout we can postpone the execution of a function to the moment the stack is empty</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(thenProm);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面的代码会依次返回：</span></span><br><span class="line"><span class="comment">// Promise &#123;[[PromiseStatus]]: &quot;pending&quot;, [[PromiseValue]]: undefined&#125;</span></span><br><span class="line"><span class="comment">// &quot;this gets called after the end of the main stack. the value received and returned is: 33&quot;</span></span><br><span class="line"><span class="comment">// Promise &#123;[[PromiseStatus]]: &quot;resolved&quot;, [[PromiseValue]]: 33&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>3.<code>catch()</code></p>
+<p>当 <code>Promise </code>为<code> rejected</code> 时 ，处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抛出一个错误，大多数时候将调用 catch 方法</span></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span>(<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="string">&#x27;Uh-oh!&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">p1.<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e); <span class="comment">// &quot;Uh-oh!&quot;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在异步函数中抛出的错误不会被 catch 捕获到</span></span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span>(<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="string">&#x27;Uncaught Exception!&#x27;</span>;</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">p2.<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e); <span class="comment">// 不会执行</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在 resolve() 后面抛出的错误会被忽略</span></span><br><span class="line"><span class="keyword">var</span> p3 = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span>(<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="title function_">resolve</span>();</span><br><span class="line">  <span class="keyword">throw</span> <span class="string">&#x27;Silenced Exception!&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">p3.<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(e); <span class="comment">// 不会执行</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="promiseall"><a class="markdownIt-Anchor" href="#promiseall"></a> Promise.all()</h3>
+<p>背景：map里面每个元素都要异步函数返回</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tx.<span class="property">inputs</span> = tx.<span class="property">inputs</span>.<span class="title function_">map</span>(<span class="title function_">async</span> (txin, index) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`sign txin <span class="subst">$&#123;index&#125;</span>`</span>)</span><br><span class="line">  txin.<span class="property">signature</span> = <span class="keyword">await</span> <span class="title class_">MyCrypto</span>.<span class="title function_">sign</span>(tx.<span class="property">id</span>, privateKey)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`signed txin <span class="subst">$&#123;index&#125;</span> with signature <span class="subst">$&#123;txin.signature&#125;</span>`</span>)</span><br><span class="line">  <span class="keyword">return</span> txin;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这样写法不正确，每个返回值是promise</p>
+<p>Promise.all() 会等待所有这些promise完成，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">signTransaction</span>(<span class="params">tx, privateKey</span>) &#123;</span><br><span class="line">  <span class="comment">// `tx.inputs` 是一个数组，`map` 生成一个包含 Promise 的数组</span></span><br><span class="line">  <span class="keyword">const</span> signedInputs = <span class="keyword">await</span> <span class="title class_">Promise</span>.<span class="title function_">all</span>(tx.<span class="property">inputs</span>.<span class="title function_">map</span>(<span class="title function_">async</span> (txin, index) =&gt; &#123;</span><br><span class="line">    txin.<span class="property">signature</span> = <span class="keyword">await</span> <span class="title class_">MyCrypto</span>.<span class="title function_">sign</span>(tx.<span class="property">id</span>, privateKey);</span><br><span class="line">    <span class="keyword">return</span> txin;</span><br><span class="line">  &#125;));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 确保所有的签名操作完成，并将结果赋值给 `tx.inputs`</span></span><br><span class="line">  tx.<span class="property">inputs</span> = signedInputs;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 添加公钥</span></span><br><span class="line">  tx.<span class="property">publicKey</span> = address;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> tx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>await等待Promise.all返回结果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise1 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="number">3</span>);</span><br><span class="line"><span class="keyword">const</span> promise2 = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">const</span> promise3 = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(resolve, <span class="number">100</span>, <span class="string">&#x27;foo&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">all</span>([promise1, promise2, promise3]).<span class="title function_">then</span>(<span class="function"><span class="params">values</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(values); <span class="comment">// [3, 42, &#x27;foo&#x27;]</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="asyncawait"><a class="markdownIt-Anchor" href="#asyncawait"></a> async/await</h2>
+<p>简化promise写法，async返回值是ProMise,</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个简单的 Promise，2秒后成功</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">asyncFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="title function_">someAsyncOperation</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;Error:&#x27;</span>, error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>一旦底层有异步函数async&lt;上面所有调用都是async吗？<br />
+取决于你是否需要使用 <code>await</code> 关键字来等待异步操作完成。<br />
+如果一个函数中需要等待一个异步操作的完成并获取结果，那么这个函数必须使用 <code>async</code> 声明，并在需要的位置使用 <code>await</code> 关键字。<code>await</code> 只能在 <code>async</code> 函数中使用。</p>
+<h3 id="对象原型"><a class="markdownIt-Anchor" href="#对象原型"></a> 对象原型</h3>
+<ol>
+<li><code>prototype</code> 属性的值是一个对象，我们希望被原型链下游的对象继承的属性和方法，都被储存在其中。</li>
+</ol>
+<p>而不在<code>prototype</code>中的属性，只能被构造器自身使用。</p>
+<blockquote>
+<p>构造器本身就是函数，你怎么可能在构造器这个函数中定义一个方法呢？</p>
+<p>​	构造器函数也是一个对象类型，</p>
+</blockquote>
+<ol start="2">
+<li>对象的 <code>__proto__</code> 属性 = = 父亲的  <code>proptotype</code>属性 ，指向一个对象。 原型对象是一个内部对象，应当使用 <code>__proto__</code> 访问</li>
+</ol>
+<p>原型链找完了， 还没找到属性， 返回<code>undefined</code>.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">first, last, age, gender, interests</span>) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 属性与方法定义</span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;Bob&#x27;</span>, <span class="string">&#x27;Smith&#x27;</span>, <span class="number">32</span>, <span class="string">&#x27;male&#x27;</span>, [<span class="string">&#x27;music&#x27;</span>, <span class="string">&#x27;skiing&#x27;</span>]);</span><br><span class="line">person1.<span class="title function_">valueOf</span>()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>浏览器首先检查，<code>person1</code> 对象是否具有可用的 <code>valueOf()</code> 方法。</li>
+<li>如果没有，则浏览器检查 <code>person1</code> 对象的原型对象（即 <code>Person</code>构造函数的 prototype 属性所指向的对象）是否具有可用的 <code>valueof()</code> 方法。</li>
+<li>如果也没有，则浏览器检查 <code>Person()</code> 构造函数的 prototype 属性所指向的对象的原型对象（即 <code>Object</code>构造函数的 prototype 属性所指向的对象）是否具有可用的 <code>valueOf()</code> 方法。这里有这个方法，于是该方法被调用。</li>
+</ul>
+<img src="D:\person\js\assets\image-20221221131221491.png" alt="image-20221221131221491" style="zoom:50%;" />
+<h1 id="windowsubtlecrypto"><a class="markdownIt-Anchor" href="#windowsubtlecrypto"></a> window.subtle.crypto</h1>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#examples">前端window.crypto</a><br />
+<code>crypto.webcrypto</code> 是nodejs端对浏览器window.crypto实现</p>
+<p>在密码学中，密钥的存储和表示有多种格式。这些格式用于定义密钥的结构和编码方式，以便在不同的系统和应用之间传递和使用密钥。以下是关于 <code>raw</code>、<code>pkcs8</code>、<code>spki</code> 和 <code>jwk</code> 这些密钥格式的详细解释：</p>
+<h3 id="1-raw-格式"><a class="markdownIt-Anchor" href="#1-raw-格式"></a> 1. <strong>Raw 格式</strong></h3>
+<ul>
+<li><strong>描述</strong>: <code>raw</code> 格式表示原始的二进制密钥数据，通常是未经过任何编码或包装的形式。</li>
+<li><strong>用途</strong>: 主要用于对称加密算法的密钥，如 AES 等，因为这些密钥通常是简单的二进制数据。</li>
+<li><strong>特征</strong>:
+<ul>
+<li>简单、直接。</li>
+<li>没有元数据（如密钥长度、使用限制等）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-pkcs-8-格式"><a class="markdownIt-Anchor" href="#2-pkcs-8-格式"></a> 2. <strong>PKCS #8 格式</strong></h3>
+<ul>
+<li><strong>描述</strong>: PKCS #8 (Public-Key Cryptography Standards #8) 是一种标准格式，用于<em>存储私钥</em>。它可以存储包括算法标识符在内的私钥信息，并且支持私钥加密保护。</li>
+<li><strong>用途</strong>: 广泛用于存储私钥，包括 RSA、DSA 和 EC（椭圆曲线）私钥。</li>
+<li><strong>特征</strong>:
+<ul>
+<li>可以选择加密私钥，提供额外的安全层。</li>
+<li>一般使用 DER (Distinguished Encoding Rules) 或 PEM (Privacy Enhanced Mail) 编码。PEM 格式通常以 <code>-----BEGIN PRIVATE KEY-----</code> 开头，以 <code>-----END PRIVATE KEY-----</code> 结尾。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-spki-subjectpublickeyinfo-格式"><a class="markdownIt-Anchor" href="#3-spki-subjectpublickeyinfo-格式"></a> 3. <strong>SPKI (SubjectPublicKeyInfo) 格式</strong></h3>
+<ul>
+<li><strong>描述</strong>: SPKI 格式定义了公钥的结构，包括算法标识符和公钥值。它是 X.509 标准的一部分，用于描述公钥证书中的公钥信息。</li>
+<li><strong>用途</strong>: 用于存储和传输公钥，特别是在 X.509 证书中。</li>
+<li><strong>特征</strong>:
+<ul>
+<li>包含算法标识符，使得接收方能够识别和使用公钥。</li>
+<li>同样可以使用 DER 或 PEM 编码。PEM 格式通常以 <code>-----BEGIN PUBLIC KEY-----</code> 开头，以 <code>-----END PUBLIC KEY-----</code> 结尾。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-jwk-json-web-key-格式"><a class="markdownIt-Anchor" href="#4-jwk-json-web-key-格式"></a> 4. <strong>JWK (JSON Web Key) 格式</strong></h3>
+<ul>
+<li><strong>描述</strong>: JWK (JSON Web Key) 是一种 JSON 数据结构，用于表示公钥或私钥。它是 JSON Web 系列标准的一部分，特别适合在现代 web 应用中使用。</li>
+<li><strong>用途</strong>: 用于传输和存储公钥和私钥，特别是在 RESTful API 和现代 web 应用中。</li>
+<li><strong>特征</strong>:
+<ul>
+<li>基于 JSON 格式，易于人类读取和处理。</li>
+<li>支持多个密钥参数，如 <code>kty</code> (密钥类型)、<code>alg</code> (算法)、<code>use</code> (用途)、<code>key_ops</code> (密钥操作) 等。</li>
+<li>能够表示对称和非对称密钥，包括 RSA 和 EC 公钥、私钥。</li>
+</ul>
+</li>
+</ul>
+<h3 id="应用场景和选择"><a class="markdownIt-Anchor" href="#应用场景和选择"></a> 应用场景和选择</h3>
+<ul>
+<li><strong>Raw 格式</strong>: 适用于简单的对称密钥使用场景，不需要复杂的密钥管理。</li>
+<li><strong>PKCS #8</strong>: 常用于需要强安全性和私钥管理的场景，如 TLS/SSL 证书和加密邮件。</li>
+<li><strong>SPKI</strong>: 在公钥基础设施 (PKI) 和证书管理系统中非常常见。</li>
+<li><strong>JWK</strong>: 特别适合现代 web 应用，支持易于传输的 JSON 格式，常用于 OAuth 2.0 和 OpenID Connect 等协议。</li>
+</ul>
+<h1 id="网站"><a class="markdownIt-Anchor" href="#网站"></a> 网站</h1>
+<p><a target="_blank" rel="noopener" href="https://scrimba.com/scrim/cRvPwWuk">scrimba</a>: youtube : freecodecamp</p>
+<p><a href="www.codewars.com">codewars</a></p>
+<p>[freecodecamp](#</p>
+<p><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/">https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/</a>)</p>
+<p>架构设计<a target="_blank" rel="noopener" href="http://www.52im.net/thread-812-1-1.html">http://www.52im.net/thread-812-1-1.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://anran758.github.io/front-end-lab/topic/react.html#react-%E6%98%AF%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%98%E6%98%AF%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81-%E5%AE%83%E8%BF%98%E6%9C%89%E5%85%B6%E4%BB%96%E7%89%B9%E7%82%B9%E5%90%97">https://anran758.github.io/front-end-lab/topic/react.html#react-是单向数据流还是双向数据流-它还有其他特点吗</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ddongzi.github.io">张彦东的博客</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ddongzi.github.io/2024/06/22/%E7%BC%96%E7%A8%8B/react&amp;js/">https://ddongzi.github.io/2024/06/22/%E7%BC%96%E7%A8%8B/react&amp;js/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://ddongzi.github.io" target="_blank">张彦东的博客</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/cat.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2024/06/08/%E6%83%85%E7%BB%AA%E6%97%A5%E8%AE%B0/2024-06-08/" title="2024-06-08.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">2024-06-08.md</div></div><div class="info-2"><div class="info-item-1">  ...</div></div></div></a><a class="pagination-related" href="/2024/06/22/%E7%BC%96%E7%A8%8B/C/" title="C.md"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">C.md</div></div><div class="info-2"><div class="info-item-1"> c&amp;p  一. 标准函数库  1. 时间 类型对比：   定义： time_t 是当天日期时间，clock_t是程序运行时间。   长度没区别   time_t : typedef long time_t clock_t : typedef *long* *clock_t*  C experts 2.3 重载冗杂 sizeof并不是一个函数，而是一个操作符。  操作数是变量：不必加括号。 sizeof *p 获取p指针指向对象的字节数 操作数是类型：必须加括号。sizeof(int) *p。 这里含义是什么？ 强制转换int型之后 sizeof？还是int长度乘以p？ 实践：是后者。  1int main ()                                                                           &#123;                                                                                     	char a =...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/cat.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">张彦东的博客</div><div class="author-info-description"> 孩儿立志出乡关，学不成名誓不还。 埋骨何须桑梓地，人生无处不青山。 </div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">90</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ddongzi"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/ddongzi" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:aa635176614@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="toc-number">1.</span> <span class="toc-text"> 位运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E7%9B%B8%E5%8F%8D%E6%95%B0-n-~n-1-~n-1"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 取相反数-n &#x3D; ~(n - 1) &#x3D; ~n + 1</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#firebase"><span class="toc-number">2.</span> <span class="toc-text"> firebase</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#react"><span class="toc-number">3.</span> <span class="toc-text"> react</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-number">3.0.1.</span> <span class="toc-text"> 官方文档</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#thinking-in-react-how-to-build-a-react-app"><span class="toc-number">3.0.1.1.</span> <span class="toc-text"> Thinking in React : how to build a react app</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#step-3-find-the-minimal-but-complete-representation-of-ui-state"><span class="toc-number">3.0.1.1.1.</span> <span class="toc-text"> Step 3: Find the minimal but complete representation of UI state</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useeffect"><span class="toc-number">3.0.2.</span> <span class="toc-text"> useEffect:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#01reactcreateref"><span class="toc-number">3.1.</span> <span class="toc-text"> 01.React.createRef()	</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-reactsuspense"><span class="toc-number">3.2.</span> <span class="toc-text"> 02. React.Suspense</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-props-%E5%92%8C-state"><span class="toc-number">3.3.</span> <span class="toc-text"> 03. props 和 state</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6%E5%92%8C%E7%B1%BB%E7%BB%84%E4%BB%B6"><span class="toc-number">3.4.</span> <span class="toc-text"> 04. 函数式组件和类组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-classnames"><span class="toc-number">3.5.</span> <span class="toc-text"> 05. classnames</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06-react-%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1"><span class="toc-number">3.6.</span> <span class="toc-text"> 06. React 组件通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#context"><span class="toc-number">3.6.1.</span> <span class="toc-text"> context</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89hook%E5%92%8Ccontext%E8%81%94%E7%B3%BB%E5%8C%BA%E5%88%AB"><span class="toc-number">3.6.2.</span> <span class="toc-text"> 自定义hook和context联系区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">3.7.</span> <span class="toc-text"> 问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9C%A8-useeffect-usecallback-usememo-%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%88%B0%E7%9A%84-state-props-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%A7%E5%80%BC"><span class="toc-number">3.7.1.</span> <span class="toc-text"> 1. 在 useEffect、useCallback、useMemo 中获取到的 state、props 为什么是旧值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-useeffect-%E4%BA%8B%E4%BB%B6%E6%B3%A8%E5%86%8C%E7%9A%84%E9%97%AD%E5%8C%85%E9%99%B7%E9%98%B1"><span class="toc-number">3.7.2.</span> <span class="toc-text"> 2. useEffect 事件注册的闭包陷阱</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mui"><span class="toc-number">4.</span> <span class="toc-text"> MUI</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%BA%A6%E5%92%8C%E9%97%AE%E9%A2%98"><span class="toc-number">4.1.</span> <span class="toc-text"> 进度和问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#css"><span class="toc-number">5.</span> <span class="toc-text"> CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#swagger"><span class="toc-number">6.</span> <span class="toc-text"> swagger</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#nodejs"><span class="toc-number">7.</span> <span class="toc-text"> Nodejs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">7.1.</span> <span class="toc-text"> 多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#worker_threads%E6%A8%A1%E5%9D%97"><span class="toc-number">7.1.1.</span> <span class="toc-text"> worker_threads模块：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket"><span class="toc-number">7.2.</span> <span class="toc-text"> websocket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#express"><span class="toc-number">7.3.</span> <span class="toc-text"> express</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#applistenport-hostname-backlog-callback"><span class="toc-number">7.3.1.</span> <span class="toc-text"> app.listen([port], [hostname], [backlog], [callback])</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#appuse-%E6%B3%A8%E5%86%8C%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">7.3.2.</span> <span class="toc-text"> app.use 注册中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="toc-number">7.3.3.</span> <span class="toc-text"> 模板引擎：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#applocals"><span class="toc-number">7.3.4.</span> <span class="toc-text"> app.locals</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fs-extra"><span class="toc-number">7.4.</span> <span class="toc-text"> fs-extra</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#socketio"><span class="toc-number">7.5.</span> <span class="toc-text"> socket.io</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#iourl-options"><span class="toc-number">7.5.1.</span> <span class="toc-text"> io(url[, options])</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%86%E7%A0%81%E5%BA%93"><span class="toc-number">7.6.</span> <span class="toc-text"> 密码库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#env"><span class="toc-number">7.7.</span> <span class="toc-text"> .env</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5"><span class="toc-number">7.8.</span> <span class="toc-text"> 异步</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#buffer-vs-arraybuffer"><span class="toc-number">7.9.</span> <span class="toc-text"> Buffer vs ArrayBuffer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="toc-number">7.10.</span> <span class="toc-text"> 定时器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript"><span class="toc-number">8.</span> <span class="toc-text"> JavaScript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#map"><span class="toc-number">8.1.</span> <span class="toc-text"> Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#const"><span class="toc-number">8.2.</span> <span class="toc-text"> const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">8.3.</span> <span class="toc-text"> 数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dom"><span class="toc-number">8.4.</span> <span class="toc-text"> DOM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD"><span class="toc-number">8.5.</span> <span class="toc-text"> 类型判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array"><span class="toc-number">8.6.</span> <span class="toc-text"> Array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.7.</span> <span class="toc-text"> …</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-number">8.8.</span> <span class="toc-text"> 类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA"><span class="toc-number">8.9.</span> <span class="toc-text"> 导入导出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#javascriptes6%E6%A8%A1%E5%9D%97"><span class="toc-number">8.9.1.</span> <span class="toc-text"> JavaScript（ES6模块）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA"><span class="toc-number">8.9.1.1.</span> <span class="toc-text"> 导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5"><span class="toc-number">8.9.1.2.</span> <span class="toc-text"> 导入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejscommanjs%E6%A8%A1%E5%9D%97"><span class="toc-number">8.10.</span> <span class="toc-text"> Nodejs(CommanJS模块)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA-2"><span class="toc-number">8.10.0.1.</span> <span class="toc-text"> 导出</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5-2"><span class="toc-number">8.10.1.</span> <span class="toc-text"> 导入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB"><span class="toc-number">8.11.</span> <span class="toc-text"> 区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ramda%E5%BA%93"><span class="toc-number">8.12.</span> <span class="toc-text"> ramda库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4"><span class="toc-number">8.13.</span> <span class="toc-text"> 时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#promise"><span class="toc-number">8.14.</span> <span class="toc-text"> Promise</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#promiseall"><span class="toc-number">8.14.1.</span> <span class="toc-text"> Promise.all()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#asyncawait"><span class="toc-number">8.15.</span> <span class="toc-text"> async&#x2F;await</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%8E%9F%E5%9E%8B"><span class="toc-number">8.15.1.</span> <span class="toc-text"> 对象原型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#windowsubtlecrypto"><span class="toc-number">9.</span> <span class="toc-text"> window.subtle.crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-raw-%E6%A0%BC%E5%BC%8F"><span class="toc-number">9.0.1.</span> <span class="toc-text"> 1. Raw 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-pkcs-8-%E6%A0%BC%E5%BC%8F"><span class="toc-number">9.0.2.</span> <span class="toc-text"> 2. PKCS #8 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-spki-subjectpublickeyinfo-%E6%A0%BC%E5%BC%8F"><span class="toc-number">9.0.3.</span> <span class="toc-text"> 3. SPKI (SubjectPublicKeyInfo) 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-jwk-json-web-key-%E6%A0%BC%E5%BC%8F"><span class="toc-number">9.0.4.</span> <span class="toc-text"> 4. JWK (JSON Web Key) 格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E5%92%8C%E9%80%89%E6%8B%A9"><span class="toc-number">9.0.5.</span> <span class="toc-text"> 应用场景和选择</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%AB%99"><span class="toc-number">10.</span> <span class="toc-text"> 网站</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/C%E5%9F%BA%E7%A1%80/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" title="网络编程">网络编程</a><time datetime="2025-02-07T11:48:38.000Z" title="发表于 2025-02-07 19:48:38">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/redis/12-%E4%BA%8B%E4%BB%B6/" title="12-事件">12-事件</a><time datetime="2025-02-07T10:48:38.000Z" title="发表于 2025-02-07 18:48:38">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/redis/14-%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="14-服务器">14-服务器</a><time datetime="2025-02-07T03:48:38.000Z" title="发表于 2025-02-07 11:48:38">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/IO%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8/" title="IO多路复用">IO多路复用</a><time datetime="2025-02-07T01:48:38.000Z" title="发表于 2025-02-07 09:48:38">2025-02-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 张彦东的博客</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
