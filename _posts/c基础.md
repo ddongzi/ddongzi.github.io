@@ -1,0 +1,73 @@
+---
+title: MathJax and LaTeX
+author: Tao He
+date: 2023-10-14
+category: Jekyll
+layout: post
+mermaid: true
+
+---
+
+## 时间
+
+类型对比：
+
+- 定义：
+            time_t 是当天日期时间，clock_t是程序运行时间。
+- 长度没区别
+
+time_t : typedef long time_t
+
+clock_t : typedef *long* *clock_t*
+
+
+
+
+
+## 重载冗杂
+
+sizeof并不是一个函数，而是一个操作符。
+
+- 操作数是变量：不必加括号。     sizeof *p 获取p指针指向对象的字节数
+- 操作数是类型：必须加括号。sizeof(int)     *p。
+            这里含义是什么？ 强制转换int型之后 sizeof？还是int长度乘以p？ 实践：是后者。
+
+Int main(){ 
+
+  chara = '5';                                   
+
+  int*p = &a;                                     
+
+ int q = sizeof(int) * p;                              
+
+  printf("%d", q);                                  
+
+  return0;                                    
+
+ }
+
+## 结构体
+
+柔性数组必须作为结构体最后一个字段。
+
+问题，redis ziplist 压缩列表希望柔性数组后面再来一个zlend末尾标记，这就会冲突！
+
+```c
+typedef struct {
+  unsigned int zlbytes;  // 压缩列表总字节数
+  unsigned int zltail;   // 到最后一个节点的偏移量
+  unsigned short zllen;  // 压缩列表中节点数
+  unsigned char entries[]; // 节点数据（变长）
+unsigned int zlend;
+} ziplist;
+解决：额外检测zlend字段，创建内存时候，加上zlend字节。但是结构不包含
+```
+
+向前声明！
+
+
+
+## 字符串
+
+Strdup(host) 返回的指针，要后续手动释放
+
