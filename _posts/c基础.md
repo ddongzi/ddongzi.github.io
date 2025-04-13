@@ -1,11 +1,10 @@
 ---
-title: MathJax and LaTeX
-author: Tao He
+title: C基础
+author: dong
 date: 2023-10-14
-category: Jekyll
+category: c
 layout: post
 mermaid: true
-
 ---
 
 ## 时间
