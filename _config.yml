@@ -56,15 +56,11 @@ collections:
   others:
     output: true
     permalink: /:collection/:path/
-  redis:
-    output: true
-    permalink: /:collection/:path/
 
 ordered_collections:
   - posts
   - pages
   - others
-  - redis
 
 page_width: 800px
 
