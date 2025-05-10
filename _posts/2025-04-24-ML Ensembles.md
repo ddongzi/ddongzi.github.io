@@ -1,5 +1,5 @@
 ---
-title: ML测试
+title: ML-Ensembles
 author: dong
 date: 2025-04-24
 category: ML
@@ -8,15 +8,9 @@ layout: post
 
 jupyter对于复制粘贴的图片 不友好，在github ipynb上展示不出来
 
-## Ensembles
+ 
 
-compine basic estimators. 
-
-
-
-
-
-### random forest
+## random forest
 
 [▶️Youtube-random forest](https://youtu.be/J4Wdy0Wc_xQ?si=rvyPCO3CkZoOka-6)  
 决策树对训练数据很好，easy to build / use / intercpt, 但是对新测试样本Inaccuracy
@@ -50,9 +44,7 @@ randomly choose from original dataset.
 <img src="https://raw.githubusercontent.com/ddongzi/ddongzi.github.io/master/assets/images/26c33592-3121-4b6e-aa04-1245c7ab51a6.png" alt="图片.png" style="zoom:67%;" />
 <img src="https://raw.githubusercontent.com/ddongzi/ddongzi.github.io/master/assets/images/e2f93543-3c6c-41a4-8e9d-097c6d41276e.png" alt="图片.png" style="zoom:67%;" />
 
-
-
-### Adaboost
+## Adaboost
 
 [▶️Youtube-Adaboost](https://youtu.be/LsK-xG1cLYA?si=qUL8pOxKBL25niDE)
 
@@ -142,6 +134,66 @@ Use original dataset with the new sample weight to make a new dataset, than same
 
 
 
+
+## Gradient-Boosted Trees 
+
+迭代构建多个弱学习器（如树），每次纠正之前模型的错误！
+
+### 🌟 1. 基础思想：Boosting
+
+Boosting 是一种 **加法模型** + **前向分步优化** 的策略：
+
+我们希望学得一个函数 $F(x)$，它由多个基模型（通常是树）组成：
+$$
+F(x) = \sum_{m=1}^{M} \gamma_m h_m(x)
+$$
+
+
+其中：
+
+- $h_m(x)$ 是第 $m$ 个基学习器（比如决策树）；
+- $\gamma_m$ 是每个学习器的权重；
+- 最终的输出是所有学习器的加权和。
+
+### 📉 2. 梯度提升（Gradient Boosting）
+
+目标是最小化某个损失函数 $L(y, F(x))$，比如平方误差或交叉熵。
+
+由于直接优化很难，我们采用 **前向分步策略**：
+
+第 $m$ 步时，我们固定前面 $m-1$ 步的结果 $F_{m-1}(x)$，让新模型 $h_m(x)$ 去拟合当前模型的负梯度方向：
+$$
+r_i^{(m)} = - \left[ \frac{\partial L(y_i, F(x_i))}{\partial F(x_i)} \right]_{F = F_{m-1}}
+$$
+
+
+这些 $r_i^{(m)}$ 被称为 **伪残差（pseudo residuals）**。
+
+然后我们训练一棵树 $h_m(x)$ 去拟合这些伪残差。
+
+
+### 🔄 3. 模型更新
+
+新模型的更新方式是：
+
+$F_m(x) = F_{m-1}(x) + \eta \cdot \gamma_m h_m(x)$
+
+- $\eta \in (0, 1]$ 是学习率（learning rate），控制每次纠正的“步长”；
+- $\gamma_m$ 是通过一维搜索确定的最佳系数（最小化当前损失）；
+- 加上这一项后，整体模型变得更好。
+
+
+### 🧠 举个例子（回归，MSE）
+
+1. 初始化：用训练集的均值作为初始预测 $F_0(x)$
+2. 第 $m$ 步：
+   - 计算残差：$r_i = y_i - F_{m-1}(x_i)$
+   - 拟合一棵树：用 $r_i$ 作为目标
+   - 得到新树 $h_m(x)$
+   - 更新模型：
+      $F_m(x) = F_{m-1}(x) + \eta h_m(x)$
+
+这样不断迭代，每一步都在“**纠正**”上一轮的误差.
 
 
 
