@@ -60,8 +60,22 @@ layout: compress
         {% endunless %}
       </div>
     </div>
+    <div id="toc"></div>
+
   </section>
   {% include footer.html %}
+
+    <!-- 放在 </body> 结束前 -->
+  <script src="https://unpkg.com/tocbot/dist/tocbot.min.js"></script>
+  <script>
+    tocbot.init({
+      tocSelector: '#toc',            // 大纲容器
+      contentSelector: '.content',    // 文章主体容器 class
+      headingSelector: 'h2, h3, h4',  // 生成哪些标题的 TOC
+      collapseDepth: 6
+    });
+  </script>
+
 </body>
 <script>
   /**

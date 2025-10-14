@@ -353,3 +353,22 @@ a.navbar-item.is-active {
         }
     }
 }
+
+#toc {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 220px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  border-left: 3px solid #007bff;
+  padding: 10px;
+  font-size: 0.9em;
+  z-index: 999;
+}
+
+.toc-link.is-active {
+  font-weight: bold;
+  color: #007bff;
+}
