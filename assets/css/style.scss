@@ -354,22 +354,3 @@ a.navbar-item.is-active {
     }
 }
 
-#toc {
-  position: fixed;
-  top: 80px;
-  right: 20px;
-  width: 220px;
-  max-height: 80vh;
-  overflow-y: auto;
-  background-color: #f9f9f9;
-  padding: 10px;
-  z-index: 9999; /* 确保浮在导航栏之上 */
-  max-height: 80vh;   /* 限制 TOC 高度，避免超出屏幕 */
-  overflow-y: auto;   /* 超出可滚动 */
-}
-
-
-.toc-link.is-active {
-  font-weight: bold;
-  color: #007bff;
-}

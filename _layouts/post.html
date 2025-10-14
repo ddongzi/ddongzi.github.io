@@ -11,6 +11,7 @@ layout: compress
 
 <body>
   {% include navbar.html %}
+  {% include toc.html html=content%}
 
   <section class="hero is-fullheight has-text-centered" id="post">
     <div class="hero-body">
@@ -63,20 +64,6 @@ layout: compress
 
   </section>
   {% include footer.html %}
-  <div id="toc"></div>
-
-
-    <!-- 放在 </body> 结束前 -->
-  <script src="https://unpkg.com/tocbot/dist/tocbot.min.js"></script>
-  <script>
-    tocbot.init({
-      tocSelector: '#toc',            // 大纲容器
-      contentSelector: '.content',    // 文章主体容器 class
-      headingSelector: 'h2, h3, h4',  // 生成哪些标题的 TOC
-      collapseDepth: 6
-    });
-    console.log('tocbot init ok')
-  </script>
 
 </body>
 <script>
