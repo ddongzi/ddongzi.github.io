@@ -55,7 +55,6 @@ layout: compress
         <div class="content has-text-justified-desktop has-text-justified-fullhd has-text-justified has-text-justified-tablet has-text-left-mobile">
           <p>{{ content }}</p>
         </div>
-        <div id="toc"></div>
         {% unless site.disqus-shortname == "" %}
         <div class="disqus-comments" id="disqus_thread"></div>
         {% endunless %}
@@ -64,6 +63,8 @@ layout: compress
 
   </section>
   {% include footer.html %}
+  <div id="toc"></div>
+
 
     <!-- 放在 </body> 结束前 -->
   <script src="https://unpkg.com/tocbot/dist/tocbot.min.js"></script>
@@ -71,9 +72,10 @@ layout: compress
     tocbot.init({
       tocSelector: '#toc',            // 大纲容器
       contentSelector: '.content',    // 文章主体容器 class
-      headingSelector: 'h1, h2, h3, h4',  // 生成哪些标题的 TOC
+      headingSelector: 'h2, h3, h4',  // 生成哪些标题的 TOC
       collapseDepth: 6
     });
+    console.log('tocbot init ok')
   </script>
 
 </body>
