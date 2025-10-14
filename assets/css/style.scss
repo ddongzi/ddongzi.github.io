@@ -362,11 +362,12 @@ a.navbar-item.is-active {
   max-height: 80vh;
   overflow-y: auto;
   background-color: #f9f9f9;
-  border-left: 3px solid #007bff;
   padding: 10px;
-  font-size: 0.9em;
-  z-index: 999;
+  z-index: 9999; /* 确保浮在导航栏之上 */
+  max-height: 80vh;   /* 限制 TOC 高度，避免超出屏幕 */
+  overflow-y: auto;   /* 超出可滚动 */
 }
+
 
 .toc-link.is-active {
   font-weight: bold;
