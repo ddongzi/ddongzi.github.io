@@ -9,7 +9,7 @@ baseurl:
 # Title of the Site
 title: λ's space
 # Description of the Site
-description: λ's space with WhatATheme
+description: 乱花渐欲迷人眼，浅草才能没马蹄。
 # URL of Image of the Site
 site-image: 
 # Keywords of the Site
@@ -45,7 +45,7 @@ author-name: λ
 # URL for the Image of the Author
 author-image: /assets/images/bio_gauss.jpg 
 # 60 Words About the Author
-author-about: I love math, photo, cs. All basic structure.
+author-about: 喜欢代数、拍照
 # URL to the Author's Profile (i.e., Github, Twitter, Stackoverflow, etc)
 author-url: https://github.com/ddongzi
 
